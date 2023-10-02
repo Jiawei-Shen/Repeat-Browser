@@ -1,62 +1,27 @@
-# svelte app
+# Repeat Browser
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template-webpack.
+This is a project for visualizing the Repeats/[Transposable Elements(TEs)](https://en.wikipedia.org/wiki/Transposable_element).
+![The Repeat Browser logo](https://wang.wustl.edu/img/rb_logo.png)
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
-
-```bash
-npx degit sveltejs/template-webpack svelte-app
-cd svelte-app
-```
-
-_Note that you will need to have [Node.js](https://nodejs.org) installed._
 
 ## Get started
-
-Install the dependencies...
-
+1. Install [Node](https://nodejs.org/en/). 
+2. Download the source code from our [github repo](https://github.com/Jiawei-Shen/Repeat-Browser.git).
 ```bash
-cd svelte-app
+git clone https://github.com/Jiawei-Shen/Repeat-Browser.git
+```
+3. Enter the directory and install the Node modules.
+```bash
+cd Repeat-Browser
 npm install
 ```
+If 'node_modules' is already included, you can skip the 'npm install' step. 
 
-...then start webpack:
-
+4. Run the project!
 ```bash
 npm run dev
 ```
+5. Navigate to [localhost:8080](http://localhost:8080). You should see your app running.
 
-Navigate to [localhost:8080](http://localhost:8080). You should see your app running. Edit a component file in `src`, save it, and the page should reload with your changes.
-
-## Deploying to the web
-
-### With [now](https://zeit.co/now)
-
-Install `now` if you haven't already:
-
-```bash
-npm install -g now
-```
-
-Then, from within your project folder:
-
-```bash
-now
-```
-
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public
-```
+##Document
+The documentation available at [https://rb-doc.readthedocs.io/en/latest/](https://rb-doc.readthedocs.io/en/latest/) will prove invaluable for implementing this project!
