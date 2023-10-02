@@ -15,7 +15,7 @@ git clone https://github.com/Jiawei-Shen/Repeat-Browser.git
 cd Repeat-Browser
 npm install
 ```
-If 'node_modules' is already included, you can skip the 'npm install' step. 
+Even if the 'node_modules' folder is already included, the 'npm install' step is not able to skip. 
 
 4. Run the project!
 ```bash
