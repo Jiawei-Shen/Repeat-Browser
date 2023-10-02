@@ -1,0 +1,105 @@
+{
+  "data": [
+    {
+      "Assay": "Chip-seq",
+      "Biosample": "unknown",
+      "Control": "unknown",
+      "Mode": "Experiment",
+      "Organism": "hg38",
+      "Tissue": "unknown",
+      "id": "ENCFF000WFD",
+      "Zarr": "https://wangftp.wustl.edu/~scheng/repeat_browser/jiawei_1010/chip-seq/ENCFF000WFD.sorted.zarr/"
+    },
+    {
+      "Assay": "Chip-seq",
+      "Biosample": "unknown",
+      "Control": "unknown",
+      "Mode": "Experiment",
+      "Organism": "hg38",
+      "Tissue": "unknown",
+      "id": "ENCFF000WFD",
+      "Zarr": "https://wangftp.wustl.edu/~scheng/repeat_browser/jiawei_1010/chip-seq/ENCFF000WFE.sorted.zarr/"
+    },
+    {
+      "Assay": "Chip-seq",
+      "Biosample": "unknown",
+      "Control": "unknown",
+      "Mode": "Experiment",
+      "Organism": "hg38",
+      "Tissue": "unknown",
+      "id": "ENCFF000YOY",
+      "Zarr": "https://wangftp.wustl.edu/~scheng/repeat_browser/jiawei_1010/chip-seq/ENCFF000YOY.sorted.zarr/"
+    },
+    {
+      "Assay": "Chip-seq",
+      "Biosample": "unknown",
+      "Control": "unknown",
+      "Mode": "Experiment",
+      "Organism": "hg38",
+      "Tissue": "unknown",
+      "id": "ENCFF000YPI",
+      "Zarr": "https://wangftp.wustl.edu/~scheng/repeat_browser/jiawei_1010/chip-seq/ENCFF000YPI.sorted.zarr/"
+    },
+    {
+      "Assay": "Chip-seq",
+      "Biosample": "unknown",
+      "Control": "unknown",
+      "Mode": "Experiment",
+      "Organism": "hg38",
+      "Tissue": "unknown",
+      "id": "ENCFF015YIR",
+      "Zarr": "https://wangftp.wustl.edu/~scheng/repeat_browser/paper_figure/chip-seq/CD14_CTCF/ENCFF015YIR.zarr/"
+    },
+    {
+      "Assay": "Chip-seq",
+      "Biosample": "cell_line",
+      "Control": "unknown",
+      "Mode": "Experiment",
+      "Organism": "hg38",
+      "Tissue": "unknown",
+      "id": "ENCFF082OFO",
+      "Zarr": "https://wangftp.wustl.edu/~scheng/repeat_browser/jiawei_1010/chip-seq/ENCFF082OFO.zarr/"
+    },
+    {
+      "Assay": "Chip-seq",
+      "Biosample": "cell_line",
+      "Control": "unknown",
+      "Mode": "Experiment",
+      "Organism": "hg38",
+      "Tissue": "unknown",
+      "id": "ENCFF399ZSM",
+      "Zarr": "https://wangftp.wustl.edu/~scheng/repeat_browser/jiawei_1010/chip-seq/ENCFF399ZSM.zarr/"
+    },
+    {
+      "Assay": "Chip-seq",
+      "Biosample": "unknown",
+      "Control": "unknown",
+      "Mode": "Experiment",
+      "Organism": "hg38",
+      "Tissue": "unknown",
+      "id": "ENCFF885VTV",
+      "Zarr": "https://wangftp.wustl.edu/~scheng/repeat_browser/paper_figure/chip-seq/CD14_CTCF/ENCFF885VTV.zarr/"
+    },
+    {
+      "Assay": "Chip-seq",
+      "Biosample": "unknown",
+      "Control": "unknown",
+      "Mode": "Experiment",
+      "Organism": "hg38",
+      "Tissue": "unknown",
+      "id": "ENCFF624WTL",
+      "Zarr": "https://wangftp.wustl.edu/~scheng/repeat_browser/jiawei_1010/chip-seq/ENCFF973HEP.zarr/"
+    }
+  ],
+  "repeats": [
+    { "name": "MER125", "family": "DNA", "class": "DNA", "size": 1 },
+    { "name": "MER126", "family": "DNA", "class": "DNA", "size": 1 },
+    { "name": "MER130", "family": "DNA", "class": "DNA", "size": 1 },
+    { "name": "MER135", "family": "DNA", "class": "DNA", "size": 1 },
+    { "name": "MER136", "family": "DNA", "class": "DNA", "size": 1 },
+    { "name": "UCON8", "family": "DNA", "class": "DNA", "size": 1 },
+    { "name": "L1M2b", "family": "L1", "class": "LINE", "size": 1},
+    { "name": "L1ME1", "family": "L1", "class": "LINE", "size": 1},
+    { "name": "L1ME2", "family": "L1", "class": "LINE", "size": 1}
+  ]
+}

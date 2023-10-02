@@ -1,0 +1,15 @@
+{
+  "data": [
+    {
+      "Assay": "CAGE",
+      "Biosample": "HeLa-S3",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "GRCh38",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF000UBJ",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/hg38/cage-seq/encode/Processed_ENCFF000UBJ/ENCFF000UBJ.zarr/"
+    }
+  ]
+}

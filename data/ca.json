@@ -1,0 +1,938 @@
+{
+  "data": [
+    {
+      "Assay": "Histone ChIP-seq",
+      "Biosample": "tissue",
+      "Control": "ENCSR681NQF",
+      "Mode": "Experiment",
+      "Organism": "mm10",
+      "Tissue": "H3K4me3",
+      "id": "ENCSR782DEA",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/chip-seq/histone/Processed_ENCSR782DEA_signal/ENCSR782DEA_signal.zarr/"
+    },
+    {
+      "Assay": "Histone ChIP-seq",
+      "Biosample": "tissue",
+      "Control": "ENCSR317ENO",
+      "Mode": "Experiment",
+      "Organism": "mm10",
+      "Tissue": "H3K4me3",
+      "id": "ENCSR592GQI",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/chip-seq/histone/Processed_ENCSR592GQI_signal/ENCSR592GQI_signal.zarr/"
+    },
+    {
+      "Assay": "Histone ChIP-seq",
+      "Biosample": "tissue",
+      "Control": "ENCSR646GHA",
+      "Mode": "Experiment",
+      "Organism": "mm10",
+      "Tissue": "H3K4me3",
+      "id": "ENCSR688ZOR",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/chip-seq/histone/Processed_ENCSR688ZOR_signal/ENCSR688ZOR_signal.zarr/"
+    },
+    {
+      "Assay": "Histone ChIP-seq",
+      "Biosample": "tissue",
+      "Control": "ENCSR077QRY",
+      "Mode": "Experiment",
+      "Organism": "mm10",
+      "Tissue": "H3K4me3",
+      "id": "ENCSR501GBJ",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/chip-seq/histone/Processed_ENCSR501GBJ_signal/ENCSR501GBJ_signal.zarr/"
+    },
+    {
+      "Assay": "Histone ChIP-seq",
+      "Biosample": "tissue",
+      "Control": "ENCSR840PFW",
+      "Mode": "Experiment",
+      "Organism": "mm10",
+      "Tissue": "H3K4me3",
+      "id": "ENCSR052CDF",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/chip-seq/histone/Processed_ENCSR052CDF_signal/ENCSR052CDF_signal.zarr/"
+    },
+    {
+      "Assay": "Histone ChIP-seq",
+      "Biosample": "tissue",
+      "Control": "ENCSR424WHM",
+      "Mode": "Experiment",
+      "Organism": "mm10",
+      "Tissue": "H3K4me3",
+      "id": "ENCSR647OTD",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/chip-seq/histone/Processed_ENCSR647OTD_signal/ENCSR647OTD_signal.zarr/"
+    },
+    {
+      "Assay": "Histone ChIP-seq",
+      "Biosample": "tissue",
+      "Control": "ENCSR685AMF",
+      "Mode": "Experiment",
+      "Organism": "mm10",
+      "Tissue": "H3K4me3",
+      "id": "ENCSR119YTR",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/chip-seq/histone/Processed_ENCSR119YTR_signal/ENCSR119YTR_signal.zarr/"
+    },
+    {
+      "Assay": "Histone ChIP-seq",
+      "Biosample": "tissue",
+      "Control": "ENCSR776WPN",
+      "Mode": "Experiment",
+      "Organism": "mm10",
+      "Tissue": "H3K4me3",
+      "id": "ENCSR368RJD",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/chip-seq/histone/Processed_ENCSR368RJD_signal/ENCSR368RJD_signal.zarr/"
+    },
+    {
+      "Assay": "Histone ChIP-seq",
+      "Biosample": "tissue",
+      "Control": "ENCSR024JAN",
+      "Mode": "Experiment",
+      "Organism": "mm10",
+      "Tissue": "H3K4me3",
+      "id": "ENCSR739DVM",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/chip-seq/histone/Processed_ENCSR739DVM_signal/ENCSR739DVM_signal.zarr/"
+    },
+    {
+      "Assay": "Histone ChIP-seq",
+      "Biosample": "tissue",
+      "Control": "ENCSR523QKO",
+      "Mode": "Experiment",
+      "Organism": "mm10",
+      "Tissue": "H3K4me3",
+      "id": "ENCSR527EUE",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/chip-seq/histone/Processed_ENCSR527EUE_signal/ENCSR527EUE_signal.zarr/"
+    },
+    {
+      "Assay": "Histone ChIP-seq",
+      "Biosample": "tissue",
+      "Control": "ENCSR583ZEV",
+      "Mode": "Experiment",
+      "Organism": "mm10",
+      "Tissue": "H3K4me3",
+      "id": "ENCSR835BZO",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/chip-seq/histone/Processed_ENCSR835BZO_signal/ENCSR835BZO_signal.zarr/"
+    },
+    {
+      "Assay": "Histone ChIP-seq",
+      "Biosample": "tissue",
+      "Control": "ENCSR244YQD",
+      "Mode": "Experiment",
+      "Organism": "mm10",
+      "Tissue": "H3K4me3",
+      "id": "ENCSR172XOZ",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/chip-seq/histone/Processed_ENCSR172XOZ_signal/ENCSR172XOZ_signal.zarr/"
+    },
+    {
+      "Assay": "Histone ChIP-seq",
+      "Biosample": "tissue",
+      "Control": "ENCSR880HDV",
+      "Mode": "Experiment",
+      "Organism": "mm10",
+      "Tissue": "H3K4me3",
+      "id": "ENCSR022KDE",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/chip-seq/histone/Processed_ENCSR022KDE_signal/ENCSR022KDE_signal.zarr/"
+    },
+    {
+      "Assay": "Histone ChIP-seq",
+      "Biosample": "tissue",
+      "Control": "ENCSR587JRQ",
+      "Mode": "Experiment",
+      "Organism": "mm10",
+      "Tissue": "H3K4me3",
+      "id": "ENCSR129DIK",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/chip-seq/histone/Processed_ENCSR129DIK_signal/ENCSR129DIK_signal.zarr/"
+    }
+  ],
+  "repeats": [
+    {
+      "name": "L1MC5a",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MB3",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MB5",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PA6",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1P1",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MA8",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M5",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MA9",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PA14",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1ME4c",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PA4",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PA7",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PA16",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PA2",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M2",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PREC2",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PB",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M4",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "HAL1M8",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1ME3E",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MA5",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MB8",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1ME4b",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MC3",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1ME4a",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MC",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MA4",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MD3",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MC4a",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1ME1",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1ME3B",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PA5",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1ME3D",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1P4",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MA2",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PA15-16",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PA8A",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PA8",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PA10",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MEd",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MA7",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MEc",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M7",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PA11",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M4c",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1ME3",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MEg",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MC4",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M3",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M8",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "HAL1",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M4b",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MC1",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PA3",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MB4",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MD",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1ME2",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PB1",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M1",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M4a2",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1P5",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MC5",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M4a1",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MCa",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1ME3G",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MEf",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MB2",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1ME3F",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MB7",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MCc",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MEb",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1ME3A",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PA12",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MDa",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1ME3Cz",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1ME2z",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PA15",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MA10",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MC2",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1ME3C",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MA5A",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MEh",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MB1",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MD2",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MEi",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PA13",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1ME5",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "HAL1b",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1P2",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "HAL1ME",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MA1",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PA17",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PB4",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MA6",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PB2",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1P3",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MD1",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MEj",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PB3",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M6",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MA3",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "X9_LINE",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MA4A",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MCb",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1HS",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M3f",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M2a",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1P4e",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PBa",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M2b",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MDb",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M3c",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M3e",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M6B",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MEg2",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MEg1",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M3d",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PBb",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M3a",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1P3b",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M2c",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M3de",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1MEa",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M2a1",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1M3b",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1P4b",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1P4a",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1P4d",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1PBa1",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1P",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    },
+    {
+      "name": "L1P4c",
+      "family": "L1",
+      "class": "LINE",
+      "size": 1
+    }
+  ]
+}

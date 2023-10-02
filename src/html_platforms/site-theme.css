@@ -1,0 +1,400 @@
+/* GLOBAL THEME CSS - YOUR DESIGN CHANGES WILL BE DISPLAYED HERE */
+/* ==================================================================== */
+/*                     System Style Definitions                         */
+/* ==================================================================== */
+
+/* ==================================================================== */
+/*                     Additional Style Definitions                     */
+/* ==================================================================== */
+*#dm div.dmContent h1,*#dm div.dmFooter h1
+{
+    color:rgb(102,102,102);
+}
+*#dm div.dmRespCol>*
+{
+    line-height:normal;
+}
+*.stickyHeaderSpacer
+{
+    height:0px;
+}
+*#dm *[data-buttonstyle] div.dmInner *.dmWidget
+{
+    -webkit-box-shadow:none;
+    box-shadow:none;
+    -moz-box-shadow:none;
+    border-style:solid;
+    border-width:0px;
+    border-color:rgba(0,0,0,0);
+    background-color:rgb(239,231,25);
+}
+*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget:hover,*#dm *[data-buttonstyle] div.dmInner *.dmWidget.hover
+{
+    background-color:rgb(255,255,255);
+    border-color:rgba(0,0,0,0);
+}
+*#dm *[data-buttonstyle] div.dmInner *.dmWidget span.text
+{
+    color:rgb(255,255,255);
+}
+*#dm *[data-buttonstyle] div.dmInner *.dmWidget span.textonly
+{
+    color:rgb(255,255,255);
+}
+*#dm div.dmContent h3,*#dm div.dmFooter h3
+{
+    color:rgb(255,255,255);
+}
+
+/* ==================================================================== */
+/*                             Inner                                    */
+/* ==================================================================== */
+*#dm div.dmInner
+{
+    font-size:16px;
+    font-family:'Roboto';
+    line-height:initial;
+}
+
+/* ==================================================================== */
+/*                     Additional Style Definitions                     */
+/* ==================================================================== */
+*#dm *.ecwid *
+{
+    font-family:'Roboto';
+}
+*#dm div.dmInner h1
+{
+    font-family:'Montserrat';
+}
+*#dm div.dmInner h2
+{
+    font-family:'Montserrat';
+}
+*#dm div.dmInner h3
+{
+    font-family:'Montserrat';
+}
+*#dm div.dmInner h4
+{
+    font-family:'Montserrat';
+}
+*#dm div.dmInner h5
+{
+    font-family:'Roboto';
+}
+*#dm div.dmInner h6
+{
+    font-family:'Roboto';
+}
+*#dm div.dmContent h2,*#dm div.dmFooter h2
+{
+    color:rgb(51,51,51);
+}
+*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget:hover span.text,*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget.hover span.text,*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget:hover span.textonly,*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget.hover span.textonly
+{
+    color:rgb(61,65,84);
+}
+*#dm *[data-buttonstyle] div.dmInner *.dmWidget span.text,*#dm *[data-buttonstyle] div.dmInner *.dmWidget span.textonly
+{
+    color:rgb(51,51,51);
+}
+
+/* ==================================================================== */
+/*                             Inner                                    */
+/* ==================================================================== */
+*#dm DIV.dmInner,*#dm DIV#dmSlideRightNavRight
+{
+    background-repeat:no-repeat;
+    background-image:url(https://irt-cdn.multiscreensite.com/ce0bb35f932b47bb809d0e37905542ba/dms3rep/multi/site_background_education-2087x1173.jpg);
+    background-size:cover;
+    background-position:50% 0%;
+}
+
+/* ==================================================================== */
+/*                     Additional Style Definitions                     */
+/* ==================================================================== */
+*#dm div.dmOuter div.dmInner,*#dm div#dmSlideRightNavRight
+{
+    background-position:center center;
+    background-repeat:repeat;
+    background-size:auto;
+}
+*#dm div.dmContent h4,*#dm div.dmFooter h4
+{
+    color:rgb(51,51,51);
+}
+*#dm div.dmContent h5,*#dm div.dmFooter h5
+{
+    color:rgb(51,51,51);
+}
+*#dm div.dmContent h6,*#dm div.dmFooter h6
+{
+    color:rgb(51,51,51);
+}
+*#dm div.dmContent h4,*#dm div.dmFooter h4,*#dm div.dm-title h4
+{
+    font-family:Poppins;
+    font-weight:normal;
+    color:rgba(0,5,3,1);
+}
+*#dm div.dmContent h1,*#dm div.dmFooter h1,*#dm div.dm-title h1
+{
+    font-weight:normal;
+    color:rgba(0,5,3,1);
+    font-family:Poppins;
+}
+*.dmLargeBody *.dmBody *.dmRespRowsWrapper,*.dmLargeBody *.dm-layout-sec *.dmBody *.dmRespRowsWrapper
+{
+    background-color:transparent;
+}
+*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget span.text,*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmformsubmit input,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary span,*#dmRoot *#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary
+{
+    color:rgba(255,255,255,1);
+    font-weight:normal;
+}
+*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget:hover span.text,*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget.hover span.text,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary:hover span.text,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary.hover span.text,*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget:hover input[type="submit"],*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget.hover input[type="submit"],*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary:hover input[type="submit"],*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary.hover input[type="submit"]
+{
+    color:rgba(255,255,255,1);
+}
+*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget:hover,*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget.hover,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary:hover,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary.hover
+{
+    background-color:rgba(0,0,0,0);
+    border-color:rgba(0,0,0,0);
+}
+*#dm div.dmContent h2,*#dm div.dmFooter h2,*#dm div.dm-title h2
+{
+    color:rgba(0,5,3,1);
+    font-weight:normal;
+    font-family:Poppins;
+}
+*#dm div.dmContent h3,*#dm div.dmFooter h3,*#dm div.dm-title h3
+{
+    color:rgba(0,5,3,1);
+    font-weight:normal;
+    font-family:Poppins;
+}
+*#dm div.dmContent h5,*#dm div.dmFooter h5,*#dm div.dm-title h5
+{
+    color:rgba(0,5,3,1);
+    font-family:Poppins;
+    font-weight:normal;
+}
+*#dm div.dmContent h6,*#dm div.dmFooter h6,*#dm div.dm-title h6
+{
+    color:rgba(0,5,3,1);
+    font-weight:normal;
+    font-family:Poppins;
+}
+
+/* ==================================================================== */
+/*                             Inner                                    */
+/* ==================================================================== */
+*#dm div.dmInner,*#dm div.dmInner *.dmRespCol,*#dm *.ecwid *,*#dm *.dmform *.dmforminput label,*.dmPrettyList *.listText,*.dmPrettyList *.itemName
+{
+    font-weight:300;
+}
+
+/* ==================================================================== */
+/*                     Additional Style Definitions                     */
+/* ==================================================================== */
+*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget *.iconBg,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary *.iconBg
+{
+    display:none;
+}
+*#dm div.dmNewParagraph a,*#dm *.dmNewParagraph a,*#dm div.dmBlockElement a,*#dm *.dmBlockElement a,*#dm *.dmform a.fileUploadLink,*.dmPrettyList *.link:not(.dmWidget)
+{
+    color:rgba(54,73,87,1);
+    text-decoration:underline;
+}
+
+/* ==================================================================== */
+/*                             Inner                                    */
+/* ==================================================================== */
+*#dm div.dmInner,*#dm div.dmInner *.dmRespCol,*#dm *.ecwid *,*#dm *.dmform *.dmforminput label,*.dmPrettyList *.listText,*.dmPrettyList *.itemName,*#dm *.dmRestaurantMenu *.menuItemBox,*.dmRestaurantMenu *.menuItemName,*.dmRestaurantMenu *.menuItemDesc,*.dmRestaurantMenu *.menuItemPrice,*.dmPhotoGallery p.caption-text,*.dmGeoLocation a span.dmGeoMLocItemTitle,*.dmGeoLocation a span.dmGeoMLocItemDetails
+{
+    color:rgba(0,0,0,1);
+}
+
+/* ==================================================================== */
+/*                     Additional Style Definitions                     */
+/* ==================================================================== */
+*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary span:hover,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary span.hover,*#dmRoot *#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary:hover,*#dmRoot *#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary.hover,*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget:hover span.text,*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget.hover span.text,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary:hover span.text,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary.hover span.text,*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget:hover input[type="submit"],*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget.hover input[type="submit"],*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary:hover input[type="submit"],*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary.hover input[type="submit"],*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget:hover span,*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget.hover span,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary:hover span,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary.hover span
+{
+    color:rgba(255,255,255,0.73);
+    font-weight:normal;
+    text-decoration:none;
+    font-style:normal;
+}
+
+/* ==================================================================== */
+/*                             Inner                                    */
+/* ==================================================================== */
+*#dm div.dmInner,*#dm div.dmInner *.dmRespCol,*#dm *.ecwid *,*#dm *.dmform *.dmforminput label,*.dmPrettyList *.listText,*.dmPrettyList *.itemName,*#dm *.dmRestaurantMenu *.menuItemBox,*.dmRestaurantMenu *.menuItemName,*.dmRestaurantMenu *.menuItemDesc,*.dmRestaurantMenu *.menuItemPrice,*.dmPhotoGallery p.caption-text,*.dmGeoLocation a span.dmGeoMLocItemTitle,*.dmGeoLocation a span.dmGeoMLocItemDetails,*.map-popup-description
+{
+    color:rgba(0,5,3,1);
+    font-family:Poppins;
+}
+
+/* ==================================================================== */
+/*                     Additional Style Definitions                     */
+/* ==================================================================== */
+*.dmLargeBody *.dmBody *.dmRespRowsWrapper,*.dmLargeBody *.dm-layout-sec *.dmBody *.dmRespRowsWrapper,*#dmSlideRightNavRight *#site_content
+{
+    background-color:transparent;
+}
+*#dm div.dmNewParagraph a,*#dm *.dmNewParagraph a,*#dm div.dmBlockElement a,*#dm *.dmBlockElement a,*#dm *.dmform a.fileUploadLink,*.dmPrettyList *.link:not(.dmWidget),*#dm *.dmGeoLocation a.dmGeoSVSeeAll,*#dm *.dmGeoLocation a.dmGeoSVGoToPage,*#dm *.postDescription a,*#dm *.blog-post-component a,*#dm *.timeline-post a,*#dm .rteBlock a,*#dm *.rteBlock a,*#dm *.rteBlock a,*#dm *.rteBlock a,*#dm *.rteBlock a,*#dm *.rteBlock a,*#dm *.rteBlock a,*#dm *.rteBlock a,*.newPhotoGallery *.photoGalleryViewAll.link
+{
+    color:rgba(65,67,69,1);
+}
+*#dm div.dmNewParagraph a,*#dm *.dmNewParagraph a,*#dm div.dmBlockElement a,*#dm *.dmBlockElement a,*#dm *.dmform a.fileUploadLink,*.dmPrettyList *.link:not(.dmWidget),*#dm *.dmGeoLocation a.dmGeoSVSeeAll,*#dm *.dmGeoLocation a.dmGeoSVGoToPage,*#dm *.postDescription a,*#dm *.blog-post-component a,*#dm *.timeline-post a,*#dm .rteBlock a,*#dm *.rteBlock a,*#dm *.rteBlock a,*#dm *.rteBlock a,*#dm *.rteBlock a,*.newPhotoGallery *.photoGalleryViewAll.link
+{
+    color:rgba(0,5,3,1);
+}
+*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary,*#dm div.dmOuter div.dmInner *.ecwid *.form-control__button
+{
+    background-image:none;
+    background-color:rgba(78,78,78,1);
+    background-size:cover;
+    background-repeat:no-repeat;
+    border-radius:50px;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    -webkit-box-shadow:none;
+    -moz-box-shadow:none;
+    box-shadow:none;
+}
+*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget:hover,*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget.hover,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary:hover,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary.hover,*#dm div.dmOuter div.dmInner *.ecwid *.form-control__button:hover,*#dm div.dmOuter div.dmInner *.ecwid *.form-control__button.hover
+{
+    background-color:rgba(61,61,61,1);
+}
+*#dm div.dmOuter div.dmInner.ecwid *.ecwid-btn.ecwid-btn--primary span:hover,*#dm div.dmOuter div.dmInner.ecwid *.ecwid-btn.ecwid-btn--primary span.hover,*#dm div.dmOuter div.dmInner *.ecwid *.form-control__button *.form-control__button-text:hover,*#dm div.dmOuter div.dmInner *.ecwid *.form-control__button *.form-control__button-text.hover,*#dmRoot *#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary:hover,*#dmRoot *#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary.hover,*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget:hover span.text,*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget.hover span.text,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary:hover span.text,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary.hover span.text,*#dm div.dmOuter div.dmInner *.ecwid *.form-control__button:hover span.text,*#dm div.dmOuter div.dmInner *.ecwid *.form-control__button.hover span.text,*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget:hover input[type="submit"],*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget.hover input[type="submit"],*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary:hover input[type="submit"],*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary.hover input[type="submit"],*#dm div.dmOuter div.dmInner *.ecwid *.form-control__button:hover input[type="submit"],*#dm div.dmOuter div.dmInner *.ecwid *.form-control__button.hover input[type="submit"],*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget:hover span,*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget.hover span,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary:hover span,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary.hover span,*#dm div.dmOuter div.dmInner *.ecwid *.form-control__button:hover span,*#dm div.dmOuter div.dmInner *.ecwid *.form-control__button.hover span
+{
+    color:rgba(255,255,255,1);
+}
+*.dmMobileBody *.dmLayoutWrapper,*.dmMobileBody *.dm-layout-sec *.dmLayoutWrapper,*#dmSlideRightNavRight *#site_content,*.dm-layout-sec *#dmSlideRightNavRight *#site_content,*#dm DIV.dmOuter DIV#dmSlideRightNavRight
+{
+    background-color:transparent;
+}
+*#dm div.dmNewParagraph a,*#dm *.dmNewParagraph a,*#dm div.dmBlockElement a,*#dm *.dmBlockElement a,*#dm *.dmform a.fileUploadLink,*.dmPrettyList *.link:not(.dmWidget),*#dm *.dmGeoLocation a.dmGeoSVSeeAll,*#dm *.dmGeoLocation a.dmGeoSVGoToPage,*#dm *.postDescription a,*#dm *.blog-post-component a,*#dm *.timeline-post a,*#dm .rteBlock a,*#dm *.rteBlock a,*#dm *.rteBlock a,*#dm *.rteBlock a,*.newPhotoGallery *.photoGalleryViewAll.link
+{
+    color:rgba(255,204,2,1);
+    text-decoration:none;
+}
+*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget span.text,*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmformsubmit input,*#dm div.dmOuter div.dmInner.ecwid *.ecwid-btn.ecwid-btn--primary span,*#dm div.dmOuter div.dmInner *.ecwid *.form-control__button *.form-control__button-text,*#dmRoot *#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary
+{
+    color:rgba(255,255,255,1);
+}
+*#dm *[data-buttonstyle] div.dmInner *#site_content *.dmWidget *.iconBg,*#dm div.dmOuter div.dmInner *.ecwid *.ecwid-btn.ecwid-btn--primary *.iconBg,*#dm div.dmOuter div.dmInner *.ecwid *.form-control__button *.iconBg
+{
+    display:none;
+}
+*#dm div.dmNewParagraph a,*#dm *.dmNewParagraph a,*#dm div.dmBlockElement a,*#dm *.dmBlockElement a,*#dm *.dmform a.fileUploadLink,*.dmPrettyList *.link:not(.dmWidget),*#dm *.dmGeoLocation a.dmGeoSVSeeAll,*#dm *.dmGeoLocation a.dmGeoSVGoToPage,*#dm *.postDescription a,*#dm *.blog-post-component a,*#dm *.timeline-post a,*#dm .rteBlock a,*#dm *.rteBlock a,*.newPhotoGallery *.photoGalleryViewAll.link
+{
+    color:rgba(145,151,154,1);
+}
+*#dm div.dmContent h2,*#dm div.dmFooter h2,*#dm div.p_hfcontainer h2,*#dm div.dm-title h2
+{
+    color:rgba(26,27,31,1);
+    direction:ltr;
+    font-family:Poppins;
+    font-weight:400;
+    font-style:normal;
+    text-decoration:none;
+}
+*#dm div.dmContent .dmNewParagraph[data-version] h2,*#dm div.dmFooter .dmNewParagraph[data-version] h2,*#dm div.p_hfcontainer .dmNewParagraph[data-version] h2,*#dm div.dm-title .dmNewParagraph[data-version] h2
+{
+    text-decoration:inherit;
+}
+*#dm div.dmContent .dmNewParagraph[data-version] h2 *,*#dm div.dmFooter .dmNewParagraph[data-version] h2 *,*#dm div.p_hfcontainer .dmNewParagraph[data-version] h2 *,*#dm div.dm-title .dmNewParagraph[data-version] h2 *
+{
+    text-decoration:none;
+}
+*#dm div.dmContent h3,*#dm div.dmFooter h3,*#dm div.p_hfcontainer h3,*#dm div.dm-title h3
+{
+    color:rgba(26,27,31,1);
+    direction:ltr;
+    font-family:Poppins;
+    font-weight:400;
+    font-style:normal;
+    text-decoration:none;
+}
+*#dm div.dmContent .dmNewParagraph[data-version] h3,*#dm div.dmFooter .dmNewParagraph[data-version] h3,*#dm div.p_hfcontainer .dmNewParagraph[data-version] h3,*#dm div.dm-title .dmNewParagraph[data-version] h3
+{
+    text-decoration:inherit;
+}
+*#dm div.dmContent .dmNewParagraph[data-version] h3 *,*#dm div.dmFooter .dmNewParagraph[data-version] h3 *,*#dm div.p_hfcontainer .dmNewParagraph[data-version] h3 *,*#dm div.dm-title .dmNewParagraph[data-version] h3 *
+{
+    text-decoration:none;
+}
+*#dm div.dmContent h4,*#dm div.dmFooter h4,*#dm div.p_hfcontainer h4,*#dm div.dm-title h4
+{
+    color:rgba(26,27,31,1);
+    direction:ltr;
+    font-family:Poppins;
+    font-weight:400;
+    font-style:normal;
+    text-decoration:none;
+}
+*#dm div.dmContent .dmNewParagraph[data-version] h4,*#dm div.dmFooter .dmNewParagraph[data-version] h4,*#dm div.p_hfcontainer .dmNewParagraph[data-version] h4,*#dm div.dm-title .dmNewParagraph[data-version] h4
+{
+    text-decoration:inherit;
+}
+*#dm div.dmContent .dmNewParagraph[data-version] h4 *,*#dm div.dmFooter .dmNewParagraph[data-version] h4 *,*#dm div.p_hfcontainer .dmNewParagraph[data-version] h4 *,*#dm div.dm-title .dmNewParagraph[data-version] h4 *
+{
+    text-decoration:none;
+}
+*#dm div.dmContent h5,*#dm div.dmFooter h5,*#dm div.p_hfcontainer h5,*#dm div.dm-title h5
+{
+    color:rgba(26,27,31,1);
+    direction:ltr;
+    font-family:Poppins;
+    font-weight:400;
+    font-style:normal;
+    text-decoration:none;
+}
+*#dm div.dmContent .dmNewParagraph[data-version] h5,*#dm div.dmFooter .dmNewParagraph[data-version] h5,*#dm div.p_hfcontainer .dmNewParagraph[data-version] h5,*#dm div.dm-title .dmNewParagraph[data-version] h5
+{
+    text-decoration:inherit;
+}
+*#dm div.dmContent .dmNewParagraph[data-version] h5 *,*#dm div.dmFooter .dmNewParagraph[data-version] h5 *,*#dm div.p_hfcontainer .dmNewParagraph[data-version] h5 *,*#dm div.dm-title .dmNewParagraph[data-version] h5 *
+{
+    text-decoration:none;
+}
+*#dm div.dmContent h6,*#dm div.dmFooter h6,*#dm div.p_hfcontainer h6,*#dm div.dm-title h6
+{
+    color:rgba(26,27,31,1);
+    direction:ltr;
+    font-family:Poppins;
+    font-weight:400;
+    font-style:normal;
+    text-decoration:none;
+}
+*#dm div.dmContent .dmNewParagraph[data-version] h6,*#dm div.dmFooter .dmNewParagraph[data-version] h6,*#dm div.p_hfcontainer .dmNewParagraph[data-version] h6,*#dm div.dm-title .dmNewParagraph[data-version] h6
+{
+    text-decoration:inherit;
+}
+*#dm div.dmContent .dmNewParagraph[data-version] h6 *,*#dm div.dmFooter .dmNewParagraph[data-version] h6 *,*#dm div.p_hfcontainer .dmNewParagraph[data-version] h6 *,*#dm div.dm-title .dmNewParagraph[data-version] h6 *
+{
+    text-decoration:none;
+}
+
+/* ==================================================================== */
+/*                             Inner                                    */
+/* ==================================================================== */
+#dm div.dmInner,#dm div.dmInner .dmRespCol,#dm .dmRespCol div.dmNewParagraph,#dm .ecwid .ec-store,#dm .dmform .dmforminput label,.dmPrettyList .listText,.dmPrettyList .itemName,#dm .dmRestaurantMenu .menuItemBox,.dmRestaurantMenu .menuItemName,.dmRestaurantMenu .menuItemDesc,.dmRestaurantMenu .menuItemPrice,.dmPhotoGallery .caption-text.caption-text,.dmGeoLocation a span.dmGeoMLocItemTitle,.dmGeoLocation a span.dmGeoMLocItemDetails,.map-popup-description
+{
+    color:rgba(45,46,50,1);
+}
+
+/* ==================================================================== */
+/*                     Additional Style Definitions                     */
+/* ==================================================================== */
+#dm [data-buttonstyle] div.dmInner #site_content .dmWidget,#dm [data-buttonstyle] div.dmInner .dmHeader .dmWidget,#dm div.dmOuter div.dmInner .ecwid .ecwid-btn.ecwid-btn--primary,#dm div.dmOuter div.dmInner .ecwid .form-control__button
+{
+    background-color:rgba(45,46,50,1);
+}
+#dm [data-buttonstyle] div.dmInner #site_content .dmWidget span.text,#dm [data-buttonstyle] div.dmInner #site_content .dmformsubmit input,#dm div.dmOuter div.dmInner.ecwid .ecwid-btn.ecwid-btn--primary span,#dm div.dmOuter div.dmInner .ecwid .form-control__button .form-control__button-text,.ecwid .ecwid-btn.ecwid-btn--primary span,#dm div.dmOuter div.dmInner .ecwid .form-control__button .form-control__button-svg,#dmRoot #dm div.dmOuter div.dmInner .ecwid .ecwid-btn.ecwid-btn--primary
+{
+    font-weight:normal;
+}

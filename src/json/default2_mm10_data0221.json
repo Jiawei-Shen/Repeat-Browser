@@ -1,0 +1,566 @@
+{
+  "data": [
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "neutrophil",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF409LNO",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF409LNO/ENCFF409LNO.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "neutrophil",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF820DBU",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF820DBU/ENCFF820DBU.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "hematopoietic stem cell",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF890NQZ",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF890NQZ/ENCFF890NQZ.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "hematopoietic stem cell",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF710CPM",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF710CPM/ENCFF710CPM.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "monocyte",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF330CFD",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF330CFD/ENCFF330CFD.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "monocyte",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF702KFA",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF702KFA/ENCFF702KFA.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "granulocyte monocyte progenitor cell",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF278EWG",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF278EWG/ENCFF278EWG.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "megakaryocyte",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF329RWA",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF329RWA/ENCFF329RWA.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "megakaryocyte",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF005RAP",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF005RAP/ENCFF005RAP.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "limb",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF786YHW",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF786YHW/ENCFF786YHW.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "limb",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF224KTO",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF224KTO/ENCFF224KTO.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "dendritic cell",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF313CVR",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF313CVR/ENCFF313CVR.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "megakaryocyte-erythroid progenitor cell",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF370XHW",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF370XHW/ENCFF370XHW.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "hematopoietic stem cell",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF931ECK",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF931ECK/ENCFF931ECK.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "common myeloid progenitor",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF997LPC",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF997LPC/ENCFF997LPC.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "common myeloid progenitor",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF544EPN",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF544EPN/ENCFF544EPN.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "lung",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF677DDX",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF677DDX/ENCFF677DDX.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "lung",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF472AIH",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF472AIH/ENCFF472AIH.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "forebrain",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF884PIS",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF884PIS/ENCFF884PIS.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "forebrain",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF094CHD",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF094CHD/ENCFF094CHD.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "forebrain",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF477BTZ",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF477BTZ/ENCFF477BTZ.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "forebrain",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF186XAQ",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF186XAQ/ENCFF186XAQ.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "heart",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF023CAN",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF023CAN/ENCFF023CAN.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "heart",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF468ROS",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF468ROS/ENCFF468ROS.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "liver",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF939IDD",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF939IDD/ENCFF939IDD.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "liver",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF550QJT",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF550QJT/ENCFF550QJT.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "erythroblast",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF356EFA",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF356EFA/ENCFF356EFA.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "erythroblast",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF623JSA",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF623JSA/ENCFF623JSA.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "embryonic facial prominence",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF498HOY",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF498HOY/ENCFF498HOY.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "embryonic facial prominence",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF174NGI",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF174NGI/ENCFF174NGI.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "stomach",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF002OCI",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF002OCI/ENCFF002OCI.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "stomach",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF712KSK",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF712KSK/ENCFF712KSK.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "intestine",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF787AUA",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF787AUA/ENCFF787AUA.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "intestine",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF470IHU",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF470IHU/ENCFF470IHU.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "forebrain",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF343DQU",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF343DQU/ENCFF343DQU.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "forebrain",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF670CYO",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF670CYO/ENCFF670CYO.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "forebrain",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF290OLX",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF290OLX/ENCFF290OLX.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "forebrain",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF502NFN",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF502NFN/ENCFF502NFN.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "forebrain",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF400UVD",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF400UVD/ENCFF400UVD.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "forebrain",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF760HFV",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF760HFV/ENCFF760HFV.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "dendritic cell",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF257JKM",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF257JKM/ENCFF257JKM.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "dendritic cell",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF710JNL",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF710JNL/ENCFF710JNL.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "G1E",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF435EMT",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF435EMT/ENCFF435EMT.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "G1E",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF516HSO",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF516HSO/ENCFF516HSO.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "limb",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF086WIR",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF086WIR/ENCFF086WIR.zarr/"
+    },
+    {
+      "Assay": "ATAC-seq",
+      "Biosample": "limb",
+      "Control": "unknown",
+      "Mode": "File",
+      "Organism": "mm10",
+      "Tissue": "unknown",
+      "Target": "unknown",
+      "id": "ENCFF907DEY",
+      "Zarr": "https://s3-obs1.htcf.wustl.edu/repeatbrowser/mm10/atac-seq/Processed_ENCFF907DEY/ENCFF907DEY.zarr/"
+    }
+  ],
+  "repeats": [
+    {
+      "name": "MER125",
+      "family": "DNA",
+      "class": "DNA",
+      "size": 7
+    },
+    {
+      "name": "MER126",
+      "family": "DNA",
+      "class": "DNA",
+      "size": 7
+    },
+    {
+      "name": "MER130",
+      "family": "DNA",
+      "class": "DNA",
+      "size": 7
+    },
+    {
+      "name": "MER135",
+      "family": "DNA",
+      "class": "DNA",
+      "size": 7
+    },
+    {
+      "name": "MER136",
+      "family": "DNA",
+      "class": "DNA",
+      "size": 7
+    },
+    {
+      "name": "UCON78",
+      "family": "DNA",
+      "class": "DNA",
+      "size": 7
+    },
+    {
+      "name": "UCON8",
+      "family": "DNA",
+      "class": "DNA",
+      "size": 7
+    },
+    {
+      "name": "UCON97",
+      "family": "DNA",
+      "class": "DNA",
+      "size": 7
+    },
+    {
+      "name": "UCON99",
+      "family": "DNA",
+      "class": "DNA",
+      "size": 7
+    }
+  ]
+}
