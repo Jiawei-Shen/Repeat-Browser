@@ -54,15 +54,13 @@
         n.scale = scale;
         return n;
       })
-
     }
   }
 
   export const Cart = createStore();
   Cart.subscribe(value => {
     if(value.data.length > 0){
-      localStorage.Cart = JSON.stringify(value)
-      console.log(JSON.parse(localStorage.Cart))
+      localStorage.Cart = JSON.stringify(value);
     }
   })
 
