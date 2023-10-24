@@ -80,18 +80,6 @@
         });
     }
 
-    // let upload_files;
-    // $: if (upload_files) {
-    //     // Note that `files` is of type `FileList`, not an Array:
-    //     // https://developer.mozilla.org/en-US/docs/Web/API/FileList
-    //     console.log(upload_files);
-    //
-    //     for (const file of upload_files) {
-    //         console.log(`${file.name}: ${file.size} bytes`);
-    //         console.log(`${file}`);
-    //     }
-    // }
-
     onMount(() => {
         // unsubscribe();
     });
@@ -163,49 +151,6 @@
                 </a>
             </div>
         </div>
-
-<!--        <div class="w-10/12 flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">-->
-<!--            &lt;!&ndash;        <img class="lg:w-3/12 h-full md:h-auto object-contain p-8 md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg" src="/assets/img/table-data.png" alt="" />&ndash;&gt;-->
-<!--            <div class="flex flex-col justify-center lg:w-6/12 h-full md:h-auto">-->
-<!--                <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white max-w-sm w-full">-->
-<!--                    <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">Data: {cartData.length}</h5>-->
-<!--                </div>-->
-<!--                <div class="block rounded-b shadow-lg bg-white max-w-sm w-full px-4">-->
-<!--                    &lt;!&ndash;            <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">Repeats: {cartRepeats.length}</h5>&ndash;&gt;-->
-<!--                    <VirtualList-->
-<!--                            height={200}-->
-<!--                            width=100%-->
-<!--                            itemCount={cartData.length}-->
-<!--                            itemSize={50}>-->
-
-<!--                        <div slot="item" let:index let:style {style} class="row">-->
-<!--                <span>-->
-<!--                    <IconButton class="material-icons"-->
-<!--                                on:click={() => Cart.addDataItems($Cart.data.filter(-->
-<!--                            d => d.id !== cartData[index].id))}>-->
-<!--                    cancel</IconButton>-->
-<!--                    File: {cartData[index].id}-->
-<!--                </span>-->
-<!--                        </div>-->
-<!--                    </VirtualList>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            <div class="p-6 flex flex-col justify-start">-->
-<!--                <h5 class="text-gray-900 text-xl font-medium mb-2">Data Selection</h5>-->
-<!--                <p class="text-gray-700 text-base mb-4">-->
-<!--                    In this page, you can select the subfamilies of the repeats you interested in. <br>-->
-<!--                    For this sunburst chart, the inner ring represents "Class" hierarchy and the outer ring represents-->
-<!--                    "Family" hierarchy. Click the outer ring once, the "Subfamily" hierarchy will appear.-->
-<!--                </p>-->
-<!--                <a class="inline-flex items-center cursor-pointer lg:w-3/12 px-2 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">-->
-<!--                    Detailed Tour-->
-<!--                    <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>-->
-<!--                </a>-->
-<!--                <br>-->
-<!--                &lt;!&ndash;            <p class="text-gray-600 text-xs">Sunburst chart guide.</p>&ndash;&gt;-->
-<!--            </div>-->
-<!--        </div>-->
     </div>
 
 

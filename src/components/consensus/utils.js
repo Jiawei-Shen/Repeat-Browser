@@ -180,9 +180,9 @@ export const fetchConsensusDatabyZarr = async function (FILE, subfam, data_lengt
 
         const [signal_all, signal_unique] = signal_combined;
         const [control_all, control_unique] = control_combined;
-        // console.log(signal_all);
         const maxValue = Math.max(...signal_combined.map(s => Math.max(...s.map(x => x.score))));
-        return_value = [{"fileId": fileId + "_signal", "all": signal_all, "unique": signal_unique, "fileName": name},
+        console.log(maxValue);
+        return_value = [{"fileId": fileId + "_signal", "all": signal_all, "unique": signal_unique,maxValue, "fileName": name},
             {"fileId": fileId + "_control", "all": control_all, "unique": control_unique, maxValue, "fileName": name}];
     } else if(assay.includes('RNA') || assay.includes('Cage')){
         // let allPromise = getZarrWigNew('all_bigwig', subfam, zarr_url, 'RNA');

@@ -58,6 +58,8 @@
       console.log(res);
       Cart.updateConsensusTrack(res);
 
+
+
       maxValue = parseInt(Math.max(...res.map(x => x.maxValue)) * 1.1);
       console.log(maxValue);
       y_genomecopy_range = parseInt(1.1 * Math.max(...[].concat(...genomeCopyDense.map(Number))));

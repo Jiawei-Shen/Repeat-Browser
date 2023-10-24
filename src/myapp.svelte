@@ -4,20 +4,6 @@
   import TabBar from "@smui/tab-bar";
   import { Router, Route, Link, navigate} from "svelte-routing"
   import type, {MenuComponentDev} from '@smui/menu';
-  //10.2
-  // import Header from "./ui/header.svelte"
-  // import Footer from "./ui/footer.svelte"
-  // import Browser from "./ui/Browser.svelte"
-  // import Logo from "./ui/Logo.svelte";
-  // import CartComponent from "./components/Cart.svelte";
-  // import CartIndicator from './ui/CartIndicator.svelte';
-  // import Switch from './ui/Switch.svelte';
-  // import Modal from './ui/Modal.svelte';
-  // import _data from "./json/main.json";
-  //10.2
-
-  // import defaultData from './json/default_cart_data.json';
-  // import defaultData from './json/zarr_default_data.json';
   import defaultData from './json/zarr_data_0207.json';
   // import defaultData from './json/zarr_data_1027.json';
   import {getZarrParameters} from './api/inputdata';
