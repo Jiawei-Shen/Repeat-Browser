@@ -2603,6 +2603,10 @@ select {
   max-height: 860px;
 }
 
+.max-h-120-px {
+  max-height: 120px;
+}
+
 .max-w-md {
   max-width: 28rem;
 }

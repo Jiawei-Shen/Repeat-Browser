@@ -23,6 +23,7 @@
   import { getContext } from 'svelte';
   import DataAxis from "./DataAxis.svelte";
   import Chip, { Set as Sets, TrailingAction, Text } from '@smui/chips';
+  import annotations from "../../json/SRR562646.json";
 
   //let { experiment, subfam } // comes from URL params
   const experiment = "ENCSR658AGP";
@@ -118,6 +119,70 @@
     const dataFile = $Cart.data.filter(file => file.id === data);
     specy = dataFile[0].Organism;
 
+
+    var annotationTracks = [
+      {id: 'expressionLevelTrack', displayName: 'Expression level'},
+      {id: 'geneTypeTrack', displayName: 'Gene type'},
+    ];
+
+    var legend = [
+      // {
+      //     name: 'Expression level',
+      //     rows: [
+      //         {color: '#88F', name: 'Low'},
+      //         {color: '#CCC', name: 'Medium'},
+      //         {color: '#F33', name: 'High'}
+      //     ]
+      // },
+      // {
+      //     name: 'Gene type',
+      //     rows: [
+      //         {color: '#00F', name: 'mRNA'},
+      //         {color: '#0AF', name: 'misc_RNA'},
+      //         {color: '#AAA', name: 'miRNA'},
+      //         {color: '#FA0', name: 'tRNA'},
+      //         {color: '#F00', name: 'lncRNA'}
+      //     ]
+      // }
+    ]
+
+    var heatmaps = [
+      {
+        key: 'expression-level',
+        thresholds: [
+          ['2', '#88F'],
+          ['4', '#CCC'],
+          ['+', '#F33']]
+      },
+      {
+        key: 'gene-type',
+        thresholds: [
+          ['0', '#00F'],
+          ['1', '#0AF'],
+          ['2', '#AAA'],
+          ['3', '#FA0'],
+          ['4', '#F00']
+        ]
+      }
+    ]
+
+    var config = {
+      container: '#genometracks',
+      organism: 'human',
+      assembly: 'GRCh37',
+      chrHeight: 275,
+      // annotationsPath: '/SRR562646.json',
+      annotations: annotations,
+      annotationsLayout: 'heatmap',
+      legend: legend,
+      heatmaps: heatmaps,
+      annotationTracks: annotationTracks,
+      rotatable: false // Support for rotatable heatmaps is planned
+    };
+
+    var ideogram = new Ideogram(config);
+
+
     try {
       // dataToRender = await fetchRPKMTabixChrAll(data, repeat, URL);
       dataToRender = await getZarrLoci(repeat, dataFile);
@@ -202,6 +267,8 @@
 
 </script>
 
+<div id="genometracks"></div>
+
 <div>
   {#if loaded}
     <h5 class="mb-2 p-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Genome View({specy}): {combination.repeat}</h5>
@@ -209,6 +276,7 @@
       <div class="w-full lg:w-8/12 px-4">
         <div class="flex justify-center w-full">
           <div class="block p-6 bg-gray-50 rounded-lg shadow-lg max-w-sm w-full px-4">
+
             <!--{#each dataToRender as item, i}-->
             <!--  <Chromosome on:genome-click={showModal} key={item.key} chr={item.key} data={item.values} cutoff={cutoff_value} datarange={dataRange}/>-->
             <!--{/each}-->

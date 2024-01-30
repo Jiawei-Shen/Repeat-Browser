@@ -67,69 +67,6 @@
       unsubscribe;
       UUID = uuid.v4();
 
-      var annotationTracks = [
-          {id: 'expressionLevelTrack', displayName: 'Expression level'},
-          {id: 'geneTypeTrack', displayName: 'Gene type'},
-      ];
-
-      var legend = [
-          // {
-          //     name: 'Expression level',
-          //     rows: [
-          //         {color: '#88F', name: 'Low'},
-          //         {color: '#CCC', name: 'Medium'},
-          //         {color: '#F33', name: 'High'}
-          //     ]
-          // },
-          // {
-          //     name: 'Gene type',
-          //     rows: [
-          //         {color: '#00F', name: 'mRNA'},
-          //         {color: '#0AF', name: 'misc_RNA'},
-          //         {color: '#AAA', name: 'miRNA'},
-          //         {color: '#FA0', name: 'tRNA'},
-          //         {color: '#F00', name: 'lncRNA'}
-          //     ]
-          // }
-      ]
-
-      var heatmaps = [
-          {
-              key: 'expression-level',
-              thresholds: [
-                  ['2', '#88F'],
-                  ['4', '#CCC'],
-                  ['+', '#F33']]
-          },
-          {
-              key: 'gene-type',
-              thresholds: [
-                  ['0', '#00F'],
-                  ['1', '#0AF'],
-                  ['2', '#AAA'],
-                  ['3', '#FA0'],
-                  ['4', '#F00']
-              ]
-          }
-      ]
-
-      var config = {
-          container: '#genometracks',
-          organism: 'human',
-          assembly: 'GRCh37',
-          chromosome: '1',
-          chrHeight: 275,
-          // annotationsPath: '/SRR562646.json',
-          annotations: annotations,
-          annotationsLayout: 'heatmap',
-          legend: legend,
-          heatmaps: heatmaps,
-          annotationTracks: annotationTracks,
-          rotatable: false // Support for rotatable heatmaps is planned
-      };
-
-      var ideogram = new Ideogram(config);
-
     // filteredData = filterAboveCutoff(data);
       d3.select(node)
           .selectAll("rect.bar")
@@ -305,8 +242,6 @@
   // }
 
 </script>
-
-<div id="genometracks"></div>
 
 <div>
     <svg bind:this={node} width={width * 4 /Math.pow(10, 6)} height="40">
