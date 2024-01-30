@@ -54,6 +54,7 @@
       // const debug_file = debug_data.files;
       // console.log(dataFile);
 
+      console.log(dataFile, repeat, genomeCopyDense.length);
       let res = await fetchConsensusDatabyZarr(dataFile, repeat, genomeCopyDense.length);
       console.log(res);
       Cart.updateConsensusTrack(res);

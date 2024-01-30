@@ -26,6 +26,7 @@
   let selectionTwoLine = "Stephen Hawking";
   let cartData;
   let cartRepeats;
+  let cartBiosample;
   let menu: MenuComponentDev;
   let mode = 'files';
   let sessionFile;
@@ -46,8 +47,11 @@
   }
 
   function handleSessionDownload(){
-    console.log(sessionFile);
-    fileDownload(sessionFile, `${UUID}_data_repeats.json`);
+    // console.log(sessionFile);
+    // sessionFile = `{"species": ${JSON.stringify(cartSpecies)}, "data": ${JSON.stringify(cartData)}, "repeats": ${JSON.stringify(cartRepeats)}}`;
+      sessionFile = `{"species": ${cartBiosample}, "data": ${JSON.stringify(cartData)}, "repeats": ${JSON.stringify(cartRepeats)}}`;
+      fileDownload(sessionFile, `${UUID}_data_repeats.json`);
+      console.log(sessionFile);
   }
 
   function creaseSessionJson(data, repeats){
@@ -56,13 +60,31 @@
     // const stringData = data.map(d => JSON.stringify(d));
   }
 
+  function showConfirmationRemoveData() {
+      const result = window.confirm('Do you want to remove all data?');
+
+      if (result) {
+          Cart.addDataItems([]);
+      }
+  }
+
+  function showConfirmationRemoveRepeats() {
+      const result = window.confirm('Do you want to remove all repeats?');
+
+      if (result) {
+          Cart.addRepeats([]);
+      }
+  }
+
+
   const unsubscribe = Cart.subscribe(async store => {
-    const { data, repeats } = store;
+    const { data, repeats, biosample } = store;
     cartData = data;
     cartRepeats = repeats;
-    sessionFile = `{"data": ${JSON.stringify(data)}, "repeats": ${JSON.stringify(repeats)}}`;
-    console.log(sessionFile);
-    creaseSessionJson(data, repeats);
+    cartBiosample = biosample;
+    sessionFile = `{"species": ${cartBiosample}, "data": ${JSON.stringify(cartData)}, "repeats": ${JSON.stringify(cartRepeats)}}`;
+    // creaseSessionJson(data, repeats);
+    console.log(`species: ${cartBiosample}, data: ${data}`);
   });
 
   onMount(async () => {
@@ -93,61 +115,26 @@
   }
 </style>
 
-<!--<div class="main-body">-->
-<!--  <List-->
-<!--    class="demo-list"-->
-<!--    twoLine-->
-<!--    avatarList-->
-<!--    singleSelection-->
-<!--    bind:selectedIndex={selectionIndex}>-->
-<!--      <div class="mdc-typography&#45;&#45;headline3">Data</div>-->
-<!--    {#each cartData as item}-->
-<!--      <Item-->
-<!--        on:SMUI:action={() => selectionTwoLine = item._id, Cart.addDataItems($Cart.data.filter(d => d._id !== item._id))}-->
-<!--        selected={selectionTwoLine === item._id}>-->
-<!--        <Graphic-->
-<!--          style="background-image:-->
-<!--          url(https://via.placeholder.com/40x40.png?text={item._id});" />-->
-<!--        <Text>-->
-<!--          <PrimaryText>{item.Tissue}</PrimaryText>-->
-<!--          <SecondaryText>{item.Assay}</SecondaryText>-->
-<!--        </Text>-->
-<!--        <Meta class="material-icons">cancel</Meta>-->
-<!--      </Item>-->
-<!--    {/each}-->
-<!--  </List>-->
 
-<!--  <List class="demo-list">-->
-<!--    <div class="mdc-typography&#45;&#45;headline3">Repeats</div>-->
-
-<!--    {#each cartRepeats as item}-->
-<!--      <Item>-->
-<!--        <Text>{item.name}</Text>-->
-<!--      </Item>-->
-<!--    {/each}-->
-<!--  </List>-->
+<!--<div style="min-width: 100px;">-->
+<!--    <Button on:click={() => menu.setOpen(true)}>-->
+<!--      <Label>Mode Selection (Current: {mode})</Label>-->
+<!--    </Button>-->
+<!--    <Menu bind:this={menu}>-->
+<!--      <List>-->
+<!--        <Item on:click={ModeChangeFiles}>-->
+<!--          <Text>Files</Text>-->
+<!--        </Item>-->
+<!--        <Item on:click={ModeChangeExperiments}>-->
+<!--          <Text>Experiments</Text>-->
+<!--        </Item>-->
+<!--      </List>-->
+<!--    </Menu>-->
 <!--</div>-->
 
 
-<div style="min-width: 100px;">
-    <Button on:click={() => menu.setOpen(true)}>
-      <Label>Mode Selection (Current: {mode})</Label>
-    </Button>
-    <Menu bind:this={menu}>
-      <List>
-        <Item on:click={ModeChangeFiles}>
-          <Text>Files</Text>
-        </Item>
-        <Item on:click={ModeChangeExperiments}>
-          <Text>Experiments</Text>
-        </Item>
-      </List>
-    </Menu>
-</div>
-
-
 <div class="flex flex-wrap">
-    <div class="flex flex-col justify-center px-4" style="width: 70%">
+    <div class="flex flex-col justify-center px-4 my-4" style="width: 80%">
         <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white max-w-sm w-full">
             <h5 class="text-gray-900 text-xl leading-tight font-medium py-2">Data: {cartData.length}</h5>
         </div>
@@ -181,9 +168,13 @@
                 </div>
             </VirtualList>
         </div>
+        <a on:click={() => showConfirmationRemoveData()} class="inline-flex items-center cursor-pointer px-2 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+            <i class="fa fa-fw fa-close pr-6 pl-2"></i>
+            <p> Remove all data </p>
+        </a>
     </div>
 
-    <div class="flex flex-col justify-center px-4" style="width: 30%">
+    <div class="flex flex-col justify-center px-4 my-4" style="width: 80%">
         <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white max-w-sm w-full">
             <h5 class="text-gray-900 text-xl leading-tight font-medium py-2">Repeats: {cartRepeats.length}</h5>
         </div>
@@ -206,7 +197,12 @@
                 </div>
             </VirtualList>
         </div>
+        <a on:click={() => showConfirmationRemoveRepeats()} class="inline-flex items-center cursor-pointer px-2 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-900 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <i class="fa fa-fw fa-close pr-6 pl-2"></i>
+            <p> Remove all repeats </p>
+        </a>
     </div>
+
 </div>
 
 

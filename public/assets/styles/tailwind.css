@@ -507,7 +507,7 @@ audio,
 iframe,
 embed,
 object {
-  display: block;
+  /*display: block;*/
   vertical-align: middle;
 }
 
@@ -1422,6 +1422,11 @@ select {
   background-color: rgba(228, 228, 231, var(--tw-bg-opacity));
 }
 
+.hover\:bg-red-800:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(153, 27, 27, var(--tw-bg-opacity));
+}
+
 .hover\:bg-sky-400:hover {
   --tw-bg-opacity: 1;
   background-color: #38bdf8;
@@ -1485,6 +1490,11 @@ select {
 .bg-blue-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(118 169 250 / var(--tw-bg-opacity));
+}
+
+.focus\:bg-red-600:focus {
+  --tw-text-opacity: 1;
+  color: rgba(220, 38, 38, var(--tw-text-opacity));
 }
 
 .focus\:bg-white:focus {

@@ -69,23 +69,28 @@
     if (data.length > 0 && repeats.length > 0) {
       //dataPromise = getDataForHeatmapAll(data, 'subfamStat', repeats);
       // dataPromise = getZarrForHeatmapAll(debug_data.files, 'Zarr', repeats);
-      let rna_data = data.filter((el) => el.Assay.includes("RNA"));
-      let dna_data = data.filter((el) => !el.Assay.includes("RNA"));
+      let rna_data = data.filter((el) => el.Assay.includes("CAGE"));
+      let dna_data = data.filter((el) => !el.Assay.includes("CAGE"));
       if (!(dna_data === undefined || dna_data.length == 0)){
-        dataPromise_dna = getZarrForHeatmapAll(dna_data, 'Zarr', repeats);
-        heatmapData_dna = await dataPromise_dna;
-        // console.log(dna_data);
-        heatmap_json_dna = await getBackendjson(dna_data, 'subfamStat', repeats);
-        // console.log(heatmap_json_dna);
-        loaded[0]=true;
-        // console.log(loaded);
+          if(dna_data.length == 1){
+              dna_data.push(dna_data[0])
+          }
+            // dataPromise_dna = getZarrForHeatmapAll(dna_data, 'Zarr', repeats);
+            // heatmapData_dna = await dataPromise_dna;
+            heatmap_json_dna = await getBackendjson(dna_data, 'subfamStat', repeats);
+
+            loaded[0]=true;
       }
       if (!(rna_data === undefined || rna_data.length == 0)){
-        dataPromise_rna = getZarrForHeatmapAll(rna_data, 'Zarr', repeats);
-        heatmapData_rna = await dataPromise_rna;
+          if(rna_data.length == 1){
+              rna_data.push(rna_data[0])
+          }
+        // dataPromise_rna = getZarrForHeatmapAll(rna_data, 'Zarr', repeats);
+        // heatmapData_rna = await dataPromise_rna;
+
         heatmap_json_rna = await getBackendjson(rna_data, 'subfamStat', repeats);
+        console.log(heatmap_json_rna.length);
         loaded[1]=true;
-        // console.log(loaded);
       }
 
       if(loaded[0]){
@@ -135,13 +140,13 @@
 <!--                                    on:click={() => Cart.addDataItems($Cart.data.filter(-->
 <!--                                d => d.id !== cartData[index].id))}>-->
 <!--                        cancel</IconButton>-->
-                        <span class="inline-block px-12">
+                        <span class="inline-block px-12 py-2">
 <!--                                <p class="font-bold">File: {cartData[index].id}</p>-->
                             <!--                                <span class="text-xs">biosample-target</span>-->
                             {#if (cartData[index].Target == 'unknown' || typeof cartData[index].Target === 'undefined')}
-                                <p class="font-bold text-xs">{cartData[index].Biosample}({cartData[index].Assay})</p>
+                                <p class="font-bold text-xs m-0">{cartData[index].Biosample}({cartData[index].Assay})</p>
                             {:else }
-                                <p className="font-bold text-xs">{cartData[index].Biosample}({cartData[index].Target})</p>
+                                <p class="font-bold text-xs m-0">{cartData[index].Biosample}({cartData[index].Target})</p>
                             {/if}
                             <span class="text-xs">Target: {cartData[index].Target}, ID: {cartData[index].id}</span>
 <!--                            <span class="font-bold text-xs">{cartData[index].Assay} in {cartData[index].Biosample}<br/></span>-->
@@ -151,32 +156,7 @@
               </VirtualList>
             </div>
           </div>
-<!--          <div class="flex flex-col justify-center w-5/12 pr-4">-->
-<!--            <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white max-w-sm w-full">-->
-<!--              <h5 class="text-gray-900 text-xl leading-tight font-medium py-2">Repeats: {cartRepeats.length}</h5>-->
-<!--            </div>-->
-<!--            <div class="block rounded-b shadow-lg bg-white max-w-sm w-full px-4">-->
-<!--              &lt;!&ndash;            <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">Repeats: {cartRepeats.length}</h5>&ndash;&gt;-->
-<!--              <VirtualList-->
-<!--                      height={200}-->
-<!--                      width=100%-->
-<!--                      itemCount={cartRepeats.length}-->
-<!--                      itemSize={50}>-->
-<!--                <div slot="item" let:index let:style {style}>-->
-<!--                    <span >-->
-<!--                        <IconButton class="material-icons" style="display: inline-block; margin-left: 15px"-->
-<!--                                    on:click={() =>{-->
-<!--                                      Cart.addRepeats($Cart.repeats.filter(d => d.name !== cartRepeats[cartRepeats.length - 1 - index].name));-->
-<!--                                      window.location.reload();-->
-<!--                                    }}>-->
-<!--                        cancel</IconButton>-->
-<!--                        <span>Subfamilies: {cartRepeats[cartRepeats.length - 1 - index].name}</span>-->
-<!--                    </span>-->
-<!--                  &lt;!&ndash;            <Text>{cartRepeats[cartRepeats.length - 1 - index].name}</Text>&ndash;&gt;-->
-<!--                </div>-->
-<!--              </VirtualList>-->
-<!--            </div>-->
-<!--          </div>-->
+
         </div>
         <div class="flex flex-col justify-start px-6">
           <h5 class="text-gray-900 pt-6 text-xl font-medium mb-2">Heatmap</h5>
@@ -215,71 +195,6 @@
             </div>
         </div>
     {/if}
-<!--    <div class="flex flex-col justify-center w-full" id="heatmap-card">-->
-<!--      <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white max-w-sm w-full">-->
-<!--        <h5 class="text-gray-900 text-xl leading-tight font-medium py-2">Heatmap</h5>-->
-<!--      </div>-->
-<!--      <div class="block p-6 rounded-b shadow-lg bg-white max-w-sm w-full px-4">-->
-<!--        <div class="flex flex-wrap ">-->
-<!--          <div class="w-1/4 px-3 mb-2 md:mb-0" id="heatmap-assay-type">-->
-<!--            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">-->
-<!--              Assay Type:-->
-<!--            </label>-->
-<!--            <Button style="border: solid" on:click={() => menu.setOpen(true)}>-->
-<!--              <Label>-->
-<!--                Assay Type: {$Cart.assay}-->
-<!--                <svg class="inline ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>-->
-<!--              </Label>-->
-<!--            </Button>-->
-<!--            <Menu bind:this={menu}>-->
-<!--              <List>-->
-<!--                <Item on:SMUI:action={() => (Cart.setAssayDNA())}>-->
-<!--                  <Text>DNA-seq</Text>-->
-<!--                </Item>-->
-<!--                <Item on:SMUI:action={() => (Cart.setAssayRNA())}>-->
-<!--                  <Text>Cage-seq</Text>-->
-<!--                </Item>-->
-<!--              </List>-->
-<!--            </Menu>-->
-<!--          </div>-->
-
-<!--          <div class="w-1/6 px-3 mb-2 md:mb-0" id="heatmap-switch">-->
-<!--            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">-->
-<!--              Sequencing Type:-->
-<!--            </label>-->
-<!--              <Button id="heatmap-switch" style="border: solid" color="{checked ? 'secondary': 'primary'}" on:click={() =>{checked=!checked}}>-->
-<!--                <Label>-->
-<!--                  {checked? 'Unique':'All'}-->
-<!--                </Label>-->
-<!--              </Button>-->
-<!--          </div>-->
-
-<!--          <div class="w-1/3 px-3 mb-2 md:mb-0" id="heatmap-bar">-->
-<!--            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">-->
-<!--              Adjust Scale Bar:-->
-<!--            </label>-->
-<!--            <span> Scale Bar: </span>-->
-<!--            <input class="w-20" type=number bind:value={$Cart.scale} min=1 max=10>-->
-<!--            <input type=range bind:value={$Cart.scale} min=1 max=10>-->
-<!--          </div>-->
-
-<!--          </div>-->
-
-<!--    {#if loaded[0]}-->
-<!--    &lt;!&ndash;{#if loaded[0] && loaded[1]}&ndash;&gt;-->
-<!--      {#if $Cart.assay === 'DNA-seq'}-->
-<!--          <ClusterHeatmap on:tileClick inputJson={heatmap_json_dna}/>-->
-<!--      {:else if $Cart.assay === 'Cage-seq'}-->
-<!--          <ClusterHeatmap on:tileClick inputJson={heatmap_json_rna}/>-->
-<!--      {/if}-->
-<!--    {:else}-->
-<!--        <div class="flex justify-center items-center pt-12">-->
-<!--            <Jumper size="25" color="#4ea8de" unit="rem" duration="1s" />-->
-<!--        </div>-->
-<!--        <div class="flex justify-center items-center">-->
-<!--            <h2>Loading The Heatmap.</h2>-->
-<!--        </div>-->
-<!--    {/if}-->
 
 {:catch error}
   Some error has occured!

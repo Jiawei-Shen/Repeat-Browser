@@ -7,7 +7,7 @@
     import List, { Item, Text, Graphic, Separator, Subheader } from '@smui/list';
     import { Router, Route, link, navigate } from "svelte-routing";
     import {Cart} from "../../stores/CartStore";
-    import CartComponent from "../../components/Cart.svelte";;
+    import CartComponent from "../../components/Cart.svelte";
     import Zoom_Sunburst from "../../examples/Zoom_Sunburst.svelte";
     import DataTab from "../../examples/DataTab.svelte";
     import FileUpload from "../../examples/FileUpload.svelte";
@@ -32,6 +32,31 @@
         cartData = data;
         cartRepeats = repeats;
     });
+
+    // Function with OK action
+    function functionWithOK() {
+        var result = window.confirm("All the data will be reset! Please save a session file first!\n Click cancel will jump to saving the session file. \n Click OK to continue.");
+        if (result) {
+            // OK action
+            console.log("OK pressed. Performing function for OK.");
+            // Call your function for OK action here
+            if($Cart.biosample === 'Human'){
+                Cart.setSpecies('Mouse');
+                Cart.addRepeats([]);
+                Cart.addDataItems([]);
+                console.log($Cart.biosample, '--> ');
+            } else {
+                Cart.setSpecies('Human');
+                Cart.addRepeats([]);
+                Cart.addDataItems([]);
+                console.log($Cart.biosample, '--> ');
+            }
+
+        } else {
+            // Cancel action or do nothing
+            navigate("/input/display");
+        }
+    }
 
     let savestore = false
     $: if(savestore && $Cart) {
@@ -97,7 +122,10 @@
     export let location;
     export let input = "";
 
-    $: if(tab_active == tabs[1]) {navigate('/visual');}
+    $: {
+        if(tab_active == tabs[1]) {navigate('/visual');}
+        // console.log(Cart.biosample);
+    }
 </script>
 
 <div class="drawer-container">
@@ -142,13 +170,24 @@
 
                     <Separator />
 
+<!--                    <Item-->
+<!--                            href="javascript:void(0)"-->
+<!--                            on:click="{() => navigate('/')}"-->
+<!--                            activated={active === 'Homepage'}-->
+<!--                    >-->
+<!--                        <Graphic class="material-icons" aria-hidden="true">home</Graphic>-->
+<!--                        <Text>Homepage</Text>-->
+<!--                    </Item>-->
+
                     <Item
-                            href="javascript:void(0)"
-                            on:click="{() => navigate('/')}"
-                            activated={active === 'Homepage'}
+                            on:click="{() => functionWithOK()}"
                     >
-                        <Graphic class="material-icons" aria-hidden="true">home</Graphic>
-                        <Text>Homepage</Text>
+                        {#if $Cart.biosample === 'Mouse'}
+                            <Graphic class="material-icons" aria-hidden="true"> pest_control_rodent </Graphic>
+                        {:else}
+                            <Graphic class="material-icons" aria-hidden="true"> accessibility_new </Graphic>
+                        {/if}
+                        <Text> Species: {$Cart.biosample} </Text>
                     </Item>
                 </List>
             </Content>

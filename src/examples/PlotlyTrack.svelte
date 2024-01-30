@@ -104,7 +104,7 @@
                   // modebar: {orientation: 'v'},
                   height: 60,
                   // paper_bgcolor:"#A9A9A9",
-                  margin: {r: 68, l:50, b: 4, t:5},
+                  margin: {r: 68, l:60, b: 4, t:5},
                   showlegend: false,
                   // xaxis: {
                   //     rangeslider: {}

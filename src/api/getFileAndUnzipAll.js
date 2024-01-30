@@ -19,7 +19,14 @@ export async function getFileAndUnzipAll(DATASET, KEY, SUBFAMILIES) {
 
 
 export async function getZarrStatdata(FILE, SUBFAMILIES) {
-    const zarr_url = FILE['Zarr'];
+    let zarr_url = FILE['Zarr'];
+    if (!zarr_url.endsWith('/')){
+        zarr_url += '/';
+    }
+    if (zarr_url.startsWith("s3://")) {
+        zarr_url = zarr_url.replace("s3://", "https://s3-obs1.htcf.wustl.edu/");
+    }
+
     const id = FILE['id'];
     let chunksizes = [[0, 0], [1, 0], [2, 0]];
     let dataname = 'subfam_stat';

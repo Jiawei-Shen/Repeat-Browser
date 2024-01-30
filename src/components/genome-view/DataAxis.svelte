@@ -155,7 +155,14 @@
 
         let testData = [];
         data.forEach(d => {
-            let traceIndex = testData.findIndex(x => x.name == d.data);
+            let traceIndex = testData.findIndex(x => x.id == d.data);
+            let d_info = $Cart.data.filter(i => i.id == d.data)[0];
+            let d_name;
+            if(d_info.Target === 'unknown'){
+                d_name = `${d_info.Biosample} (${d_info.Assay})`
+            } else {
+                d_name = `${d_info.Biosample} (${d_info.Target})`
+            }
             if (traceIndex != -1){
                 testData[traceIndex].x.push(parseInt(d.start));
                 testData[traceIndex].y.push(d.RPKM);
@@ -166,7 +173,8 @@
                     y: [d.RPKM],
                     mode: 'markers',
                     type: 'scatter',
-                    name: d.data,
+                    name: d_name,
+                    id: d.data,
                     chr: d.chr,
                     opacity: 0.6,
                     text: [`${d.start} - ${d.end}`],
@@ -206,13 +214,13 @@
                 pts = 'x = '+data.points[i].x +'\ny = '+
                     data.points[i].y.toPrecision(4) + '\n\n';
             }
-            let dataDetail = $Cart.data.filter(d => d.id == data.points[0].data.name).pop();
+            let dataDetail = $Cart.data.filter(d => d.id == data.points[0].data.id).pop();
 
             let sessionInput = [{'key': data.points[0].data.chr, 'values':[{'RPKM': data.points[0].y,
                     'chr': data.points[0].data.chr, 'data': dataDetail, 'end': data.points[0].text.split(' - ')[1],
                     'start': data.points[0].text.split(' - ')[0]}]}]
 
-            console.log(data.points[0], sessionInput);
+            // console.log(data.points[0], sessionInput);
             let sessionFile = createSession(sessionInput, 1, repeat, UUID);
             alert("Jumping to the WashU Epigenome Browser!");
 
@@ -240,8 +248,6 @@
             })
         });
     })
-
-
 </script>
 
 <style>
@@ -253,12 +259,5 @@
     }
 </style>
 
-<!--<div>-->
-<!--    <svg bind:this="{nodeRef}" width={div_width} height={div_height}></svg>-->
-<!--</div>-->
-
-<!--<div class=range-input>-->
-<!--    <p style="display: inline; font-family: Saira"> Input the start of the X-axis: </p> 	<input bind:this="{AxisRange}" bind:value={start} min=0 max=1e9>-->
-<!--</div>-->
 
 <div id='myDiv'></div>

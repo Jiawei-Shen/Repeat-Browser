@@ -13,6 +13,7 @@
     import {repeatsTour} from "../api/toursteps"
     import Typeahead from "svelte-typeahead";
     import Select, { Option } from '@smui/select';
+    import Button, { Label, Icon } from '@smui/button';
 
     let bioType = ['Mouse', 'Human'];
 
@@ -151,15 +152,7 @@
             .attr("d", d => arc(d.current))
             .on("click", function (d) {
                 d.noFill = d.noFill || false;
-                // if (!d.noFill && !d.parent.noFill) {
-                //     console.log('hello1', d)
-                //     handleChildSelected(d);
-                //     this.style.fill = "#780000";
-                // } else {
-                //     console.log('hello0', d)
-                //     recoverChildSelected(d);
-                //     this.style.fill = color(d.parent.parent.data.name);
-                // }
+
                 const cartRepeatsName = $Cart.repeats.map(x => x.name);
                 if (!cartRepeatsName.includes(d.data.name)) {
                     // console.log('hello1', d.data.name)
@@ -321,7 +314,7 @@
     const unsubscribe = Cart.subscribe(async store => {
         const { repeats } = store;
         cartRepeats = repeats;
-        // console.log(cartRepeats);
+        console.log(cartRepeats);
     });
 
     onMount(()=>{
@@ -333,8 +326,6 @@
         }
     })
 
-    // $: theRepeats = value === 'Human' ? REPEAT_list : mm10REPEAT_list;
-    // $: chart = Sunburst(REPEATS, {format: d3.format(",d"), width: 932});
     $: if($Cart.biosample === 'Human'){
        let chart = Sunburst(REPEATS, {format: d3.format(",d"), width: 932});
     } else {
@@ -355,31 +346,8 @@
 
     :global([data-svelte-typeahead]) {
         margin: 1rem;
-
     }
-
 </style>
-
-<!--<div class="flex justify-center">-->
-<!--    <div class="w-10/12 flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">-->
-<!--        <img class="lg:w-3/12 h-full md:h-auto object-contain md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg" src="/assets/img/the-sunburst.jpg" alt="" />-->
-<!--        <div class="p-6 flex flex-col justify-start">-->
-<!--            <h5 class="text-gray-900 text-xl font-medium mb-2">Repeats Selection</h5>-->
-<!--            <p class="text-gray-700 text-base mb-4">-->
-<!--                In this page, you can select the subfamilies of the repeats you interested in. <br>-->
-<!--                For this sunburst chart, the inner ring represents "Class" hierarchy and the outer ring represents-->
-<!--                "Family" hierarchy. Click the outer ring once, the "Subfamily" hierarchy will appear.-->
-<!--            </p>-->
-<!--            <a on:click={repeatsTour} class="inline-flex items-center cursor-pointer lg:w-3/12 px-2 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">-->
-<!--                Detailed Tour-->
-<!--                <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>-->
-<!--            </a>-->
-<!--            <br>-->
-<!--&lt;!&ndash;            <p class="text-gray-600 text-xs">Sunburst chart guide.</p>&ndash;&gt;-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<hr>-->
 
 
 <div class="flex flex-col justify-center w-full px-4 ml-2" id="repeats-search">
@@ -408,7 +376,7 @@
         <div>
             <div class="flex flex-col justify-center w-full" id="repeats-list">
                 <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white max-w-sm w-full">
-                    <h5 class="text-gray-900 text-xl leading-tight font-medium py-2">Selected Repeats: {cartRepeats.length}</h5>
+                    <h5 class="text-gray-900 text-xl leading-tight font-medium py-2 inline">Selected Repeats: {cartRepeats.length}</h5>
                 </div>
                 <div class="max-w-sm rounded-b block shadow-lg">
                     <div class="block p-2 rounded-b shadow-lg bg-white max-w-sm w-full h-full px-4">
@@ -423,7 +391,7 @@
                                             on:click={() =>
                                             Cart.addRepeats($Cart.repeats.filter(d => d.name !== cartRepeats[cartRepeats.length - 1 - index].name))}>
                                 cancel</IconButton>
-                                Subfamilies: {cartRepeats[cartRepeats.length - 1 - index].name}
+                                {cartRepeats[cartRepeats.length - 1 - index].name} ({cartRepeats[cartRepeats.length - 1 - index].family} >> {cartRepeats[cartRepeats.length - 1 - index].class})
                             </span>
                             <!--            <Text>{cartRepeats[cartRepeats.length - 1 - index].name}</Text>-->
                         </div>
@@ -435,6 +403,7 @@
                         <h5 class="text-gray-900 text-xl font-medium mb-2">Repeats Selection</h5>
                         <ul class="list-disc px-4 text-gray-700 text-sm mb-4">
                             In this page, you can select the subfamilies of the repeats you interested in. <br>
+                            <li>The table presented above displays the selected repeats in the format: subfamily (family >> class). </li>
                             <li>For this sunburst chart, the inner ring represents "Class" hierarchy and the outer ring represents
                                 "Family" hierarchy. </li>
                             <li>Click the outer ring once, the "Subfamily" hierarchy will appear. </li>
@@ -444,7 +413,7 @@
 
                         </p>
                         <a on:click={repeatsTour} class="inline-flex items-center cursor-pointer px-2 py-2 text-sm font-medium text-center text-white bg-lightBlue-600 rounded-lg hover:bg-lightBlue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <i class="fa fa-fw fa-book-open pr-6 pl-2"></i>
+                            <i class="fa fa-fw fa-book pr-6 pl-2"></i>
                             Detailed Tour
                             <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                         </a>
@@ -457,16 +426,16 @@
     <Cell span={8}>
         <div class="flex flex-col justify-center w-full" id="repeats-sunburst">
             <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white max-w-sm w-full">
-                <h5 class="text-gray-900 text-xl leading-tight font-medium py-2">Repeats Selection
-                    <div style="justify-content: flex-start; display: inline-block; margin-left: 1rem">
-                        <div>
-                            <Select bind:value={$Cart.biosample} label="Select Menu">
-                                {#each bioType as type}
-                                    <Option value={type}>{type}</Option>
-                                {/each}
-                            </Select>
-                        </div>
-                    </div>
+                <h5 class="text-gray-900 text-xl leading-tight font-medium py-2">Repeats Selection: {$Cart.biosample}
+<!--                    <div style="justify-content: flex-start; display: inline-block; margin-left: 1rem">-->
+<!--                        <div>-->
+<!--                            <Select bind:value={$Cart.biosample} label="Select Menu">-->
+<!--                                {#each bioType as type}-->
+<!--                                    <Option value={type}>{type}</Option>-->
+<!--                                {/each}-->
+<!--                            </Select>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </h5>
 
             </div>

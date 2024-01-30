@@ -1247,6 +1247,13 @@
     "estree-walker" "^2.0.2"
     "picomatch" "^2.3.1"
 
+"@skeletonlabs/skeleton@^2.4.0":
+  "integrity" "sha512-8IVspCMarg1h4yMV6GFSaVqh9jIeQXV3XPNUnVONjkUofHkcKuLYTR4jGlR1ICF5CmIl+z746q3+Cj8rLAtAag=="
+  "resolved" "https://registry.npmjs.org/@skeletonlabs/skeleton/-/skeleton-2.4.0.tgz"
+  "version" "2.4.0"
+  dependencies:
+    "esm-env" "1.0.0"
+
 "@smui-extra/accordion@^7.0.0-beta.0":
   "integrity" "sha512-K3tmQVWGnIcoCEYkVFXz6eLTfzkHnF5s7FVkW7IriqER3jIFEEvM0Rd3zIJSp8oTkwFiCiGMDz2RFIDk3VVRuw=="
   "resolved" "https://registry.npmjs.org/@smui-extra/accordion/-/accordion-7.0.0-beta.0.tgz"
@@ -2967,6 +2974,13 @@
   "integrity" "sha512-60eUT0VjqRgYqdIQcOkXg0Zptfbl4HefA/O51YEf1m/P0uXvE3icI/1KPrXpY9aVxn8gG/BB8DzVoTGCcyBnYg=="
   "resolved" "https://registry.npmjs.org/canvasjs/-/canvasjs-1.8.3.tgz"
   "version" "1.8.3"
+
+"carbon-components-svelte@^0.81.2":
+  "integrity" "sha512-VEyCQLrkrGWUSxVcrRuQN+2NJsdhtbf6aGUO4Z/iVhB2etmn0eF3qYlL/khNzfVevj++nQnIMAdAGMaDC1+/4g=="
+  "resolved" "https://registry.npmjs.org/carbon-components-svelte/-/carbon-components-svelte-0.81.2.tgz"
+  "version" "0.81.2"
+  dependencies:
+    "flatpickr" "4.6.9"
 
 "cartesian-product@^2.1.2":
   "integrity" "sha512-Jsrlfq3wdqW+bL21On+aBV678QKGuo+lr79IkXdfYfqKYoJWWemm8g6YC3bBSzyG2AWiGsHqv5i8vCttKHUZlA=="
@@ -4912,6 +4926,11 @@
     "esrecurse" "^4.3.0"
     "estraverse" "^4.1.1"
 
+"esm-env@1.0.0":
+  "integrity" "sha512-Cf6VksWPsTuW01vU9Mk/3vRue91Zevka5SjyNf3nEpokFRuqt/KjUQoGAwq9qMmhpLTHmXzSIrFRw8zxWzmFBA=="
+  "resolved" "https://registry.npmjs.org/esm-env/-/esm-env-1.0.0.tgz"
+  "version" "1.0.0"
+
 "esprima@^2.6.0":
   "integrity" "sha512-OarPfz0lFCiW4/AV2Oy1Rp9qu0iusTKqykwTspGCZtPxmF81JR4MmIebvF1F9+UOKth2ZubLQ4XGGaU+hSn99A=="
   "resolved" "https://registry.npmjs.org/esprima/-/esprima-2.7.3.tgz"
@@ -5298,6 +5317,11 @@
   dependencies:
     "locate-path" "^5.0.0"
     "path-exists" "^4.0.0"
+
+"flatpickr@4.6.9":
+  "integrity" "sha512-F0azNNi8foVWKSF+8X+ZJzz8r9sE1G4hl06RyceIaLvyltKvDl6vqk9Lm/6AUUCi5HWaIjiUbk7UpeE/fOXOpw=="
+  "resolved" "https://registry.npmjs.org/flatpickr/-/flatpickr-4.6.9.tgz"
+  "version" "4.6.9"
 
 "flatten-vertex-data@^1.0.2":
   "integrity" "sha512-BvCBFK2NZqerFTdMDgqfHBwxYWnxeCkwONsw6PvBMcUXqo8U/KDWwmXhqx1x2kLIg7DqIsJfOaJFOmlua3Lxuw=="
@@ -11486,10 +11510,10 @@
   "resolved" "https://registry.npmjs.org/svelte-virtual-list/-/svelte-virtual-list-3.0.1.tgz"
   "version" "3.0.1"
 
-"svelte@^3.20.x", "svelte@^3.23.0", "svelte@^3.24", "svelte@^3.29.0", "svelte@^3.44.0", "svelte@^3.49.0", "svelte@>=3.19.0", "svelte@>=3.29.4", "svelte@>=3.5.0", "svelte@>3.0.0", "svelte@3.x":
-  "integrity" "sha512-+lmjic1pApJWDfPCpUUTc1m8azDqYCG1JN9YEngrx/hUyIcFJo6VZhj0A1Ai0wqoHcEIuQy+e9tk+4uDgdtsFA=="
-  "resolved" "https://registry.npmjs.org/svelte/-/svelte-3.49.0.tgz"
-  "version" "3.49.0"
+"svelte@^3.20.x", "svelte@^3.23.0", "svelte@^3.24", "svelte@^3.29.0", "svelte@^3.44.0", "svelte@^3.49.0", "svelte@^3.56.0 || ^4.0.0", "svelte@>=3.19.0", "svelte@>=3.29.4", "svelte@>=3.5.0", "svelte@>3.0.0", "svelte@3.x":
+  "integrity" "sha512-vzSyuGr3eEoAtT/A6bmajosJZIUWySzY2CzB3w2pgPvnkUjGqlDnsNnA0PMO+mMAhuyMul6C2uuZzY6ELSkzyA=="
+  "resolved" "https://registry.npmjs.org/svelte/-/svelte-3.59.2.tgz"
+  "version" "3.59.2"
 
 "svelte2tsx@^0.1.151":
   "integrity" "sha512-vzy4YQNYDnoqp2iZPnJy7kpPAY6y121L0HKrSBjU/IWW7DQ6T7RMJed2VVHFmVYm0zAGYMDl9urPc6R4DDUyhg=="

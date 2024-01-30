@@ -1,14 +1,15 @@
 <script lang="ts">
   import { beforeUpdate, createEventDispatcher } from "svelte";
   import { PivotData } from "./Utilities";
-  import _data2 from "../../../src/json/rpbr_data/merged_data.json"
+  // import _data2 from "../../../src/json/rpbr_data/merged_data.json"
+  import _data2 from "../../../src/json/rpbr_data/all_data_withoutFantom.json"
   import { spanSize } from "./helper";
   import { formatCellInfo, getFiltered } from './data-helper';
   import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
   import Card, { Content } from '@smui/card';
   // import LayoutGrid from '@smui/layout-grid';
   // import Tabulator from 'tabulator-tables';
-  import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
+  // import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
   import Button, { Label } from '@smui/button';
 
   let clicked = 0;
@@ -30,34 +31,35 @@
             .then((json) => (items = json));
   }
 
-  const processedDataList = [{
-    id: 1,
-    assay: "ATAC-seq",
-    hg38: "337",
-    mm10: "166"
-  },
+  const processedDataList = [
+    {
+      id: 1,
+      assay: "ATAC-seq",
+      hg38: "337",
+      mm10: "166"
+    },
     {
       id: 2,
       assay: "DNase-seq",
-      hg38: "200",
-      mm10: "859"
+      hg38: "2258",
+      mm10: "1555"
     },
     {
       id: 3,
       assay: "TF CHIP-seq",
-      hg38: "2358",
+      hg38: "2357",
       mm10: "185"
     },
     {
       id: 4,
       assay: "Histone CHIP-seq",
       hg38: "70",
-      mm10: "545"
+      mm10: "833"
     },
     {
       id: 5,
       assay: "CAGE",
-      hg38: "142",
+      hg38: "139",
       mm10: "-"
     }
   ]
@@ -66,7 +68,6 @@
   export let data;
 
   let pivotData = new PivotData(data);
-  console.log(pivotData);
   let colAttrs = pivotData.props.cols;
   let rowAttrs = pivotData.props.rows;
   let rowKeys = pivotData.getRowKeys();
@@ -102,10 +103,13 @@
     {
       organism_items = mouse_items;
     }
-    let filteredResults = _data2.data.filter(item => {
+    // let filteredResults = _data2.data.filter(item => {
+    //   return item.Assay.toUpperCase() == assay.toUpperCase() && organism_items.includes(item.Organism)
+    // });
+    let filteredResults = _data2.filter(item => {
       return item.Assay.toUpperCase() == assay.toUpperCase() && organism_items.includes(item.Organism)
     });
-    console.log(filteredResults);
+    // console.log(filteredResults);
     dispatch('cell-click', filteredResults);
   }
 </script>
@@ -195,47 +199,5 @@
   </Body>
 </DataTable>
 
-
-<!--<DataTable table$aria-label="File list" style="width: 100%;">-->
-<!--  <Head>-->
-<!--    <Row>-->
-<!--      {#each rowAttrs as rattr, count_r}-->
-<!--        <Cell style="width: 35%;font-size: 1.3em">{rattr}</Cell>-->
-<!--      {/each}-->
-<!--      {#each colAttrs as cattr, count_a}-->
-<!--        {#each colKeys as ckey, count_k}-->
-<!--          <Cell style="font-size: 1.3em;">{ckey[count_a]}</Cell>-->
-<!--        {/each}-->
-<!--      {/each}-->
-<!--    </Row>-->
-<!--  </Head>-->
-
-<!--  <Body>-->
-<!--  {#each rowKeys as rowKey, i}-->
-<!--    <Row>-->
-<!--    {#each rowKey as txt, j}-->
-<!--      <Cell style="font-size: 1.1em;">{txt}</Cell>-->
-<!--    {/each}-->
-
-<!--    {#each colKeys as colKey, j}-->
-<!--      <Cell style="font-size: 1.1em; cursor: pointer;"-->
-<!--            on:click={() => handleCellClick(formatCellInfo(rowAttrs, rowKey, colAttrs, colKey, pivotData-->
-<!--                    .getAggregator(rowKey, colKey)-->
-<!--                    .value()))}>-->
-<!--        <div style="display: flex;align-items: center;justify-content: center;flex-direction: column;">-->
-<!--          <div class="flex justify-center w-full px-2">-->
-<!--            <div class="block text-white text-center p-6 rounded-lg shadow-lg bg-lightBlue-500 hover:bg-lightBlue-600 max-w-sm w-10/12 py-1 px-2">-->
-<!--            {pivotData-->
-<!--                  .getAggregator(rowKey, colKey)-->
-<!--                  .value() ? pivotData.getAggregator(rowKey, colKey).value() : ''}-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </Cell>-->
-<!--    {/each}-->
-<!--    </Row>-->
-<!--  {/each}-->
-<!--  </Body>-->
-<!--</DataTable>-->
 
 

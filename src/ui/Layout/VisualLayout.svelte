@@ -83,6 +83,27 @@
     //     Cart.addRepeats(defaultData.repeats);
     // })
 
+    // Function with OK action
+    function functionWithOK() {
+        var result = window.confirm("Are you sure you want to change the species? \nAll the data will be reset, please save a session file first!\n Click cancel will jump to saving the session file. \n Click OK to continue.");
+        if (result) {
+            // OK action
+            console.log("OK pressed. Performing function for OK.");
+            // Call your function for OK action here
+            if($Cart.biosample === 'Human'){
+                Cart.setSpecies('Mouse');
+                console.log($Cart.biosample, '--> ');
+            } else {
+                Cart.setSpecies('Human');
+                console.log($Cart.biosample, '--> ');
+            }
+
+        } else {
+            // Cancel action or do nothing
+            navigate("/input/display");
+        }
+    }
+
     function handleHeatmapClick(event) {
         combination = event.detail;
         active = 'Consensus View';
@@ -159,13 +180,23 @@
 
                 <Separator />
 
+<!--                <Item-->
+<!--                        href="javascript:void(0)"-->
+<!--                        on:click="{() => navigate('/')}"-->
+<!--                        activated={active === 'Homepage'}-->
+<!--                >-->
+<!--                    <Graphic class="material-icons" aria-hidden="true">home</Graphic>-->
+<!--                    <Text>Homepage</Text>-->
+<!--                </Item>-->
                 <Item
-                        href="javascript:void(0)"
-                        on:click="{() => navigate('/')}"
-                        activated={active === 'Homepage'}
+                        on:click="{() => functionWithOK()}"
                 >
-                    <Graphic class="material-icons" aria-hidden="true">home</Graphic>
-                    <Text>Homepage</Text>
+                    {#if $Cart.biosample === 'Mouse'}
+                        <Graphic class="material-icons" aria-hidden="true"> pest_control_rodent </Graphic>
+                    {:else}
+                        <Graphic class="material-icons" aria-hidden="true"> accessibility_new </Graphic>
+                    {/if}
+                    <Text> Species: {$Cart.biosample} </Text>
                 </Item>
 
             </List>

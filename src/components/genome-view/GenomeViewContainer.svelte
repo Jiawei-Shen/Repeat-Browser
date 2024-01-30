@@ -58,16 +58,9 @@
     //   fileDownload(sessionFile, `${UUID}_region_sets.json`);
   }
 
-  // function handleSessionDownload() {
-  //   fileDownload(sessionFile, `${UUID}_region_sets.json`);
-  // }
-
   async function handleSessionDownload() {
     const url_submit="https://hcwxisape8.execute-api.us-east-1.amazonaws.com/dev/datahub/";
     jumpingtoBrowser = true;
-    // const form = new FormData();
-    // form.append("_id", `${UUID}`);
-    // form.append("hub", {"content": [1,2]});
     let form = {
       "_id": `${UUID}`,
       "hub": {
@@ -86,9 +79,6 @@
       jumpingtoBrowser = false;
       window.open(`http://epigenomegateway.wustl.edu/browser/?sessionFile=https://hcwxisape8.execute-api.us-east-1.amazonaws.com/dev/datahub/${UUID}`, '_blank').focus()
     })
-
-    // console.log(`https://hcwxisape8.execute-api.us-east-1.amazonaws.com/dev/datahub/${UUID}`)
-    // fileDownload(sessionFile, `${UUID}_region_sets.json`);
   }
 
   async function altertSelectGenome(){
@@ -127,25 +117,6 @@
     const { data, repeat } = combination;
     const dataFile = $Cart.data.filter(file => file.id === data);
     specy = dataFile[0].Organism;
-    // console.log(data, repeat);
-    // fetch(`${DATAHUB_MONGO_API}/${experiment}-${subfam}`) // pre-saved data from MONGO
-    // .then(res => {
-    //   if (!res.ok) {
-    //     throw new Error(`Error fetching data for ${experiment}-${subfam}`);
-    //   }
-
-    //   return res.json();
-    // })
-    // .then(res => {
-    //   data = res;
-    //   console.log(data);
-    //   loaded = true;
-    // })
-    // .catch(err => {
-    //   console.log(err);
-    //   loaded = false;
-    //   });
-    // const URL = $Cart.data.filter(file => file.File_accession === data)[0].subfamLoci;
 
     try {
       // dataToRender = await fetchRPKMTabixChrAll(data, repeat, URL);
@@ -221,24 +192,6 @@
     open(DataAxis, {data: event.detail});
   };
 
-
-  // let keyed = [
-  //   { k: 1, v: 'Apple' },
-  //   { k: 2, v: 'Apple' },
-  //   { k: 3, v: 'Apple' },
-  //   { k: 4, v: 'Apple' },
-  // ];
-
-  // function addKeyedChip() {
-  //   if (keyed.length) {
-  //     keyed.push({ k: keyed[keyed.length - 1].k + 1, v: 'Apple' });
-  //     keyed = keyed;
-  //   } else {
-  //     keyed.push({ k: 1, v: 'Apple' });
-  //     keyed = keyed;
-  //   }
-  // }
-
   function removeFile(fileName) {
       let newGenomeList = $Cart.genomelist;
       newGenomeList.forEach(chr => {
@@ -246,7 +199,6 @@
       })
       Cart.updateGenomeView(newGenomeList);
   }
-
 
 </script>
 
@@ -256,7 +208,7 @@
     <div class="flex flex-wrap w-full">
       <div class="w-full lg:w-8/12 px-4">
         <div class="flex justify-center w-full">
-          <div class="block p-6 bg-gray-100 rounded-lg shadow-lg bg-white max-w-sm w-full px-4">
+          <div class="block p-6 bg-gray-50 rounded-lg shadow-lg max-w-sm w-full px-4">
             <!--{#each dataToRender as item, i}-->
             <!--  <Chromosome on:genome-click={showModal} key={item.key} chr={item.key} data={item.values} cutoff={cutoff_value} datarange={dataRange}/>-->
             <!--{/each}-->
@@ -311,23 +263,7 @@
             <AddGenomeCopy repeat={combination.repeat} specy={specy}/>
           </Modal>
 
-          <p>Click the red genome on the genomo bar to jump to the WashU Epigenome Browser.</p>
-
-          <!--{#if sessionFile !== undefined}-->
-          <!--  <div class="border-b flex justify-center items-center pt-2">-->
-          <!--    <button on:click={altertSelectGenome}-->
-          <!--            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">-->
-          <!--      <i class="fa fa-fw fa-eye pr-6 pl-2"></i>-->
-          <!--      <span class="text-sm">Geneset View</span>-->
-          <!--    </button>-->
-          <!--  </div>-->
-          <!--  {#if jumpingtoBrowser}-->
-          <!--    <div>-->
-          <!--      <span>Jumping to WashU Epigenome Browser.</span>-->
-          <!--      <Jumper size="30" color="#4ea8de" unit="px" duration="1s" />-->
-          <!--    </div>-->
-          <!--  {/if}-->
-          <!--{/if}-->
+          <p>Click the red genome on the genome bar to jump to the WashU Epigenome Browser.</p>
         </div>
       </div>
     </div>
@@ -347,12 +283,6 @@
     display: flex;
     justify-content: start;
     align-content: center;
-    /*width: 130px;*/
-    /*height: 45px;*/
-    /*padding: 18px;*/
-    /* margin-top: -20px; */
-    /*font: 15px sans-serif;*/
-    /*background: #ddd;*/
     pointer-events: none;
   }
 </style>

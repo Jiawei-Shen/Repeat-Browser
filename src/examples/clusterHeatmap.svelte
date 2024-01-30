@@ -14,7 +14,7 @@
     var hzome = ini_hzome();
     // make_clust();
 
-    var about_string = 'Hello';
+    var about_string = 'Heatmap';
 
     function make_clust(input_json){
         d3.json("/js/mult_view.json", function(n){
@@ -61,7 +61,7 @@
                         const biosample = e.row.split(' (')[0];
                         dataID = $Cart['data'].filter(x => (x.Assay == matches || x.Target == matches)
                                                             && x.Biosample == biosample)[0].id
-                        console.log(dataID);
+                        console.log('test,dataId:' + dataID);
                     }
                     // const regex = /\((.*?)\)/; // Regex pattern to match the word within brackets
                     // const matches = e.row.match(regex);

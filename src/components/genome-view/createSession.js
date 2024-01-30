@@ -1,7 +1,7 @@
 //Todo: change the url after the bigwig file is ready!
 
 export const createSession = function(input, count, subfam, uuid) {
-  console.log(input);
+  console.log(input, subfam);
   const allDataPoints = input.map(chr => {
     if(chr.values){
       return chr.values.map(d => {
@@ -34,11 +34,24 @@ export const createSession = function(input, count, subfam, uuid) {
   let bundleId = uuid;
   let viewIntervalEnd = totalLength;
   const dataInfo = input[0].values[0].data;
-  console.log(dataInfo);
-
+  let bigwig_url = ''
+  console.log(input[0]);
   let organism;
   if (["hg38", "hg19", "GRCh38"].includes(dataInfo.Organism)) organism = 'hg38';
   if (["mm10"].includes(dataInfo.Organism)) organism = 'mm10';
+
+  if(dataInfo['Zarr'].includes('chip')){
+    let data_id = dataInfo['Zarr'].split('/');
+    data_id = data_id[data_id.length - 2].split('_')[0];
+    console.log(dataInfo['Zarr']);
+    // bigwig_url = `https://s3-obs1.htcf.wustl.edu/repeatbrowser/${organism}/`
+    bigwig_url = dataInfo['Zarr'].replace('.zarr/', `_bigwig/signal/${data_id}_signal.sorted.iteres.bigWig`)
+  } else if(dataInfo['Zarr'].includes('dnase')){
+    let data_id = dataInfo['Zarr'].split('/');
+    data_id = data_id[data_id.length - 2].split('_')[0];
+    bigwig_url = dataInfo['Zarr'].replace('.zarr/', `_bigwig/${data_id}.sorted.iteres.bigWig`)
+    console.log(bigwig_url);
+  }
 
   let assay = dataInfo.Assay.toLowerCase();
   if (assay.includes('cage')) assay = "cage-seq";
@@ -47,163 +60,9 @@ export const createSession = function(input, count, subfam, uuid) {
   // let url = `https://wangftp.wustl.edu/~scheng/repeat_browser/${organism}/${assay}/Processed_${dataInfo.id}/${dataInfo.id}_bigwig/${dataInfo.id}.sorted.iteres.unique.bigWig`;
   // if (assay.includes('chip')) url = `https://wangftp.wustl.edu/~scheng/repeat_browser/${organism}/${assay}/Processed_${dataInfo.id}_signal/${dataInfo.id}_singal_bigwig/signal/${dataInfo.id}_signal.sorted.iteres.unique.bigWig`;
 
-  let url = "https://wangftp.wustl.edu/~scheng/repeat_browser/paper_figure/chip-seq/HeLa-S3_STAT1/test/rep1/methylqa/ENCFF000XPK.bigWig"
+  bigwig_url = "https://wangftp.wustl.edu/~scheng/repeat_browser/paper_figure/chip-seq/HeLa-S3_STAT1/test/rep1/methylqa/ENCFF000XPK.bigWig"
   console.log(features[0].locus);
-  // const updatedTemplate =`
-  // {
-  //   "genomeName": "hg38",
-  //   "viewInterval": { "start": 0, "end": ${viewIntervalEnd} },
-  //   "tracks": [
-  //     {
-  //       "name": "gencodeV29",
-  //       "type": "geneannotation",
-  //       "label": "gencodeV29",
-  //       "options": { "maxRows": 10, "label": "gencodeV29" },
-  //       "url": "",
-  //       "metadata": { "Track type": "geneannotation" },
-  //       "isSelected": false,
-  //       "fileObj": "",
-  //       "files": [],
-  //       "tracks": [],
-  //       "isText": false,
-  //       "textConfig": {},
-  //       "genome": "hg38"
-  //     },
-  //     {
-  //       "name": "RepeatMasker",
-  //       "type": "repeatmasker",
-  //       "label": "RepeatMasker",
-  //       "options": { "label": "RepeatMasker" },
-  //       "url": "https://vizhub.wustl.edu/public/hg38/rmsk16.bb",
-  //       "metadata": { "Track type": "repeatmasker" },
-  //       "isSelected": false,
-  //       "fileObj": "",
-  //       "files": [],
-  //       "tracks": [],
-  //       "isText": false,
-  //       "textConfig": {}
-  //     },
-  //     {
-  //       "name": "Ruler",
-  //       "type": "ruler",
-  //       "label": "Ruler",
-  //       "options": { "label": "Ruler" },
-  //       "url": "",
-  //       "metadata": { "Track type": "ruler" },
-  //       "isSelected": false,
-  //       "fileObj": "",
-  //       "files": [],
-  //       "tracks": [],
-  //       "isText": false,
-  //       "textConfig": {}
-  //     },
-  //     {
-  //       "name": "${subfam}",
-  //       "type": "bigwig",
-  //       "label": "${subfam}",
-  //       "options": {
-  //         "label": "${subfam}"
-  //       },
-  //       "url": "${url}",
-  //       "metadata": {
-  //         "genome": "hg38",
-  //         "Track type": "bigwig"
-  //       }
-  //     }
-  //   ],
-  //   "metadataTerms": [],
-  //   "regionSets": [
-  //     {
-  //       "name": "test",
-  //       "features": ${JSON.stringify(features)},
-  //       "genomeName": "hg38",
-  //       "flankingStrategy": { "type": 0, "upstream": 0, "downstream": 0 }
-  //     }
-  //   ],
-  //   "regionSetViewIndex": 0,
-  //   "trackLegendWidth": 120,
-  //   "bundleId": "${bundleId}",
-  //   "isShowingNavigator": true
-  // }
-  // `
 
-  // const updatedTemplate =`
-  // {
-  //   "genomeName": "hg38",
-  //   "viewInterval": { "start": ${features[0].locus.start}, "end": ${features[0].locus.end} },
-  //   "tracks": [
-  //     {
-  //       "name": "gencodeV29",
-  //       "type": "geneannotation",
-  //       "label": "gencodeV29",
-  //       "options": { "maxRows": 10, "label": "gencodeV29" },
-  //       "url": "",
-  //       "metadata": { "Track type": "geneannotation" },
-  //       "isSelected": false,
-  //       "fileObj": "",
-  //       "files": [],
-  //       "tracks": [],
-  //       "isText": false,
-  //       "textConfig": {},
-  //       "genome": "hg38"
-  //     },
-  //     {
-  //       "name": "RepeatMasker",
-  //       "type": "repeatmasker",
-  //       "label": "RepeatMasker",
-  //       "options": { "label": "RepeatMasker" },
-  //       "url": "https://vizhub.wustl.edu/public/hg38/rmsk16.bb",
-  //       "metadata": { "Track type": "repeatmasker" },
-  //       "isSelected": false,
-  //       "fileObj": "",
-  //       "files": [],
-  //       "tracks": [],
-  //       "isText": false,
-  //       "textConfig": {}
-  //     },
-  //     {
-  //       "name": "Ruler",
-  //       "type": "ruler",
-  //       "label": "Ruler",
-  //       "options": { "label": "Ruler" },
-  //       "url": "",
-  //       "metadata": { "Track type": "ruler" },
-  //       "isSelected": false,
-  //       "fileObj": "",
-  //       "files": [],
-  //       "tracks": [],
-  //       "isText": false,
-  //       "textConfig": {}
-  //     },
-  //     {
-  //       "name": "${subfam}",
-  //       "type": "bigwig",
-  //       "label": "${subfam}",
-  //       "options": {
-  //         "label": "${subfam}"
-  //       },
-  //       "url": "${url}",
-  //       "metadata": {
-  //         "genome": "hg38",
-  //         "Track type": "bigwig"
-  //       }
-  //     }
-  //   ],
-  //   "metadataTerms": [],
-  //   "regionSets": [
-  //     {
-  //       "name": "test",
-  //       "features": ${JSON.stringify(features)},
-  //       "genomeName": "hg38",
-  //       "flankingStrategy": { "type": 0, "upstream": 0, "downstream": 0 }
-  //     }
-  //   ],
-  //   "regionSetViewIndex": 0,
-  //   "trackLegendWidth": 120,
-  //   "bundleId": "${bundleId}",
-  //   "isShowingNavigator": true
-  // }
-  // `
   const updatedTemplate=`
   [
   {
@@ -303,12 +162,12 @@ export const createSession = function(input, count, subfam, uuid) {
     "type":"bigwig",
     "label":"${subfam}",
     "options":{"label":"${subfam}"},
-    "url":"https://wangftp.wustl.edu/~scheng/repeat_browser/paper_figure/chip-seq/HeLa-S3_STAT1/test/rep1/methylqa/ENCFF000XPK.bigWig",
+    "url":"${bigwig_url}",
     "showOnHubLoad": true,
     "metadata":{"genome":"hg38","Track type":"bigwig"}
   }
 ]`
-  console.log(url);
+  // console.log(url);
   return updatedTemplate;
 }
 

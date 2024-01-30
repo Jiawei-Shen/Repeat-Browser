@@ -4,9 +4,11 @@
   import { Cart } from './stores/CartStore.js';
   import Table from "./components/data-view/components/Table.svelte";
   import { formatDate } from "./components/data-view/helper.js";
+  import Pagination from './components/data-view/components/Pagination.svelte';
   // import data_test from "./components/data-view/data_test.js";
 
   let search = "";
+  let page_index = 0;
   const columns = ["ID", "Assay", "Biosample Type", "Control", "Organism", "Target", "Status"];
 
   function searchFor(search) {
@@ -24,7 +26,6 @@
   }
 
   $: filtered = search ? searchFor(search) : _data;
-  console.log(filtered);
 
   let cartData;
   const unsubscribe = Cart.subscribe(async store => {
@@ -35,12 +36,19 @@
 
   function updateCart(input) {
     let found = $Cart.data.filter(d => d.id === input.detail.row.id);
-    console.log(found);
-    if (found.length > 0) {
-      Cart.addDataItems($Cart.data.filter(d => d.id !== input.detail.row.id));
+    console.log(found, input.detail.row);
+    console.log((input.detail.row.Organism.includes('hg') || input.detail.row.Organism.includes('GRCh')));
+    if (($Cart.biosample === "Human" && (input.detail.row.Organism.includes('hg') || input.detail.row.Organism.includes('GRCh'))) ||
+            ($Cart.biosample === "Mouse" && (input.detail.row.Organism.includes('mm')))){
+      if (found.length > 0) {
+        Cart.addDataItems($Cart.data.filter(d => d.id !== input.detail.row.id));
+      } else {
+        Cart.addDataItems([...new Set([...$Cart.data, input.detail.row])]);
+      }
     } else {
-      Cart.addDataItems([...new Set([...$Cart.data, input.detail.row])]);
+      alert("Please choose the correct species!")
     }
+
   }
 
   export let DATA;
@@ -129,6 +137,8 @@
       filterValue: v => v.Tissue.toLowerCase(),
     }
   ];
+
+
 </script>
 
 <style>
@@ -212,13 +222,16 @@
         Current Selcted Files: {cartData.length}
 <!--        <span class="count">{filtered.length}</span>-->
       </h1>
+      <Pagination rows={filtered.length} perPage={100} bind:pageIndex={page_index} />
+
       <input type="text" bind:value={search} />
     </header>
-    <Table on:clickRow={updateCart} {columns} data={filtered} />
+    <Table on:clickRow={updateCart} {columns} data={filtered} pageIndex={page_index}/>
+
   </main>
 {:else}
   <div>
-    Loading...
+    The data is undefined.
   </div>
 {/if}
 

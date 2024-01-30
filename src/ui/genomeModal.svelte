@@ -17,10 +17,22 @@
     let status = "hidden";
     let duplicate = false;
 
+    function compareSpecies(specyA, specyB){
+        let hg38 = ['hg38', 'GRCh38']
+        if(specyA === specyB){
+            return true
+        } else if(hg38.includes(specyA) && hg38.includes(specyB)){
+            return true
+        } else {
+            return false
+        }
+    }
+
     const unsubscribe = Cart.subscribe(async store => {
         const { data, repeats } = store;
         cartData = data;
-        cartData = cartData.filter(x => x.Organism == specy)
+        cartData = cartData.filter(x => compareSpecies(x.Organism, specy))
+        // cartData = cartData.filter(x => x.Organism == specy)
         cartRepeats = repeats;
     });
 

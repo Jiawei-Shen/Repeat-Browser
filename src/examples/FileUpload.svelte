@@ -47,9 +47,12 @@
     async function update_data(){
         const file = files[0]
         const json_content = await file.text().then(d => {
-            const {data, repeats} = JSON.parse(d);
+            const {data, repeats, species} = JSON.parse(d);
             Cart.addDataItems(data);
             Cart.addRepeats(repeats);
+            if(species){
+                Cart.setSpecies(species);
+            }
             alert(`The files and repeats Updated.`);
             files = null;
             // navigate('/input/display');
@@ -123,14 +126,13 @@
                 </button>
             </div>
         </div>
-
         <br />
+
         <div class="flex flex-col w-full">
-        <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white max-w-sm w-full">
+            <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white max-w-sm w-full">
             <h5 class="px-4 py-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Zarr File URL</h5>
         </div>
-            <div class="justify-center max-w-sm p-6 bg-white border border-gray-200 rounded-b shadow-md dark:bg-gray-800 dark:border-gray-700" id="zarr-upload">
-
+        <div class="justify-center max-w-sm p-6 bg-white border border-gray-200 rounded-b shadow-md dark:bg-gray-800 dark:border-gray-700" id="zarr-upload">
                 <div class="px-4">
 
 <!--                <label for="helper-text" class="py-2 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Zarr File URL</label>-->
@@ -144,11 +146,25 @@
                     </div>
                 </div>
                 <p id="helper-text-explanation" class="mt-2 text-sm text-gray-500 dark:text-gray-400">Please upload your processed zarr url.</p>
-                </div>
+
             </div>
             </div>
+        </div>
+        <br />
+
+        <div class="flex flex-col w-full">
+            <div class="justify-center max-w-sm p-2 bg-white border border-gray-200 rounded-b shadow-md dark:bg-gray-800 dark:border-gray-700">
+                <h5 class="px-4 py-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Don't have Zarr?
+                </h5>
+                <h5 class="px-4 py-2 text-xl tracking-tight text-gray-900 dark:text-white">Employing <a style="text-decoration: underline;color: blue;" href="https://github.com/Jiawei-Shen/Repeat-Browser_data_processing">our pipeline</a> to transform your BAM/FastQ files into Zarr!
+                    <a href="https://github.com/Jiawei-Shen/Repeat-Browser_data_processing"><i class="fa fa-fw fa-github pr-6 pl-2 text-2xl"></i></a>
+                </h5>
+            </div>
+        </div>
 
     </div>
+
+
     <div class="flex flex-col w-full lg:w-4/12 px-4">
         <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white max-w-sm w-full">
             <h5 class="py-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Guidance</h5>
@@ -156,15 +172,16 @@
         <div class="px-4 py-2 max-w-sm p-6 bg-white border border-gray-200 rounded-b shadow-md dark:bg-gray-800 dark:border-gray-700">
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are some tips for you to operate the upload.</p>
             <ul class="list-disc px-4 text-sm">
+                <li> To process the Zarr data, visit this <a style="text-decoration: underline;color: blue;" href="https://github.com/Jiawei-Shen/Repeat-Browser_data_processing">Github Repo</a> for details. </li>
                 <li> Zarr file is actually a directory, upload the zarr directory in your server. </li>
-                <li> For those who have local Zarr file, "http-server" may be helpful. </li>
-                <li>The Session Json File is a json file that contains essential information of data and repeats,
-                    which can be downloaded at display page(* Files and * Repeats). </li>
+                <li> For individuals with a local Zarr file, <a style="text-decoration: underline;color: blue;" href="https://www.npmjs.com/package/http-server">http-server</a> could provide an online version of your local files. </li>
+                <li> The Session Json File is a json file that contains essential information of data and repeats,
+                    which can be downloaded at <a style="text-decoration: underline;color: blue;" href="./display"> display page</a>. </li>
                 <!-- ... -->
             </ul>
             <br>
             <a on:click={uploadTour} class="cursor-pointer inline-flex items-center px-2 py-1 text-sm font-medium text-center text-white bg-lightBlue-600 rounded-lg hover:bg-lightBlue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                <i class="fa fa-fw fa-book-open pr-6 pl-2"></i>
+                <i class="fa fa-fw fa-book pr-6 pl-2"></i>
                 Detailed Tour
                 <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </a>

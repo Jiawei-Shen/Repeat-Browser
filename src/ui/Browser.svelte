@@ -66,11 +66,6 @@
     ];
     let tab_active = tabs[0];
 
-    // onMount(() => {
-    //     Cart.addDataItems(defaultData.data);
-    //     Cart.addRepeats(defaultData.repeats);
-    // })
-
     function handleHeatmapClick(event) {
         combination = event.detail;
         active = 'Consensus View';
@@ -170,6 +165,19 @@
                     <Graphic class="material-icons" aria-hidden="true">home</Graphic>
                     <Text>Homepage</Text>
                 </Item>
+
+                <Separator />
+
+                <Item
+                        href="javascript:void(0)"
+                        on:click="{() => navigate('/')}"
+                        activated={active === 'Homepage'}
+                >
+                    <Graphic class="material-icons" aria-hidden="true">home</Graphic>
+                    <Text>Homepage</Text>
+                </Item>
+
+
             </List>
         </Content>
     </Drawer>
@@ -332,30 +340,4 @@
         height: 100%;
         /*box-sizing: border-box;*/
     }
-
-
-    /*.drawer-container {*/
-    /*    position: relative;*/
-    /*    display: flex;*/
-    /*    height: 350px;*/
-    /*    max-width: 600px;*/
-    /*    border: 1px solid*/
-    /*    var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.1));*/
-    /*    overflow: hidden;*/
-    /*    z-index: 0;*/
-    /*}*/
-
-    /** :global(.app-content) {*/
-    /*    flex: auto;*/
-    /*    overflow: auto;*/
-    /*    position: relative;*/
-    /*    flex-grow: 1;*/
-    /*}*/
-
-    /*.main-content {*/
-    /*    overflow: auto;*/
-    /*    padding: 16px;*/
-    /*    height: 100%;*/
-    /*    box-sizing: border-box;*/
-    /*}*/
 </style>

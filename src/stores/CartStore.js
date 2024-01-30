@@ -6,9 +6,14 @@
   function createStore() {
     const {subscribe, set, update} = writable({
       data: [],
+      // humanData: [],
+      // mouseData: [],
       repeats: [],
+      // humanRepeats: [],
+      // mouseRepeats: [],
       assay: 'DNA-seq',
       biosample: 'Human',
+      species: 'Human',
       scale: 2,
       consensuslist: [],
       genomelist: []
@@ -53,6 +58,11 @@
       setScale: (scale) => update( n => {
         n.scale = scale;
         return n;
+      }),
+
+      setSpecies: (species) => update( n => {
+        n.biosample = species;
+        return n;
       })
     }
   }
@@ -61,6 +71,7 @@
   Cart.subscribe(value => {
     if(value.data.length > 0){
       localStorage.Cart = JSON.stringify(value);
+      console.log('Recover local storage.', value);
     }
   })
 

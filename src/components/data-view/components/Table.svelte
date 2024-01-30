@@ -7,6 +7,7 @@
 
     export let columns = [];
     export let data = [];
+    export let pageIndex=0;
 
     let sortColumn = null;
     let sortDirection = null;
@@ -48,7 +49,7 @@
         dispatch('clickRow', {row} );
     }
 
-    $: display = sortColumn && sortDirection ? sortData() : [...data];
+    $: display = (sortColumn && sortDirection ? sortData() : [...data]).slice(pageIndex*100, pageIndex*100+100);
 </script>
 
 <style>
@@ -147,7 +148,7 @@
     </tr>
     </thead>
     <tbody>
-    {#each display as row}
+    {#each display.slice(0, 100) as row}
         <tr>
             <td class="id"><strong><em>#{row.id}</em></strong></td>
             <td class="Assay">{row.Assay}</td>

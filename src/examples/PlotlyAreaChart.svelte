@@ -96,6 +96,7 @@
   const biosampleName = extractItemBeforeBracket(name);
   const extractedContent = extractContentInBrackets(name);
   const [assay, strand] = extractedContent;
+  console.log(name);
 
   const mwLength = biosampleName.length + "px";
 
@@ -141,9 +142,9 @@
 
           const layout = {
                   // modebar: {orientation: 'v'},
-                  height: 60,
+                  height: 80,
                   // paper_bgcolor:"#A9A9A9",
-                  margin: {r: 68, l:50, b: 4, t:5},
+                  margin: {r: 68, l:60, b: 10, t:5},
                   showlegend: false,
                   // xaxis: {
                   //     rangeslider: {}
@@ -185,8 +186,10 @@
         <div class="tooltip-container">
             <span>
                 {biosampleName}<br>
-                {assay}<br>
-                ({strand})
+                <span style="font-size: 10px;">{assay}</span><br>
+                {#if strand}
+                    ({strand})
+                {/if}
             </span>
 
             <div class="tooltip">

@@ -403,7 +403,6 @@ export async function getZarrForHeatmapAll(DATASETS, KEY, SUBFAMILIES) {
         if (DATASETS === undefined || DATASETS.length == 0) { // array empty or does not exist
             throw new Error('Valid DATASETS list was not provided');
         }
-        console.log(DATASETS);
         const promisesList = [];
         let dataAll = {};
         let dataFetchedBefore = [];
@@ -412,18 +411,15 @@ export async function getZarrForHeatmapAll(DATASETS, KEY, SUBFAMILIES) {
         // DATASETS.forEach(DATASET => {
         //     promisesList.push(getFileAndUnzipAll(DATASET, KEY));
         // })
-
         DATASETS.forEach(FILE => {
             promisesList.push(getZarrStatdata(FILE, SUBFAMILIES));
         })
-
         dataFetchedNow = await Promise.all(promisesList);
         // const allDataList = dataFetchedBefore.concat(dataFetchedNow);
         // const dataFormatted = allDataList.map(item => reshapeZarrStatFormat(item));
 
         // const dataFilteredForSubfamilies = filterForRequestedRepeats(allDataList, SUBFAMILIES);
         // storeInLocalStorage(dataFilteredForSubfamilies);
-
         let objToReturn = { all: [], unique: [] };
         dataFetchedNow.forEach(d => {
             const { all, unique } = d;
@@ -582,59 +578,8 @@ export async function getBackendjson(DATASETS, KEY, SUBFAMILIES){
         let result_unique = simpleRequest(backend_input_str_unique);
         const resultJson = await result_unique;
         // console.log(resultJson);
-        // console.log('hello?');
+
         return resultJson
-
-        // console.log("backend_input_str_all: " + backend_input_str_all);
-
-        // const para = {"tsv_content" : backend_input_str_all};
-        // const form = new FormData();
-        // form.append("task", JSON.stringify(para));
-        // form.append("developer_email", "fake@email.com");
-        //
-        // // Local, Test on Lab Server, and AWS
-        // const url1 = "https://127.0.0.1:10981/";
-        // const url2 = "https://10.20.127.23:10981/";
-        // const url3 = "";
-        //
-        // const url_submit = url2 + "submit"
-        // const url_retrieve = url2 + "retrieve"
-        //
-        //
-        // // Example of Submit
-        // fetch(url_submit, {
-        //     method: 'POST',
-        //     body: form,
-        // })
-        //     .then((response) => response.json())
-        //     .then((data) => {
-        //         console.log('Success:', data);
-        //         console.log('The task_id you need!:', data[0].id);
-        //     })
-        //     .catch((error) => {
-        //         console.error('Error:', error);
-        //     });
-        //
-        //
-        //
-        // const form2 = new FormData();
-        // form2.append("task_id", "dfbd22435cd9cca5854da092d0f88e1e724f95667e2fbe903ee1");
-        //
-        // // Example of Retrieve
-        // fetch(url_retrieve, {
-        //     method: 'POST',
-        //     body: form2,
-        // })
-        //     .then((response) => response.json())
-        //     .then((data) => {
-        //         console.log('Success:', data);
-        //         console.log('The result you are looking for:', data[0].result);
-        //     })
-        //     .catch((error) => {
-        //         console.error('Error:', error);
-        //     });
-
-        // return objToReturn;
 
     } catch(error) {
         console.log(error)

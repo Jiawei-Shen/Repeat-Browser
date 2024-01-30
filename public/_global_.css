@@ -180,6 +180,13 @@ table.pvtTable .pvtColLabelLast {
   transform-origin: center center;
   width: auto !important;
 }
+
+.rotate270 {
+  text-align: center;
+  transform: rotate(-270deg);
+  transform-origin: center center;
+  width: auto !important;
+}
 /* end */
 table.pvtTable .pvtTotalLabel {
   text-align: right;

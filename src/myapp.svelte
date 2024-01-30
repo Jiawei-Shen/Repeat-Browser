@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {onMount} from 'svelte';
+  import {afterUpdate, onMount} from 'svelte';
   import Tab, {Icon, Label} from "@smui/tab";
   import TabBar from "@smui/tab-bar";
   import { Router, Route, Link, navigate} from "svelte-routing"
@@ -34,8 +34,7 @@
     return Promise.resolve(_)
   })
 
-  onMount(() => {
-    // Promise.all(data_test).then(d => Cart.addDataItems(d));
+  afterUpdate(() => {
     if (localStorage.Cart && JSON.parse(localStorage.Cart).data.length > 0) {
       console.log(JSON.parse(localStorage.Cart))
       let {data, repeats} = JSON.parse(localStorage.Cart)
@@ -45,16 +44,7 @@
       Cart.addDataItems(defaultData.data);
       Cart.addRepeats(defaultData.repeats);
     }
-    // Cart.addDataItems(defaultData.data);
-    // Cart.addRepeats(defaultData.repeats);
-    // console.log("default", defaultData.data);
   })
-
-  // onMount(() => {
-  //   Cart.addDataItems(defaultData.data);
-  //   Cart.addRepeats(defaultData.repeats);
-  //   console.log("default", defaultData.data);
-  // })
 
   let iconTabs = [
     {
@@ -162,6 +152,8 @@
 </style>
 
 <!--<Header/>-->
+<div id="container"></div>
+
 
 <div>
 <!--  <TabBar-->
