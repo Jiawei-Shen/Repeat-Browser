@@ -156,23 +156,6 @@
 
 
 <div>
-<!--  <TabBar-->
-<!--    tabs={iconTabs}-->
-<!--    let:tab key={tab => tab.k}-->
-<!--    bind:active={keyedTabsActive}>-->
-<!--    <Tab-->
-<!--      {tab}-->
-<!--      stacked={true}-->
-<!--      indicatorSpanOnlyContent={true}-->
-<!--      tabIndicator$transition="fade"-->
-<!--      >-->
-<!--      <Icon class="material-icons">{tab.icon}</Icon>-->
-<!--      <Label>-->
-<!--        {tab.label}-->
-<!--      </Label>-->
-<!--    </Tab>-->
-<!--  </TabBar>-->
-<!--  <hr>-->
 
   <div class="main-body">
     {#if keyedTabsActive.k === 0}

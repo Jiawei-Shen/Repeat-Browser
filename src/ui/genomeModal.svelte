@@ -88,7 +88,7 @@
 </script>
 
 <div>
-    <span class="text-xl">Selected Repeat: <p class="font-bold inline">{repeat}</p>.</span>
+    <span class="text-xl">Selected Data for <p class="font-bold inline">{repeat}</p>.</span>
     <div class="block pt-4 rounded-b shadow-lg bg-white max-w-sm w-full px-4">
         <Typeahead
                 label="Repeats Search"
@@ -125,7 +125,7 @@
                                 class="button-shaped-round"
                         >
                           <Icon class="material-icons">add</Icon>
-                          <Label>Add Genome Copy</Label>
+                          <Label>Add Genome Data</Label>
                         </Button>
                     </div>
                     <span class="inline-block">

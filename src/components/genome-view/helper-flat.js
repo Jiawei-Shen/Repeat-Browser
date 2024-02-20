@@ -44,7 +44,7 @@ function nestByChr(parsedInput) {
 }
 
 export async function getZarrLoci(subfam, FILE){
-    const zarr_url = FILE[0].Zarr;
+    let zarr_url = FILE[0].Zarr;
     const fileId = FILE[0].id;
     const mode = FILE[0].Mode;
 
@@ -55,6 +55,11 @@ export async function getZarrLoci(subfam, FILE){
         loci_tile = 'loci';
     }
 
+    // Check if the last character is '/'
+    if (zarr_url.endsWith('/')) {
+        zarr_url = zarr_url.slice(0, -1); // Remove the last character
+    }
+    // console.log(zarr_url)
     let loci_promise = new Promise((resolve, reject) => {
         zarrRemote.openGroup(zarr_url, (err, group, metadata) => {
             if(group[`${loci_tile}_${subfam}`] == undefined){
@@ -75,18 +80,35 @@ export async function getZarrLoci(subfam, FILE){
                         chro_dict[`${chrome}`] = [{'chr': chrome, 'start': start, 'end': end, 'RPKM': parseFloat(RPKM)}];
                     }
                 }
-
+                const filterNum = 1000;
                 let return_array = new Array();
-                for(let i = 0; i < 22; i++){
+                for(let i = 0; i <= 22; i++){
                     if(i == 0){
                         // return_array[i] = {'chrX': chro_dict['chrx']};
                         if(chro_dict['chrX']){
+                            if (chro_dict['chrX'].length > filterNum){
+                                // Sort the array based on the 'quantity' property
+                                chro_dict['chrX'].sort((a, b) => b.RPKM - a.RPKM);
+                                chro_dict['chrX'] = chro_dict['chrX'].slice(0, filterNum);
+                            }
                             return_array.push({key: 'chrX', values: chro_dict['chrX']});
                         }
-
+                        if(chro_dict['chrY']){
+                            if (chro_dict['chrY'].length > filterNum){
+                                // Sort the array based on the 'quantity' property
+                                chro_dict['chrY'].sort((a, b) => b.RPKM - a.RPKM);
+                                chro_dict['chrY'] = chro_dict['chrY'].slice(0, filterNum);
+                            }
+                            return_array.push({key: 'chrY', values: chro_dict['chrY']});
+                        }
                     }
                     else {
                         if(chro_dict[`chr${i}`]){
+                            if (chro_dict[`chr${i}`].length > filterNum){
+                                // Sort the array based on the 'quantity' property
+                                chro_dict[`chr${i}`].sort((a, b) => b.RPKM - a.RPKM);
+                                chro_dict[`chr${i}`] = chro_dict[`chr${i}`].slice(0, filterNum);
+                            }
                             return_array.push({key: `chr${i}`, values: chro_dict[`chr${i}`]});
                         }
                     }

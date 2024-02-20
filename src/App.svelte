@@ -9,7 +9,6 @@
   import {Graphic} from '@smui/list';
   import Select, { Option } from '@smui/select';
 
-
   export let url = "";
 </script>
 

@@ -74,7 +74,6 @@
     </div>
 </section>
 
-
 <section class="relative items-center flex h-75screen max-h-860-px">
     <div class="container mx-auto px-4 pb-6">
         <div class="items-center flex flex-wrap">
@@ -86,7 +85,7 @@
                     <h2 class="font-semibold text-xl text-blueGray-600">
                         Use online data or your own data
                     </h2>
-                    <p class="mt-4 no-underline get-started text-white font-bold px-4 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blue-400 active:bg-blue-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
+                    <p class="mt-4 no-underline get-started text-white font-bold px-4 py-4 rounded outline-none mr-1 mb-1 bg-blue-400 uppercase text-sm shadow ease-linear">
                         Pick the online zarr data in this website.
                     </p>
                     <p class="mt-1 text-lg leading-relaxed text-blueGray-500">
@@ -94,7 +93,7 @@
                         Roadmap, and FANTOM dataset. <br>
                         Input Data >> Files Selection >> Click the Table!
                     </p>
-                    <p class="mt-4 no-underline get-started text-white font-bold px-4 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blue-400 active:bg-blue-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
+                    <p class="mt-4 no-underline get-started text-white font-bold px-4 py-4 rounded outline-none mr-1 mb-1 bg-blue-400 uppercase text-sm shadow ease-linear">
                         Process your data using our pipeline
                     </p>
                     <p class="mt-1 text-lg leading-relaxed text-blueGray-500">
@@ -169,35 +168,6 @@
     </div>
 </section>
 
-
-
-
-<!--<div style="text-align: center;margin-bottom: 2rem;margin-top: 2rem" id="img1">-->
-<!--    <img src="./images/welcome.png" class="welcome-image">-->
-<!--</div>-->
-
-<!--<div style="text-align: center;margin-bottom: 2rem;margin-top: 2rem;margin-left: 30%;max-width: 40%">-->
-<!--    <img on:click="{() => navigate('/browser')}" style="cursor: pointer" src="./images/start_browsing.png" class="welcome-image">-->
-<!--</div>-->
-
-<!--<div style="display: flex;align-items: center;justify-content: center;flex-direction: column;">-->
-<!--    <Fab-->
-<!--            on:click={bootstrapTour}-->
-<!--            target="_blank"-->
-<!--            extended-->
-<!--            style="width:40vh;height: 16vh;"-->
-<!--    >-->
-<!--        <Label style="font-size: 30px">Start Browsing!</Label>-->
-<!--    </Fab>-->
-<!--</div>-->
-
-<!--&lt;!&ndash;<div style="text-align: center;margin-bottom: 2rem;margin-top: 2rem;margin-left: 30%;max-width: 40%">&ndash;&gt;-->
-<!--&lt;!&ndash;    <img on:click={handleclick} style="cursor: pointer" src="./images/start_browsing.png" class="welcome-image">&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-<!--<div style="text-align: center;margin-bottom: 2rem;margin-top: 2rem;" id="img2">-->
-<!--    <img src="./images/washu_mainpage.png" class="mainpage-image">-->
-<!--</div>-->
 
 <style>
     .mainpage-image{

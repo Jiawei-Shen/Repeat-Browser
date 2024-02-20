@@ -56,123 +56,11 @@ object-assign
  * Licensed under the MIT License.
  */
 
-/*! ../segment/component */
-
-/*! ./adapter */
-
-/*! ./component */
-
-/*! ./constants */
-
-/*! ./foundation */
-
-/*! ./segment/index */
-
-/*! ./segmented-button/index */
-
-/*! ./types */
-
-/*! ./util */
-
-/*! @material/base/component */
-
-/*! @material/base/foundation */
-
-/*! @material/dom/events */
-
-/*! @material/dom/ponyfill */
-
-/*! @material/ripple/component */
-
-/*! @material/ripple/foundation */
-
 /*! https://mths.be/punycode v1.3.2 by @mathias */
 
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
-/*! no static exports found */
-
 /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
-
-/*!************************************!*\
-  !*** ./packages/mdc-dom/events.ts ***!
-  \************************************/
-
-/*!*************************************!*\
-  !*** ./packages/mdc-ripple/util.ts ***!
-  \*************************************/
-
-/*!**************************************!*\
-  !*** ./packages/mdc-dom/ponyfill.ts ***!
-  \**************************************/
-
-/*!****************************************!*\
-  !*** ./packages/mdc-base/component.ts ***!
-  \****************************************/
-
-/*!*****************************************!*\
-  !*** ./packages/mdc-base/foundation.ts ***!
-  \*****************************************/
-
-/*!******************************************!*\
-  !*** ./packages/mdc-ripple/component.ts ***!
-  \******************************************/
-
-/*!******************************************!*\
-  !*** ./packages/mdc-ripple/constants.ts ***!
-  \******************************************/
-
-/*!*******************************************!*\
-  !*** ./packages/mdc-ripple/foundation.ts ***!
-  \*******************************************/
-
-/*!************************************************!*\
-  !*** ./packages/mdc-segmented-button/index.ts ***!
-  \************************************************/
-
-/*!************************************************!*\
-  !*** ./packages/mdc-segmented-button/types.ts ***!
-  \************************************************/
-
-/*!********************************************************!*\
-  !*** ./packages/mdc-segmented-button/segment/index.ts ***!
-  \********************************************************/
-
-/*!**********************************************************!*\
-  !*** ./packages/mdc-segmented-button/segment/adapter.ts ***!
-  \**********************************************************/
-
-/*!************************************************************!*\
-  !*** ./packages/mdc-segmented-button/segment/component.ts ***!
-  \************************************************************/
-
-/*!************************************************************!*\
-  !*** ./packages/mdc-segmented-button/segment/constants.ts ***!
-  \************************************************************/
-
-/*!*************************************************************!*\
-  !*** ./packages/mdc-segmented-button/segment/foundation.ts ***!
-  \*************************************************************/
-
-/*!*****************************************************************!*\
-  !*** ./packages/mdc-segmented-button/segmented-button/index.ts ***!
-  \*****************************************************************/
-
-/*!*******************************************************************!*\
-  !*** ./packages/mdc-segmented-button/segmented-button/adapter.ts ***!
-  \*******************************************************************/
-
-/*!*********************************************************************!*\
-  !*** ./packages/mdc-segmented-button/segmented-button/component.ts ***!
-  \*********************************************************************/
-
-/*!*********************************************************************!*\
-  !*** ./packages/mdc-segmented-button/segmented-button/constants.ts ***!
-  \*********************************************************************/
-
-/*!**********************************************************************!*\
-  !*** ./packages/mdc-segmented-button/segmented-button/foundation.ts ***!
-  \**********************************************************************/
 
 /**
  * @license
@@ -311,10 +199,25 @@ object-assign
 
 /**
  * @license
- * Copyright Google LLC All Rights Reserved.
+ * Copyright 2021 Google Inc.
  *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://github.com/material-components/material-components-web/blob/master/LICENSE
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 /**

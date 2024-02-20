@@ -124,7 +124,7 @@
 <!--          <div class="flex flex-col justify-center w-7/12 pr-2">-->
           <div class="flex flex-col justify-center w-full pr-2">
             <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white max-w-sm w-full">
-              <h5 class="text-gray-900 text-xl leading-tight font-medium py-2">Files: {cartData.length}</h5>
+              <h5 class="text-gray-900 text-xl leading-tight font-medium py-2">Data: {cartData.length}</h5>
             </div>
             <div class="block rounded-b shadow-lg bg-white max-w-sm w-full px-4">
               <!--            <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">Repeats: {cartRepeats.length}</h5>-->
@@ -161,9 +161,9 @@
         <div class="flex flex-col justify-start px-6">
           <h5 class="text-gray-900 pt-6 text-xl font-medium mb-2">Heatmap</h5>
           <ul class="list-disc px-4 text-sm">
-            <li> Data with different assay types are displayed in different section. </li>
-            <li> Please click the switch to determine display Unique type or All type. </li>
-            <li> Use the scroll bar or input box to change the heatmap bar. </li>
+            <li> Please Click the tile to navigate to the consensus view. </li>
+            <li> Please click the switch to determine display DNA type sequencing or CAGE-seq data. </li>
+            <li> The column names are TE subfamilies and the line names are data/files. </li>
             <!-- ... -->
           </ul>
           <br>

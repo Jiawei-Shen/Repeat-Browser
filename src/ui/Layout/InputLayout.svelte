@@ -147,7 +147,7 @@
                             activated={location.pathname === '/input/data'}
                     >
                         <Graphic class="material-icons" aria-hidden="true">toc</Graphic>
-                        <Text>Files Selection</Text>
+                        <Text>Data Selection</Text>
                     </Item>
 
                     <Item

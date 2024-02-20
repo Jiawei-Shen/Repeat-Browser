@@ -1,6 +1,7 @@
 <!--<link rel="stylesheet" href="/lib/css/bootstrap.css">-->
 <script>
-    import {onMount ,onDestroy, createEventDispatcher} from "svelte";
+    import {onMount, onDestroy, createEventDispatcher, afterUpdate} from "svelte";
+    import {fetchConsensusDatabyZarr} from "../components/consensus/utils";
     import Select, { Option } from '@smui/select';
     import { Cart } from '../stores/CartStore';
 
@@ -14,7 +15,44 @@
     var hzome = ini_hzome();
     // make_clust();
 
-    var about_string = 'Heatmap';
+    var about_string = 'Click the tile to navigate to the consensus view';
+
+    function clickTile(e){
+        console.log("this is e", e);
+        // const eArray = e.row.split("-");
+        // let eIndex = eArray.pop();
+        // const isNumber = !isNaN(parseFloat(eIndex));
+        // console.log(network_data.row_nodes, eIndex);
+        // let eName;
+        // if (isNumber){
+        //     eName = network_data.row_nodes[eIndex]['cat-0'].split(' ').pop()
+        // } else {
+        //     console.log(network_data.row_nodes.filter(x => x.name == e.row)[0]);
+        //     eName = network_data.row_nodes.filter(x => x.name == e.row)[0]['cat-0'].split(' ').pop();
+        // }
+        const tag = e.row_name.split('-')[e.row_name.split('-').length-1];
+        let dataID;
+        if (!isNaN(tag)){
+            const tagInt = parseInt(tag);
+            dataID = $Cart['data'][tag-1].id;
+            console.log(dataID);
+        } else {
+            const regex = /\((.*?)\)/; // Regex pattern to match the word within brackets
+            const matches = e.row_name.match(regex)[1];
+            const biosample = e.row_name.split(' (')[0];
+            dataID = $Cart['data'].filter(x => (x.Assay == matches || x.Target == matches)
+                && x.Biosample == biosample)[0].id
+            // console.log('test,dataId:' + dataID);
+        }
+        // const regex = /\((.*?)\)/; // Regex pattern to match the word within brackets
+        // const matches = e.row.match(regex);
+        // console.log(matches[0], e.row);
+        // let eName = network_data.row_nodes.filter(x => x.name == e.row)[0]['cat-0'].split(' ').pop();
+        let eName = dataID;
+        dispatch('tileClick', { data: eName, repeat: e.col_name, value: e.value});
+        // dispatch('tileClick', { data: e.row, repeat: e.col, value: e.value});
+        // console.log(e);
+    }
 
     function make_clust(input_json){
         d3.json("/js/mult_view.json", function(n){
@@ -29,49 +67,14 @@
                 'row_label_scale': 2,
                 'col_label_scale': 1.4,
                 // 'row_tip_callback':hzome.gene_info,
-                'row_tip_callback':()=>"hello",
+                // 'row_tip_callback':()=>"hello",
                 'col_tip_callback':test_col_callback,
                 'tile_tip_callback':test_tile_callback,
                 'dendro_callback':dendro_callback,
                 'matrix_update_callback':matrix_update_callback,
                 'cat_update_callback': cat_update_callback,
                 'sidebar_width':150,
-                'click_tile': function(e){
-                    // console.log(e.row);
-                    // const eArray = e.row.split("-");
-                    // let eIndex = eArray.pop();
-                    // const isNumber = !isNaN(parseFloat(eIndex));
-                    // console.log(network_data.row_nodes, eIndex);
-                    // let eName;
-                    // if (isNumber){
-                    //     eName = network_data.row_nodes[eIndex]['cat-0'].split(' ').pop()
-                    // } else {
-                    //     console.log(network_data.row_nodes.filter(x => x.name == e.row)[0]);
-                    //     eName = network_data.row_nodes.filter(x => x.name == e.row)[0]['cat-0'].split(' ').pop();
-                    // }
-                    const tag = e.row.split('-')[e.row.split('-').length-1];
-                    let dataID;
-                    if (!isNaN(tag)){
-                        const tagInt = parseInt(tag);
-                        dataID = $Cart['data'][tag-1].id;
-                        console.log(dataID);
-                    } else {
-                        const regex = /\((.*?)\)/; // Regex pattern to match the word within brackets
-                        const matches = e.row.match(regex)[1];
-                        const biosample = e.row.split(' (')[0];
-                        dataID = $Cart['data'].filter(x => (x.Assay == matches || x.Target == matches)
-                                                            && x.Biosample == biosample)[0].id
-                        console.log('test,dataId:' + dataID);
-                    }
-                    // const regex = /\((.*?)\)/; // Regex pattern to match the word within brackets
-                    // const matches = e.row.match(regex);
-                    // console.log(matches[0], e.row);
-                    // let eName = network_data.row_nodes.filter(x => x.name == e.row)[0]['cat-0'].split(' ').pop();
-                    let eName = dataID;
-                    dispatch('tileClick', { data: eName, repeat: e.col, value: e.value});
-                    // dispatch('tileClick', { data: e.row, repeat: e.col, value: e.value});
-                    // console.log(e);
-                }
+                // 'click_tile':
                 // 'tile_colors':['#ED9124','#1C86EE'],
                 // 'ini_view':{'N_row_var':20}
                 // 'ini_expand':true
@@ -87,6 +90,46 @@
             // check_setup_enrichr(cgm);
             d3.select(cgm.params.root + ' .wait_message').remove();
             // cgm.params.click_tile = function(){console.log("Click tile")};
+
+            let tile = d3.selectAll('.row_tile')
+                // .style('cursor', 'default')
+                .on('mouseenter', async function () {
+                    if ((d3.select(this).style('cursor') != 'not-allowed') && (d3.select(this).style('cursor') != 'pointer')){
+                        d3.select(this).style('cursor', 'wait');
+                        try{
+                            const tileData = d3.select(this)[0][0].__data__;
+                            const tag = tileData.row_name.split('-')[tileData.row_name.split('-').length-1];
+                            let tileFile;
+                            const tileTE = tileData.col_name;
+                            if (!isNaN(tag)){
+                                const tagInt = parseInt(tag);
+                                tileFile = [$Cart['data'][tag-1]];
+                            } else {
+                                const regex = /\((.*?)\)/; // Regex pattern to match the word within brackets
+                                const matches = tileData.row_name.match(regex)[1];
+                                const biosample = tileData.row_name.split(' (')[0];
+                                tileFile = $Cart['data'].filter(x => (x.Assay == matches || x.Target == matches)
+                                    && x.Biosample == biosample)
+                                // console.log('test,dataId:' + dataID);
+                            }
+                            const res = await fetchConsensusDatabyZarr(tileFile, tileTE, 0);
+                            // console.log(res);
+                            d3.select(this).style('cursor', 'pointer');
+                            d3.select(this).on("click", clickTile);
+                        } catch (e) {
+                            console.log(e);
+                            d3.select(this).style('cursor', 'not-allowed');
+                            d3.select(this).on("click", ()=>{});
+                        }
+                    }
+
+                });
+                // .on('mouseleave', function () {
+                //     // Reset cursor to the default when the mouse leaves
+                //     d3.select(this).style('cursor', 'default');
+                //     d3.select(this).on("click", ()=>{});
+                // });
+            console.log(tile)
         });
     }
 
@@ -102,7 +145,6 @@
     }
 
     function test_tile_callback(tile_data){
-        // console.log('callback to run after cats are updated');
         var row_name = tile_data.row_name;
         var col_name = tile_data.col_name;
     }
@@ -141,6 +183,7 @@
         // console.log(inputJson);
         make_clust(inputJson)
     })
+
 </script>
 
 
@@ -149,7 +192,7 @@
 <div class="flex flex-col justify-center w-full">
     <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white max-w-sm w-full">
         <h5 class="text-gray-900 text-xl leading-tight font-medium py-2 px-4 inline">
-            Heatmap
+            Heatmap (Species: {$Cart.biosample})
             <div style="justify-content: flex-start; display: inline-block; margin-left: 1rem">
                 <div>
                     <Select bind:value={$Cart.assay} label="Assay Type">

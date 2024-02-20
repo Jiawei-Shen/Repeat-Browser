@@ -47,6 +47,7 @@
     async function update_data(){
         const file = files[0]
         const json_content = await file.text().then(d => {
+            console.log(JSON.parse(d));
             const {data, repeats, species} = JSON.parse(d);
             Cart.addDataItems(data);
             Cart.addRepeats(repeats);
@@ -113,7 +114,7 @@
                             <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Selected File: <br /></span>{files[0].name}</p>
                         {:else}
                             <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span></p>
                             <p class="text-xs text-gray-500 dark:text-gray-400">The session json file. (The formatted json file.)</p>
                         {/if}
                     </div>
@@ -130,7 +131,7 @@
 
         <div class="flex flex-col w-full">
             <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white max-w-sm w-full">
-            <h5 class="px-4 py-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Zarr File URL</h5>
+            <h5 class="px-4 py-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Zarr File URL (Current Species: {$Cart.biosample})</h5>
         </div>
         <div class="justify-center max-w-sm p-6 bg-white border border-gray-200 rounded-b shadow-md dark:bg-gray-800 dark:border-gray-700" id="zarr-upload">
                 <div class="px-4">

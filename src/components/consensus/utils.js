@@ -159,7 +159,7 @@ export const fetchConsensusDatabyZarr = async function (FILE, subfam, data_lengt
     } else {
         name = `${FILE[0].Biosample}(${FILE[0].Target})`
     }
-    console.log(name);
+    // console.log(name);
 
     let return_value;
 
@@ -299,7 +299,7 @@ async function getZarrWig(wig_type, subfam, zarr_url, assay='DNA'){
     target_array.forEach((element, i) => {
         return_value.push({'score': element, 'start': i, 'end': i+1});
     })
-    console.log(return_value);
+    // console.log(return_value);
 
     return return_value
 }
@@ -307,7 +307,7 @@ async function getZarrWig(wig_type, subfam, zarr_url, assay='DNA'){
 async function getZarrWigNew(wig_type, subfam, zarr_url, assay='DNA', data_length){
     let chunk_id;
     let wig_zatrr;
-    console.log(data_length, assay);
+    // console.log(data_length, assay);
 
     switch (wig_type){
         case 'all+_bigwig':
@@ -367,7 +367,7 @@ async function getZarrWigNew(wig_type, subfam, zarr_url, assay='DNA', data_lengt
     const data = await response.json();
     const sub_stat_list = data[wig_zatrr];
     const the_index = sub_stat_list.indexOf(subfam);
-    console.log(sub_stat_list, subfam);
+    // console.log(sub_stat_list, subfam);
     let result = data_test['data'][the_index].slice(0, data_length);
     // let result;
     // if (assay === 'RNA'){

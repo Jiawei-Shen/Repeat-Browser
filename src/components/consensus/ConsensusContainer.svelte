@@ -15,6 +15,7 @@
   import debug_data from "../../json/subfam_stat_debug.json";
   import {Cart, consensusModal} from '../../stores/CartStore';
   import PlotlyTrack from "../../examples/PlotlyTrack.svelte";
+  import ElementScreenshot from '../../examples/ElementScreenshot.svelte';
 
   let loaded = false;
   let maxValue;
@@ -117,7 +118,10 @@
 
 
 {#if loaded}
-  <h5 class="mb-2 p-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Consensus View: {repeatName}</h5>
+  <h5 class="flex items-center p-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+    Consensus View: {repeatName}
+    <ElementScreenshot elementID="consensusView"/>
+  </h5>
   <div class="flex flex-wrap">
 
 <!--      <div class="w-full lg:w-9/12 px-4">-->
@@ -125,32 +129,33 @@
         <div class="flex justify-center w-full">
           <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm w-full px-4">
             <div class="border border-black">
-              <div class="flex flex-col justify-center items-center">
-                <RangeRuler on:range={getRange} inputRange={genomeCopyDense.length}
-                             inputData={genomeCopyDense.map(Number)} repeatName={repeatName}/>
-<!--                <RangeSlider on:range={getRange} inputRange={genomeCopyDense.length}-->
-<!--                             inputData={genomeCopyDense.map(Number)}/>-->
+              <div class="border border-black" id="consensusView">
+                <div class="flex flex-col justify-center items-center">
+                  <RangeRuler on:range={getRange} inputRange={genomeCopyDense.length}
+                               inputData={genomeCopyDense.map(Number)} repeatName={repeatName}/>
+  <!--                <RangeSlider on:range={getRange} inputRange={genomeCopyDense.length}-->
+  <!--                             inputData={genomeCopyDense.map(Number)}/>-->
+                </div>
+                <PlotlyTrack consensusData={[genomeCopyDense.map(Number), genomeCopyDense.map(Number)]} data={"Genome Coverage"}
+                             repeat={""} yrange={y_genomecopy_range} selectrange={selectedRange} index=0 />
+                {#key $Cart.consensuslist.length}
+                  {#each $Cart.consensuslist as consensusData, index}
+                    {#if consensusData.fileName.includes("RNA-seq")}
+                      <PlotlyAreaChart consensusData={[consensusData.all_plus, consensusData.unique_plus]} data={consensusData.fileId} name={consensusData.fileName + "(+ strand)"}
+                                       repeat={combination.repeat} yrange={maxValue} selectrange={selectedRange} index={index}+1 />
+                      <PlotlyAreaChart consensusData={[consensusData.all_minus, consensusData.unique_minus]} data={consensusData.fileId} name={consensusData.fileName + "(- strand)"}
+                                       repeat={combination.repeat} yrange={maxValue} selectrange={selectedRange} index={index}+2 />
+                    {:else}
+                      <PlotlyAreaChart consensusData={[consensusData.all, consensusData.unique]} data={consensusData.fileId} name={consensusData.fileName}
+                                       repeat={combination.repeat} yrange={maxValue} selectrange={selectedRange} index={index}+1 />
+                    {/if}
+  <!--                    <PlotlyAreaChart consensusData={[consensusData.all, consensusData.unique]} data={consensusData.fileId} name={consensusData.fileName}-->
+  <!--                                 repeat={combination.repeat} yrange={yRange} selectrange={selectedRange} index={index}+1 />-->
+  <!--                  <PlotlyAreaChart consensusData={[consensusData.all, consensusData.unique]} data={consensusData.fileId} name={consensusData.fileName}-->
+  <!--                                   repeat={combination.repeat} yrange={consensusData.y_range} selectrange={selectedRange} index={index}+1 />-->
+                  {/each}
+                {/key}
               </div>
-              <PlotlyTrack consensusData={[genomeCopyDense.map(Number), genomeCopyDense.map(Number)]} data={"Genome Coverage"}
-                           repeat={""} yrange={y_genomecopy_range} selectrange={selectedRange} index=0 />
-              {#key $Cart.consensuslist.length}
-                {#each $Cart.consensuslist as consensusData, index}
-                  {#if consensusData.fileName.includes("RNA-seq")}
-                    <PlotlyAreaChart consensusData={[consensusData.all_plus, consensusData.unique_plus]} data={consensusData.fileId} name={consensusData.fileName + "(+ strand)"}
-                                     repeat={combination.repeat} yrange={maxValue} selectrange={selectedRange} index={index}+1 />
-                    <PlotlyAreaChart consensusData={[consensusData.all_minus, consensusData.unique_minus]} data={consensusData.fileId} name={consensusData.fileName + "(- strand)"}
-                                     repeat={combination.repeat} yrange={maxValue} selectrange={selectedRange} index={index}+2 />
-                  {:else}
-                    <PlotlyAreaChart consensusData={[consensusData.all, consensusData.unique]} data={consensusData.fileId} name={consensusData.fileName}
-                                     repeat={combination.repeat} yrange={maxValue} selectrange={selectedRange} index={index}+1 />
-                  {/if}
-<!--                    <PlotlyAreaChart consensusData={[consensusData.all, consensusData.unique]} data={consensusData.fileId} name={consensusData.fileName}-->
-<!--                                 repeat={combination.repeat} yrange={yRange} selectrange={selectedRange} index={index}+1 />-->
-<!--                  <PlotlyAreaChart consensusData={[consensusData.all, consensusData.unique]} data={consensusData.fileId} name={consensusData.fileName}-->
-<!--                                   repeat={combination.repeat} yrange={consensusData.y_range} selectrange={selectedRange} index={index}+1 />-->
-                {/each}
-              {/key}
-
               <Modal show={$consensusModal}>
                 <AddTrack repeat={combination.repeat}/>
               </Modal>

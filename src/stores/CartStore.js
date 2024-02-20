@@ -2,6 +2,7 @@
   // import _data from "../json/main.json";
   export const consensusModal = writable(null);
   export const genomeModal = writable(null);
+  export const TEModal = writable(null);
 
   function createStore() {
     const {subscribe, set, update} = writable({
@@ -16,7 +17,8 @@
       species: 'Human',
       scale: 2,
       consensuslist: [],
-      genomelist: []
+      genomelist: [],
+      multiTEGenomeList: []
       // files: _data.files // list of all files
     });
 
@@ -45,6 +47,11 @@
         return n;
       }),
 
+      updateMultiTEGenomeList: (newVal) => update(n => {
+        n.multiTEGenomeList = newVal;
+        return n;
+      }),
+
       setAssayDNA: () => update( n => {
         n.assay = 'DNA-seq';
         return n;
@@ -62,6 +69,7 @@
 
       setSpecies: (species) => update( n => {
         n.biosample = species;
+        n.species = species;
         return n;
       })
     }

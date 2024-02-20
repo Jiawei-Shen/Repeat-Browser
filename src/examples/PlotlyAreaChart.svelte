@@ -167,6 +167,7 @@
                       linewidth: 2,
                       ticklen: 5,
                       tickwidth: 2,
+                      fixedrange: true,
                       // tickangle: 180,
                       range: [0, yrange]
                   },

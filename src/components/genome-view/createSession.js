@@ -1,7 +1,7 @@
 //Todo: change the url after the bigwig file is ready!
 
-export const createSession = function(input, count, subfam, uuid) {
-  console.log(input, subfam);
+export const createSession = function(input, count, subfam, assembly, uuid) {
+  // console.log(input, subfam);
   const allDataPoints = input.map(chr => {
     if(chr.values){
       return chr.values.map(d => {
@@ -35,21 +35,26 @@ export const createSession = function(input, count, subfam, uuid) {
   let viewIntervalEnd = totalLength;
   const dataInfo = input[0].values[0].data;
   let bigwig_url = ''
-  console.log(input[0]);
+  // console.log(input[0]);
   let organism;
   if (["hg38", "hg19", "GRCh38"].includes(dataInfo.Organism)) organism = 'hg38';
   if (["mm10"].includes(dataInfo.Organism)) organism = 'mm10';
 
   if(dataInfo['Zarr'].includes('chip')){
     let data_id = dataInfo['Zarr'].split('/');
-    data_id = data_id[data_id.length - 2].split('_')[0];
+    data_id = data_id[data_id.length - 2].split('_')[0].replace('.zarr', '');;
     console.log(dataInfo['Zarr']);
     // bigwig_url = `https://s3-obs1.htcf.wustl.edu/repeatbrowser/${organism}/`
-    bigwig_url = dataInfo['Zarr'].replace('.zarr/', `_bigwig/signal/${data_id}_signal.sorted.iteres.bigWig`)
+    bigwig_url = dataInfo['Zarr'].replace('.zarr/', `_bigwig/signal/${data_id}_signal.sorted.iteres.unique.bigWig`)
   } else if(dataInfo['Zarr'].includes('dnase')){
     let data_id = dataInfo['Zarr'].split('/');
-    data_id = data_id[data_id.length - 2].split('_')[0];
-    bigwig_url = dataInfo['Zarr'].replace('.zarr/', `_bigwig/${data_id}.sorted.iteres.bigWig`)
+    data_id = data_id[data_id.length - 2].split('_')[0].replace('.zarr', '');
+    bigwig_url = dataInfo['Zarr'].replace('.zarr/', `_bigwig/${data_id}.sorted.iteres.unique.bigWig`)
+    console.log(bigwig_url);
+  } else if(dataInfo['Zarr'].includes('atac')){
+    let data_id = dataInfo['Zarr'].split('/');
+    data_id = data_id[data_id.length - 2].split('_')[0].replace('.zarr', '');
+    bigwig_url = dataInfo['Zarr'].replace('.zarr/', `_bigwig/${data_id}.sorted.iteres.unique.bigWig`)
     console.log(bigwig_url);
   }
 
@@ -60,7 +65,7 @@ export const createSession = function(input, count, subfam, uuid) {
   // let url = `https://wangftp.wustl.edu/~scheng/repeat_browser/${organism}/${assay}/Processed_${dataInfo.id}/${dataInfo.id}_bigwig/${dataInfo.id}.sorted.iteres.unique.bigWig`;
   // if (assay.includes('chip')) url = `https://wangftp.wustl.edu/~scheng/repeat_browser/${organism}/${assay}/Processed_${dataInfo.id}_signal/${dataInfo.id}_singal_bigwig/signal/${dataInfo.id}_signal.sorted.iteres.unique.bigWig`;
 
-  bigwig_url = "https://wangftp.wustl.edu/~scheng/repeat_browser/paper_figure/chip-seq/HeLa-S3_STAT1/test/rep1/methylqa/ENCFF000XPK.bigWig"
+  // bigwig_url = "https://wangftp.wustl.edu/~scheng/repeat_browser/paper_figure/chip-seq/HeLa-S3_STAT1/test/rep1/methylqa/ENCFF000XPK.bigWig"
   console.log(features[0].locus);
 
   const updatedTemplate=`
@@ -125,7 +130,7 @@ export const createSession = function(input, count, subfam, uuid) {
     "queryEndpoint": {
 
     },
-    "genome": "hg19"
+    "genome": "${assembly}"
   },
   {
     "name": "RepeatMasker",
@@ -134,7 +139,7 @@ export const createSession = function(input, count, subfam, uuid) {
     "options": {
       "label": "RepeatMasker"
     },
-    "url": "https://vizhub.wustl.edu/public/hg19/rmsk16.bb",
+    "url": "https://vizhub.wustl.edu/public/${assembly}/rmsk16.bb",
     "metadata": {
       "Track type": "repeatmasker"
     },
@@ -164,7 +169,7 @@ export const createSession = function(input, count, subfam, uuid) {
     "options":{"label":"${subfam}"},
     "url":"${bigwig_url}",
     "showOnHubLoad": true,
-    "metadata":{"genome":"hg38","Track type":"bigwig"}
+    "metadata":{"genome": "${assembly}", "Track type":"bigwig"}
   }
 ]`
   // console.log(url);

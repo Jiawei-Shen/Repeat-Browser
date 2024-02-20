@@ -2,6 +2,7 @@
   import { beforeUpdate, createEventDispatcher } from "svelte";
   import { PivotData } from "./Utilities";
   // import _data2 from "../../../src/json/rpbr_data/merged_data.json"
+  import _data2 from "../../../src/json/main0216.json";
   import _data2 from "../../../src/json/rpbr_data/all_data_withoutFantom.json"
   import { spanSize } from "./helper";
   import { formatCellInfo, getFiltered } from './data-helper';

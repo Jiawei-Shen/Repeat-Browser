@@ -175,6 +175,12 @@
           .style("padding", "3px")
           .style("background-color", "#ccc")
 
+      d3.select(node)
+          .append('g')
+          .selectAll('chrBands')
+          .remove();
+
+
         d3.select(node)
             .append('g')
             .selectAll('chrBands')
@@ -233,6 +239,7 @@
   }
 
   function handleGenomeClick(input) {
+      input["chromosome"] = chr;
       dispatch('genome-click', input);
   }
 

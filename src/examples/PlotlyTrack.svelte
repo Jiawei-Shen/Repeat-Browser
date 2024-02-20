@@ -127,6 +127,7 @@
                       linewidth: 2,
                       ticklen: 5,
                       tickwidth: 2,
+                      fixedrange: true,
                       // range: [0, yrange]
                       //     // showticklabels: false,
                       // showline:true,

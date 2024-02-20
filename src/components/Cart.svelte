@@ -49,7 +49,7 @@
   function handleSessionDownload(){
     // console.log(sessionFile);
     // sessionFile = `{"species": ${JSON.stringify(cartSpecies)}, "data": ${JSON.stringify(cartData)}, "repeats": ${JSON.stringify(cartRepeats)}}`;
-      sessionFile = `{"species": ${cartBiosample}, "data": ${JSON.stringify(cartData)}, "repeats": ${JSON.stringify(cartRepeats)}}`;
+      sessionFile = `{"species": "${cartBiosample}", "data": ${JSON.stringify(cartData)}, "repeats": ${JSON.stringify(cartRepeats)}}`.replace('"', '\"');;
       fileDownload(sessionFile, `${UUID}_data_repeats.json`);
       console.log(sessionFile);
   }

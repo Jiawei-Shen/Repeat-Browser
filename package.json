@@ -76,6 +76,7 @@
     "d3fc": "^15.2.5",
     "express": "^4.18.2",
     "generic-filehandle": "^2.2.3",
+    "html2canvas": "^1.4.1",
     "ideogram": "^1.36.0",
     "intro.js": "^6.0.0",
     "jquery": "^3.6.1",

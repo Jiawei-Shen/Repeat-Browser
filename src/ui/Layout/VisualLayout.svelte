@@ -92,9 +92,13 @@
             // Call your function for OK action here
             if($Cart.biosample === 'Human'){
                 Cart.setSpecies('Mouse');
+                Cart.addRepeats([]);
+                Cart.addDataItems([]);
                 console.log($Cart.biosample, '--> ');
             } else {
                 Cart.setSpecies('Human');
+                Cart.addRepeats([]);
+                Cart.addDataItems([]);
                 console.log($Cart.biosample, '--> ');
             }
 
@@ -106,6 +110,7 @@
 
     function handleHeatmapClick(event) {
         combination = event.detail;
+        console.log('Click Test', event);
         active = 'Consensus View';
     }
 

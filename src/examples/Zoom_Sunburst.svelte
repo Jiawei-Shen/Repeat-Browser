@@ -41,6 +41,12 @@
     }
     const REPEAT_list = treeTolist(REPEATS);
     const mm10REPEAT_list = treeTolist(mm10REPEATS);
+    let searchTEList;
+    if($Cart.biosample === 'Human'){
+        searchTEList = REPEAT_list;
+    } else {
+        searchTEList = mm10REPEAT_list;
+    }
 
     function handleSelected(input) {
         const selected_array = [...input.data.children];
@@ -48,19 +54,20 @@
             const cartRepeatsName = $Cart.repeats.map(x => x.name);
             return !cartRepeatsName.includes(x.name);
         })
-        Cart.addRepeats([...new Set([...$Cart.repeats.filter(r => {
+        Cart.addRepeats(Array.from(new Set([...$Cart.repeats.filter(r => {
             let repeat_name = r.name;
             let input_names = selected_array.map(e => e.name);
             // console.log(repeat_name, input_names);
             return input_names.indexOf(repeat_name) === -1;
-        }), ...filteredInput])]);
+        }), ...filteredInput].map(JSON.stringify))).map(JSON.parse));
         // Cart.addRepeats([...new Set([...$Cart.repeats, input.data.children])]);
     }
 
     function handleChildSelected(input) {
         const cartRepeatsName = $Cart.repeats.map(x => x.name);
         if(!cartRepeatsName.includes(input.data.name)){
-            Cart.addRepeats([...new Set([...$Cart.repeats, input.data])]);
+            Cart.addRepeats(Array.from(new Set([...$Cart.repeats, input.data].map(JSON.stringify))).map(JSON.parse));
+            // Cart.addRepeats([...new Set([...$Cart.repeats, input.data])]);
         }
     }
 
@@ -310,6 +317,31 @@
         return svg.node();
     }
 
+    let fileContent = '';
+    let fileInput = '';
+    let txtRepeatSubfam = [];
+    let txtRepeatsList = [];
+
+    function handleFileUpload(event) {
+        const file = fileInput.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                fileContent = reader.result;
+                txtRepeatSubfam = fileContent.split('\t');
+                txtRepeatsList = REPEAT_list.filter(r => {
+                    return txtRepeatSubfam.includes(r.name)
+                });
+                Cart.addRepeats(Array.from(new Set([...$Cart.repeats, ...txtRepeatsList].map(JSON.stringify))).map(JSON.parse))
+            };
+            reader.readAsText(file);
+        }
+
+        fileInput.value = '';
+    }
+
     let cartRepeats;
     const unsubscribe = Cart.subscribe(async store => {
         const { repeats } = store;
@@ -350,23 +382,46 @@
 </style>
 
 
-<div class="flex flex-col justify-center w-full px-4 ml-2" id="repeats-search">
-    <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white max-w-sm w-full">
-        <h5 class="py-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Repeats Search</h5>
+<div class="flex">
+    <div class="flex-auto flex-col justify-center w-full px-4 ml-2" id="repeats-search">
+        <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white max-w-sm w-full">
+            <h5 class="py-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Repeats Search</h5>
+        </div>
+        <div class="block pt-4 rounded-b shadow-lg bg-white max-w-sm w-full px-4">
+                <Typeahead
+                        label="Repeats Search"
+                        hideLabel
+                        placeholder={`Search Repeats (e.g. "MER125")`}
+                        data={searchTEList}
+                        extract={(item) => item.name}
+                        on:select={({ detail }) => {
+                                Cart.addRepeats(Array.from(new Set([...$Cart.repeats, detail.original].map(JSON.stringify))).map(JSON.parse))
+                            }}
+                        on:clear={() => events = [...events, "clear"]}
+                />
+            <p class="px-4 text-sm text-gray-400"> You can click the repeat in the dropdown to add it. </p>
+        </div>
     </div>
-    <div class="block pt-4 rounded-b shadow-lg bg-white max-w-sm w-full px-4">
-            <Typeahead
-                    label="Repeats Search"
-                    hideLabel
-                    placeholder={`Search Repeats (e.g. "MER125")`}
-                    data={REPEAT_list}
-                    extract={(item) => item.name}
-                    on:select={({ detail }) => {
-                            Cart.addRepeats([...new Set([...$Cart.repeats, detail.original])]);
-                        }}
-                    on:clear={() => events = [...events, "clear"]}
-            />
-        <p class="px-4 text-sm text-gray-400"> You can click the repeat in the dropdown to add it. </p>
+
+    <div class="flex-auto flex-col justify-center w-full px-4 ml-2" id="repeats-txt">
+        <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white max-w-sm w-full">
+            <h5 class="py-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Upload Subfamilies txt File</h5>
+        </div>
+        <div class="block pt-4 rounded-b shadow-lg bg-white max-w-sm w-full px-4">
+            <input bind:this={fileInput} class="px-4 py-2" type="file" accept=".txt" on:change={handleFileUpload}>
+            <p class="px-4 text-sm text-gray-400">
+                You can upload a .txt file that contains a list of Repeat Subfamily names separated by a tab character ('\t').
+<!--                The Repeat Browser will then input these Repeat Subfamilies (please be cautious about the specified species!).-->
+                e.g: LTR12\tMER12
+            </p>
+
+            {#if fileContent}
+                <div class="border-gray-500">
+                    <h2>File Content:</h2>
+                    <pre>{fileContent}</pre>
+                </div>
+            {/if}
+        </div>
     </div>
 </div>
 

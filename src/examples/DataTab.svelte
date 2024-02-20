@@ -2,8 +2,9 @@
     import Modal from '../ui/Modal.svelte';
     import PivotTable from '../components/data-view/PivotTable.svelte';
     import DataSelectTable from  '../components/data-view/dataSelectTable.svelte';
+    // import _data from "../json/main0216.json";
     import _data from "../json/main.json";
-    import _data2 from "../json/rpbr_data/merged_data.json"
+    // import _data2 from "../json/rpbr_data/merged_data.json"
     import defaultData from '../json/zarr_data_1027.json';
     // import defaultData from '../json/default_data0214.json';
     // import defaultData from '../json/test_TF_data0307.json';
@@ -92,7 +93,7 @@
     <div class="flex flex-col justify-center" style="width: 67%">
         <div class="flex flex-col justify-center w-full px-4">
             <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white w-full">
-                <h5 class="text-gray-900 text-xl leading-tight font-medium py-2">Files Selection:</h5>
+                <h5 class="text-gray-900 text-xl leading-tight font-medium py-2">Data Selection:</h5>
             </div>
             <div class="block p-4 rounded-b shadow-lg bg-white max-w-sm w-full" id="default-data-table">
                 <Modal>
@@ -105,7 +106,7 @@
 
     <div class="flex flex-col " style="width: 33%; min-width: 340px;">
         <div class="bg-gray-200 block px-4 rounded-t shadow-lg w-full">
-            <h5 class="text-gray-900 text-xl leading-tight font-medium py-2">Selected Files: {cartData.length}</h5>
+            <h5 class="text-gray-900 text-xl leading-tight font-medium py-2">Selected Data: {cartData.length}</h5>
         </div>
         <div class="max-w-sm rounded-b block shadow-lg">
             <div class="block rounded-t bg-white max-w-sm w-full px-4" id="data-file-virtualist">
