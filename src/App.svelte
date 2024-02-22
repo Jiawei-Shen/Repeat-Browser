@@ -1,5 +1,5 @@
 <script>
-  import { Router, Route, link } from "svelte-routing";
+  import {Router, Route, link, navigate} from "svelte-routing";
   import {Cart} from "/src/stores/CartStore";
   import Footer from "./ui/footer.svelte"
   import Myapp from "./myapp"
@@ -7,7 +7,26 @@
   import Input from "./ui/Layout/InputLayout.svelte"
   import Visual from "./ui/Layout/VisualLayout.svelte"
   import {Graphic} from '@smui/list';
-  import Select, { Option } from '@smui/select';
+
+  let cartData;
+  let cartRepeats
+  const unsubscribe = Cart.subscribe(async store => {
+    const { data, repeats } = store;
+    cartData = data;
+    cartRepeats = repeats;
+  })
+
+  function altertNum(){
+    let rna_data = cartData.filter((el) => (el.Assay.includes("CAGE") || el.Assay.includes("RNA")));
+    let dna_data = cartData.filter((el) => !(el.Assay.includes("CAGE") || el.Assay.includes("RNA")));
+    if((dna_data.length < 2 && rna_data.length < 2) || (cartRepeats < 2)){
+      var result = alert("Please select at least two data and two repeats!");
+      navigate("/input/data");
+      console.log("Performing function for OK.");
+    } else {
+      navigate("/visual/heatmap");
+    }
+  }
 
   export let url = "";
 </script>
@@ -35,7 +54,7 @@
         Input Data: {$Cart.data.length} Files and {$Cart.repeats.length} Repeats
       </a>
       <!--            <a href="#" class="hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Data Visualization</a>-->
-      <a href="/visual/heatmap" use:link class="block mt-4 lg:inline-block lg:mt-0 hover:bg-sky-500 px-3 py-2 rounded-md text-sm font-medium text-white mr-4">
+      <a on:click={altertNum} use:link class="block mt-4 lg:inline-block lg:mt-0 hover:bg-sky-500 px-3 py-2 rounded-md text-sm font-medium text-white mr-4">
         <i class="fa fa-fw fa-chart-line"></i>
         Data Visualization
       </a>
@@ -56,7 +75,7 @@
 
 <Router url="{url}">
   <!-- admin layout -->
-  <Route path="browser" component="{Browser}" />
+<!--  <Route path="browser" component="{Browser}" />-->
   <Route path="input/*input" component="{Input}" />
   <Route path="visual/*visual" component="{Visual}" />
 

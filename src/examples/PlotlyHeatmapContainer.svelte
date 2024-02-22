@@ -15,14 +15,17 @@
   import Button, { Label } from '@smui/button';
   import Switch from '@smui/switch';
   import FormField from '@smui/form-field';
+  import { createEventDispatcher } from 'svelte'
   import {heatmapTour} from '../api/toursteps'
   // library for creating dropdown menu appear on click
   import { createPopper } from "@popperjs/core";
   import {make_clust} from "../api/clusterHeatmap"
   import ClusterHeatmap from "./clusterHeatmap.svelte"
+  import {navigate} from "svelte-routing";
   // import Clustergrammer from "clustergrammer"
 
   // core components
+  const dispatch = createEventDispatcher()
 
   let dropdownPopoverShow = false;
 
@@ -43,6 +46,7 @@
   let menu: MenuComponentDev;
   // let clicked = 'DNA';
   let checked = false;
+  let alterNumFlag = false;
   // let scale_max = 2;
 
   let dataPromise_dna, dataPromise_rna;
@@ -55,6 +59,14 @@
 
   let cartData;
   let cartRepeats;
+
+  function functionWithOK() {
+      var result = alert("Please select at least two data and two repeats!");
+      navigate("/input/data");
+      console.log("Performing function for OK.");
+      return 0
+  }
+
   const unsubscribe = Cart.subscribe(async store => {
     loaded = [false, false];
     const { data, repeats } = store;
@@ -69,8 +81,16 @@
     if (data.length > 0 && repeats.length > 0) {
       //dataPromise = getDataForHeatmapAll(data, 'subfamStat', repeats);
       // dataPromise = getZarrForHeatmapAll(debug_data.files, 'Zarr', repeats);
-      let rna_data = data.filter((el) => el.Assay.includes("CAGE"));
-      let dna_data = data.filter((el) => !el.Assay.includes("CAGE"));
+      let rna_data = data.filter((el) => (el.Assay.includes("CAGE") || el.Assay.includes("RNA")));
+      let dna_data = data.filter((el) => !(el.Assay.includes("CAGE") || el.Assay.includes("RNA")));
+        // if(dna_data.length < 2 && rna_data.length < 2){
+        //     // dispatch('alterOK', {
+        //     //     text: "/input/data"
+        //     // });
+        //     functionWithOK()
+        //     alert("Please select at least two data and two repeats!");
+        //     // return 0
+        // }
       if (!(dna_data === undefined || dna_data.length == 0)){
           if(dna_data.length == 1){
               dna_data.push(dna_data[0])
@@ -112,6 +132,7 @@
   }
 
   onMount(unsubscribe);
+
 </script>
 
 {#await heatmap_json_dna}
@@ -183,7 +204,7 @@
     {#if loaded[0] && $Cart.assay === 'DNA-seq'}
         <!--{#if loaded[0] && loaded[1]}-->
         <ClusterHeatmap on:tileClick inputJson={heatmap_json_dna}/>
-    {:else if loaded[1] && $Cart.assay === 'Cage-seq'}
+    {:else if loaded[1] && ($Cart.assay === 'Cage-seq' || $Cart.assay === 'RNA-seq')}
         <ClusterHeatmap on:tileClick inputJson={heatmap_json_rna}/>
     {:else}
         <div class="relative">

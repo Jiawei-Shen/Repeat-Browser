@@ -140,7 +140,7 @@
                              repeat={""} yrange={y_genomecopy_range} selectrange={selectedRange} index=0 />
                 {#key $Cart.consensuslist.length}
                   {#each $Cart.consensuslist as consensusData, index}
-                    {#if consensusData.fileName.includes("RNA-seq")}
+                    {#if consensusData.fileName.includes("RNA-seq") || consensusData.fileName.includes("Cage")}
                       <PlotlyAreaChart consensusData={[consensusData.all_plus, consensusData.unique_plus]} data={consensusData.fileId} name={consensusData.fileName + "(+ strand)"}
                                        repeat={combination.repeat} yrange={maxValue} selectrange={selectedRange} index={index}+1 />
                       <PlotlyAreaChart consensusData={[consensusData.all_minus, consensusData.unique_minus]} data={consensusData.fileId} name={consensusData.fileName + "(- strand)"}

@@ -20,9 +20,9 @@
     } from '@smui/card';
     import Button, { Label } from '@smui/button';
     import Fab from '@smui/fab';
-    import Textfield from '@smui/textfield';
-    import Paper, { Title, Content } from '@smui/paper';
-    import HelperText from '@smui/textfield/helper-text';
+    // import Textfield from '@smui/textfield';
+    // import Paper, { Title, Content } from '@smui/paper';
+    // import HelperText from '@smui/textfield/helper-text';
     import IconButton, { Icon } from '@smui/icon-button';
     import LayoutGrid, { Cell } from '@smui/layout-grid';
     import VirtualList from 'svelte-tiny-virtual-list';
@@ -110,7 +110,8 @@
         </div>
         <div class="max-w-sm rounded-b block shadow-lg">
             <div class="block rounded-t bg-white max-w-sm w-full px-4" id="data-file-virtualist">
-                <VirtualList
+                {#if cartData.length > 0}
+                    <VirtualList
                         height={200}
                         width=100%
                         itemCount={cartData.length}
@@ -136,6 +137,7 @@
                         </span>
                     </div>
                 </VirtualList>
+                {/if}
                 <hr />
             </div>
             <div class="px-6 py-4">

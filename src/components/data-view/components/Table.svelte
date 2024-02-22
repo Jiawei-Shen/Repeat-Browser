@@ -153,13 +153,13 @@
             <td class="id"><strong><em>#{row.id}</em></strong></td>
             <td class="Assay">{row.Assay}</td>
             <td class="Biosample_type">{row.Biosample}</td>
-            {#if row.Assay === "ATAC-seq" || row.Assay === "DNase-seq"}
+            {#if row.Assay === "ATAC-seq" || row.Assay === "DNase-seq" || row.Assay === "CAGE-seq"}
                 <td class="Control">N/A</td>
             {:else}
                 <td class="Control">{row.Control}</td>
             {/if}
             <td class="Organism">{row.Organism}</td>
-            {#if row.Assay === "ATAC-seq" || row.Assay === "DNase-seq"}
+            {#if row.Assay === "ATAC-seq" || row.Assay === "DNase-seq" || row.Assay === "CAGE-seq"}
                 <td class="Target">N/A</td>
             {:else}
                 <td class="Target">{row.Target}</td>

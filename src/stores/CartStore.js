@@ -79,7 +79,7 @@
   Cart.subscribe(value => {
     if(value.data.length > 0){
       localStorage.Cart = JSON.stringify(value);
-      console.log('Recover local storage.', value);
+      // console.log('Recover local storage.', value);
     }
   })
 

@@ -1,24 +1,11 @@
 <script lang="ts">
-  import List, {
-    Group,
-    Item,
-    Graphic,
-    Meta,
-    Label,
-    Separator,
-    Subheader,
-    Text,
-    PrimaryText,
-    SecondaryText
-  } from "@smui/list";
+  import {Label} from "@smui/list";
   import { Cart } from "../stores/CartStore.js";
-  import Button from '@smui/button';
-  import Fab, { Label, Icon } from '@smui/fab';
+  import Fab, { Icon } from '@smui/fab';
   import {onDestroy, onMount} from "svelte";
-  import LayoutGrid, { Cell } from '@smui/layout-grid';
   import VirtualList from 'svelte-tiny-virtual-list';
   import IconButton from '@smui/icon-button';
-  import Menu, {MenuComponentDev} from '@smui/menu';
+  import {MenuComponentDev} from '@smui/menu';
   import fileDownload from 'js-file-download';
   import { v4 as uuidv4 } from 'uuid';
 

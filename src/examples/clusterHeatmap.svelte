@@ -49,9 +49,9 @@
         // console.log(matches[0], e.row);
         // let eName = network_data.row_nodes.filter(x => x.name == e.row)[0]['cat-0'].split(' ').pop();
         let eName = dataID;
-        dispatch('tileClick', { data: eName, repeat: e.col_name, value: e.value});
+        dispatch('tileClick', {data: eName, repeat: e.col_name, value: e.value});
         // dispatch('tileClick', { data: e.row, repeat: e.col, value: e.value});
-        // console.log(e);
+        // console.log({data: eName, repeat: e.col_name, value: e.value});
     }
 
     function make_clust(input_json){
@@ -113,7 +113,7 @@
                                 // console.log('test,dataId:' + dataID);
                             }
                             const res = await fetchConsensusDatabyZarr(tileFile, tileTE, 0);
-                            // console.log(res);
+                            console.log(res);
                             d3.select(this).style('cursor', 'pointer');
                             d3.select(this).on("click", clickTile);
                         } catch (e) {

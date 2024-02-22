@@ -4,8 +4,8 @@
         Content,
         Scrim,
     } from '@smui/drawer';;
-    import List, { Item, Text, Graphic, Separator, Subheader } from '@smui/list';
-    import { Router, Route, link, navigate } from "svelte-routing";
+    import List, { Item, Text, Graphic, Separator} from '@smui/list';
+    import { Router, Route, navigate } from "svelte-routing";
     import {Cart} from "../../stores/CartStore";
     import CartComponent from "../../components/Cart.svelte";
     import Zoom_Sunburst from "../../examples/Zoom_Sunburst.svelte";
@@ -18,7 +18,6 @@
     let heatmapmenu: MenuComponentDev;
     let menu: MenuComponentDev;
     let selected_type = 'Files';
-    let heatmap_type = 'ALL';
 
     let open = true;
 
@@ -44,12 +43,10 @@
                 Cart.setSpecies('Mouse');
                 Cart.addRepeats([]);
                 Cart.addDataItems([]);
-                console.log($Cart.biosample, '--> ');
             } else {
                 Cart.setSpecies('Human');
                 Cart.addRepeats([]);
                 Cart.addDataItems([]);
-                console.log($Cart.biosample, '--> ');
             }
 
         } else {
@@ -169,15 +166,6 @@
                     </Item>
 
                     <Separator />
-
-<!--                    <Item-->
-<!--                            href="javascript:void(0)"-->
-<!--                            on:click="{() => navigate('/')}"-->
-<!--                            activated={active === 'Homepage'}-->
-<!--                    >-->
-<!--                        <Graphic class="material-icons" aria-hidden="true">home</Graphic>-->
-<!--                        <Text>Homepage</Text>-->
-<!--                    </Item>-->
 
                     <Item
                             on:click="{() => functionWithOK()}"

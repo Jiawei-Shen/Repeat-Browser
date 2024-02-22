@@ -1,6 +1,6 @@
 //Todo: change the url after the bigwig file is ready!
 
-export const createSession = function(input, count, subfam, assembly, uuid) {
+export const createSession = function(input, count, subfam, assembly, uuid, wigURL='') {
   // console.log(input, subfam);
   const allDataPoints = input.map(chr => {
     if(chr.values){
@@ -62,6 +62,9 @@ export const createSession = function(input, count, subfam, assembly, uuid) {
   if (assay.includes('cage')) assay = "cage-seq";
   if (assay.includes('chip')) assay = `${assay.split(" ")[1]}/${assay.split(" ")[0]}`;
 
+  if(wigURL != ""){
+    bigwig_url = wigURL;
+  }
   // let url = `https://wangftp.wustl.edu/~scheng/repeat_browser/${organism}/${assay}/Processed_${dataInfo.id}/${dataInfo.id}_bigwig/${dataInfo.id}.sorted.iteres.unique.bigWig`;
   // if (assay.includes('chip')) url = `https://wangftp.wustl.edu/~scheng/repeat_browser/${organism}/${assay}/Processed_${dataInfo.id}_signal/${dataInfo.id}_singal_bigwig/signal/${dataInfo.id}_signal.sorted.iteres.unique.bigWig`;
 

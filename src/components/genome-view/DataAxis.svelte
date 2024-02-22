@@ -3,6 +3,9 @@
     import {onMount, afterUpdate} from 'svelte';
     import Plotly from "plotly.js";
     import { Cart, genomeModal } from "../../stores/CartStore";
+    // import WigURLModal from './WigURLModal.svelte';
+    import Dialog, { Title, Content, Actions } from '@smui/dialog';
+    import Button, { Label } from '@smui/button';
     import { createSession } from './createSession';
     import chromosomesLength from "../../json/chromosomes_length.json";
     import uuid from "uuid";
@@ -15,6 +18,9 @@
     import ElementScreenshot from '../../examples/ElementScreenshot.svelte';
 
     let checkedLollipop = true;
+    // let showWigURLModal = false;
+    let openWigURLModal = false;
+    let wigURL = "";
 
     export let data;
     export let repeat;
@@ -43,7 +49,16 @@
         return Math.log2(RPKM / averageValue + 1) * meanPixel
     }
 
-    async function dotClick(data){
+    let dotData;
+    function dotClick(data){
+        openWigURLModal = true;
+        dotData = data;
+    }
+
+    async function wigURLModalfunc(){
+        UUID = uuid.v4();
+        const data = dotData;
+        // console.log(wigURL);
         var pts = '';
         for(var i=0; i < data.points.length; i++){
             pts = 'x = '+data.points[i].x +'\ny = '+
@@ -71,9 +86,9 @@
             // organism = 'mouse'
             assembly = assembly
         }
-        let sessionFile = createSession(sessionInput, 1, repeat, assembly, UUID);
+        let sessionFile = createSession(sessionInput, 1, repeat, assembly, UUID, wigURL);
         // let sessionFile = createSession(sessionInput, 1, repeat, UUID);
-        alert("Jumping to the WashU Epigenome Browser!");
+        // alert("Jumping to the WashU Epigenome Browser!");
 
         // const form = new FormData();
         // form.append("_id", `${UUID}`);
@@ -84,6 +99,7 @@
                 "content": JSON.parse(sessionFile)
             }
         }
+        console.log(form);
         let jsonForm = JSON.stringify(form)
         // console.log(form);
         const url_submit="https://hcwxisape8.execute-api.us-east-1.amazonaws.com/dev/datahub/";
@@ -104,8 +120,6 @@
     let axisRange=[1, chromosomesLength[selectedChromosome]];
 
     onMount(() =>{
-        UUID = uuid.v4();
-
         let testData = [];
         let lollipopShape = [];
         data.forEach(d => {
@@ -160,6 +174,7 @@
         })
 
         function writeSelectedRange() {
+            console.log()
             var r = ideogram.selectedRegion;
             axisRange = [r.from, r.to];
             console.log(axisRange);
@@ -176,7 +191,7 @@
             organism: $Cart.biosample.toLowerCase(),
             assembly: specy,
             chromosome: selectedChromosome.replace('chr', ''),
-            brush: `${selectedChromosome}:1-${chromosomesLength[selectedChromosome]}`, // https://www.ncbi.nlm.nih.gov/dbvar/variants/nsv916356
+            brush: `${selectedChromosome}:1-${testData[0].x[testData[0].x.length - 1]}`, // https://www.ncbi.nlm.nih.gov/dbvar/variants/nsv916356
             chrHeight: ideoWidth - 100,
             chrMargin: 0,
             // chrWidth: 6,
@@ -187,6 +202,8 @@
         };
 
         var ideogram = new Ideogram(ideo_config);
+        const maxLength = ideogram.maxLength;
+        console.log(ideogram, maxLength.bp);
 
         let lollipopPlot;
         let myPlot
@@ -240,7 +257,6 @@
             },
             title:`Genome View on Chromosome ${selectedChromosome.replace('chr', '')}`
         };
-
         if(checkedLollipop){
             Plotly.newPlot('multiDataLollipopChart', testData, lollipopLayout, {displaylogo: false});
             lollipopPlot.on('plotly_click', dotClick);
@@ -251,7 +267,6 @@
     })
 
     afterUpdate(() =>{
-        UUID = uuid.v4();
         let layout = {};
 
         // function writeSelectedRange() {
@@ -434,3 +449,28 @@
         <span>{axisRange[0]}</span>-<span>{axisRange[1]}</span>
     </div>
 </div>
+
+<Dialog
+        bind:open={openWigURLModal}
+        aria-labelledby="simple-title"
+        aria-describedby="simple-content"
+>
+    <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+    <Title id="simple-title">Dialog Title</Title>
+    <Content id="simple-content">
+        You can input your bigwig file URL (optional). <br >
+        Click "OK" and navigate to the WashU Epigenome Browser.
+        <div>
+            <label for="website" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Wig File URL</label>
+            <input type="url" id="website" bind:value={wigURL} class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Optional" required />
+        </div>
+    </Content>
+    <Actions>
+        <Button on:click={wigURLModalfunc}>
+            <Label>OK</Label>
+        </Button>
+        <Button on:click={()=>{openWigURLModal=false}}>
+            <Label>Cancel</Label>
+        </Button>
+    </Actions>
+</Dialog>

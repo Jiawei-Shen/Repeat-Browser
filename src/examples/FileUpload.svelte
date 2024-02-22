@@ -10,14 +10,14 @@
         Content,
         Actions,
     } from '@smui/card';
-    import Button, { Label } from '@smui/button';
-    import Textfield from '@smui/textfield';
-    import Paper, { Title, Content } from '@smui/paper';
-    import HelperText from '@smui/textfield/helper-text';
-    import IconButton, { Icon } from '@smui/icon-button';
-    import LayoutGrid, { Cell } from '@smui/layout-grid';
-    import VirtualList from 'svelte-tiny-virtual-list';
-    import { navigate } from "svelte-routing";
+    // import Button, { Label } from '@smui/button';
+    // import Textfield from '@smui/textfield';
+    // import Paper, { Title, Content } from '@smui/paper';
+    // import HelperText from '@smui/textfield/helper-text';
+    // import IconButton, { Icon } from '@smui/icon-button';
+    // import LayoutGrid, { Cell } from '@smui/layout-grid';
+    // import VirtualList from 'svelte-tiny-virtual-list';
+    // import { navigate } from "svelte-routing";
     import {Cart} from "../stores/CartStore";
     import {onDestroy, onMount} from "svelte";
     import defaultData from "../json/default_cart_data.json";

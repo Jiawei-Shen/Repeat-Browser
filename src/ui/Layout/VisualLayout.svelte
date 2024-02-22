@@ -83,6 +83,17 @@
     //     Cart.addRepeats(defaultData.repeats);
     // })
 
+    // function alterHeatmap(event) {
+    //     var result = window.confirm("Please select at least two data and two repeats!");
+    //     if (result) {
+    //         // OK action
+    //         tab_active = tabs[0];
+    //         console.log(event.detail.text);
+    //         navigate(event.detail.text);
+    //     }
+    //     return 0
+    // }
+
     // Function with OK action
     function functionWithOK() {
         var result = window.confirm("Are you sure you want to change the species? \nAll the data will be reset, please save a session file first!\n Click cancel will jump to saving the session file. \n Click OK to continue.");
@@ -110,7 +121,6 @@
 
     function handleHeatmapClick(event) {
         combination = event.detail;
-        console.log('Click Test', event);
         active = 'Consensus View';
     }
 
