@@ -1,5 +1,5 @@
 <script>
-  import { onMount, afterUpdate, } from "svelte";
+  import { onMount, afterUpdate, createEventDispatcher} from "svelte";
   import Plotly from "plotly.js";
   import RangeSlider from "../examples/rangeSlider.svelte";
 
@@ -10,6 +10,10 @@
   export let selectrange;
   export let index;
 
+  const dispatch = createEventDispatcher();
+
+  let userSelectedColor = '#E1B0B0'; 
+
   onMount(() => {
     const all = consensusData[0];
     const unique = consensusData[1];
@@ -17,13 +21,15 @@
         y: all.map((d, i) => d),
         x: all.map((d, i) => i),
         fill: "tonexty",
-        fillcolor:'#E1B0B0',
+        fillcolor:userSelectedColor,
         type: "scatter",
         mode: "none",
         name: "All reads",
         line: {
-            color: '#E1B0B0'
+            color: 'userSelectedColor'
         },
+        
+        
     };
 
     // const trace2 = {
@@ -51,11 +57,29 @@
     // let _data = [trace1, trace2];
       let _data = [trace1]
 
-    Plotly.newPlot("area-div" + index, _data, layout, {displayModeBar: true, displaylogo: false});
+    /*Plotly.newPlot("area-div" + index, _data, layout, {displayModeBar: true, displaylogo: false})
+    .then(function(chartInstance) {
+    chartInstance.on('plotly_relayout', function(eventData) {
+      // Check if the event data includes x-axis range updates
+      if (eventData['xaxis.range[0]'] && eventData['xaxis.range[1]']) {
+        console.log('Updated X-Axis Range:', eventData['xaxis.range[0]'], eventData['xaxis.range[1]']);
+        dispatch('rangesupdate', { selectedRange });
+      }
+    });
+  });
+  });*/
+
+  Plotly.newPlot("area-div" + index, _data, layout).then(chart => {
+      chart.on('plotly_relayout', eventData => {
+          const selectedRange = [eventData['xaxis.range[0]'], eventData['xaxis.range[1]']];
+          dispatch('rangesupdate', { selectedRange });
+      });
+    });
   });
 
   afterUpdate(()=>{
-          // console.log(selectrange);
+          console.log("select range after update!!!")
+          console.log(selectrange);
           // const [all, unique] = consensusData;
           const all = consensusData[0];
           const unique = consensusData[1];
@@ -63,13 +87,14 @@
               y: all.map((d, i) => d),
               x: all.map((d, i) => i),
               fill: "tonexty",
-              fillcolor:'#E1B0B0',
+              fillcolor: userSelectedColor,
               type: "scatter",
               mode: "none",
               name: "All reads",
               line: {
-                  color: '#E1B0B0'
+                  color: userSelectedColor
               },
+             
           };
 
           // const trace2 = {
@@ -141,13 +166,25 @@
           // let _data = [trace1, trace2];
           let _data = [trace1];
 
-          Plotly.newPlot("area-div" + index, _data, layout, {displayModeBar: false, displaylogo: false});
-  })
+        
+
+  Plotly.newPlot("area-div" + index, _data, layout).then(chart => {
+      chart.on('plotly_relayout', eventData => {
+          const selectedRange = [eventData['xaxis.range[0]'], eventData['xaxis.range[1]']];
+          dispatch('rangesupdate', { selectedRange });
+      });
+    });
+  });
 </script>
 
 <!--<div id={"area-div"+index} class="relative border-b border-gray-400">-->
 <!--    {data}:-->
 <!--</div>-->
+
+<div style="display: flex; align-items: center; margin-bottom: 20px;">
+  <label for="colorPicker" style="margin-right: 10px;">Choose plot color:</label>
+  <input id="colorPicker" type="color" bind:value={userSelectedColor}>
+</div>
 
 <div style="display: flex; align-items: flex-start; padding: 5px;" class="border-b border-gray-400">
     <div style="flex: 1; padding-right: 5px; max-width: 65px; font-family:Helvetica Neue, Arial, sans-serif;

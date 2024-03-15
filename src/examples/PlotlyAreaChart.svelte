@@ -1,5 +1,5 @@
 <script>
-  import { onMount, afterUpdate, } from "svelte";
+  import { onMount, afterUpdate, createEventDispatcher} from "svelte";
   import Plotly from "plotly.js";
   import {Cart} from '../stores/CartStore';
   import RangeSlider from "../examples/rangeSlider.svelte";
@@ -11,8 +11,15 @@
   export let yrange;
   export let selectrange;
   export let index;
-
+  console.log("y range is:");
   console.log(yrange);
+  console.log("select range is:");
+  console.log(selectrange);
+
+  const dispatch = createEventDispatcher();
+  
+  let userSelectedColor1 = '#b1c0e2'; 
+  let userSelectedColor2 = '#c5a086';
 
   onMount(() => {
     const [all, unique] = consensusData;
@@ -20,15 +27,18 @@
       y: all.map((d, i) => d.score),
       x: all.map((d, i) => i),
       fill: "tonexty",
+      fillcolor:userSelectedColor1,
       type: "scatter",
       mode: "none",
-      name: "All reads"
+      name: "All reads",
+     
     };
 
     const trace2 = {
       y: unique.map((d, i) => d.score),
       x: unique.map((d, i) => i),
       fill: "tozeroy",
+      fillcolor:userSelectedColor2,
       type: "scatter",
       mode: "none",
       name: 'Unique reads'
@@ -38,9 +48,6 @@
         modebar: {orientation: 'v'},
         margin: {r: 55, b: 30, t: 100},
             legend: {x: 0, y: 1},
-        // xaxis: {
-        //     rangeslider: {}
-        // },
         yaxis: {
             range: [0, yrange],
             linewidth: 100,
@@ -57,8 +64,18 @@
         isHovered = !isHovered;
     }
 
-    Plotly.newPlot("area-div" + index, _data, layout, {displayModeBar: true, displaylogo: false});
+
+    Plotly.newPlot("area-div" + index, data, layout).then(chart => {
+      chart.on('plotly_relayout', eventData => {
+          const selectedRange = [eventData['xaxis.range[0]'], eventData['xaxis.range[1]']];
+          dispatch('rangeupdate', { selectedRange });
+      });
+    });
   });
+
+  
+
+
 
   function extractContentInBrackets(inputString) {
       const regex = /\((.*?)\)/g; // Match anything inside square brackets
@@ -107,15 +124,18 @@
                   y: all.map((d, i) => d.score),
                   x: all.map((d, i) => i),
                   fill: "tonexty",
+                 fillcolor:userSelectedColor1,
                   type: "scatter",
                   mode: "none",
-                  name: "All reads"
+                  name: "All reads",
+                  
           };
 
           const trace2 = {
                   y: unique.map((d, i) => d.score),
                   x: unique.map((d, i) => i),
                   fill: "tozeroy",
+                  fillcolor:userSelectedColor2,
                   type: "scatter",
                   mode: "none",
                   name: 'Unique reads'
@@ -176,9 +196,23 @@
 
           let _data = [trace1, trace2];
 
-          Plotly.newPlot("area-div" + index, _data, layout, {displayModeBar: false, displaylogo: false});
+          Plotly.newPlot("area-div" + index, _data, layout, {displayModeBar: false, displaylogo: false})
+          .then(function(chartInstance) {
+    chartInstance.on('plotly_relayout', function(eventData) {
+        console.log('Updated X-Axis Range:', eventData['xaxis.range[0]'], eventData['xaxis.range[1]']);
+        const selectedRange = [eventData['xaxis.range[0]'], eventData['xaxis.range[1]']];
+        dispatch('rangeupdate', { selectedRange });
+    });
+  });
+
   })
 </script>
+<div style="display: flex; align-items: center; margin-bottom: 20px;">
+    <label for="colorPicker" style="margin-right: 10px;">Choose plot color1:</label>
+    <input id="colorPicker" type="color" bind:value={userSelectedColor1}>
+    <label for="colorPicker" style="margin-right: 10px;">Choose plot color2:</label>
+    <input id="colorPicker" type="color" bind:value={userSelectedColor2}>
+  </div>
 
 <div style="display: flex; align-items: flex-start; padding: 3px; position: relative" class="border-b border-gray-400">
     <div style="flex: 1; padding-right: 5px; max-width: 65px; font-family:Helvetica Neue, Arial, sans-serif;
@@ -197,6 +231,8 @@
             </div>
         </div>
     </div>
+
+  
 
     <div id={"area-div" + index} style="flex: 1; text-align: right;">
         <div class="absolute top-0 right-0">

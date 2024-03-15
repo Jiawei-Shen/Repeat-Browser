@@ -24,16 +24,20 @@
   let y_range_minus;
   let y_genomecopy_range;
   let trackIndex = 0;
-  // let consensusData = undefined;
   let consensusData_list = [];
   export let combination;
-  // console.log(combination);
 
   const SUBFAM = "LTR48B";
   let repeatName;
   let genomeCopyDense;
 
   let selectedRange;
+
+  function handleRangeUpdate(event) {
+    selectedRange = event.detail.selectedRange;
+    // Now `selectedRange` will reflect the updated x-axis range
+    // You can use this updated `selectedRange` as needed within this component
+  }
 
   function getRange(event) {
     selectedRange = event.detail.range;
@@ -131,17 +135,17 @@
 <!--                <RangeSlider on:range={getRange} inputRange={genomeCopyDense.length}-->
 <!--                             inputData={genomeCopyDense.map(Number)}/>-->
               </div>
-              <PlotlyTrack consensusData={[genomeCopyDense.map(Number), genomeCopyDense.map(Number)]} data={"Genome Coverage"}
+              <PlotlyTrack on:rangesupdate={handleRangeUpdate} consensusData={[genomeCopyDense.map(Number), genomeCopyDense.map(Number)]} data={"Genome Coverage"}
                            repeat={""} yrange={y_genomecopy_range} selectrange={selectedRange} index=0 />
               {#key $Cart.consensuslist.length}
                 {#each $Cart.consensuslist as consensusData, index}
                   {#if consensusData.fileName.includes("RNA-seq")}
-                    <PlotlyAreaChart consensusData={[consensusData.all_plus, consensusData.unique_plus]} data={consensusData.fileId} name={consensusData.fileName + "(+ strand)"}
+                    <PlotlyAreaChart on:rangeupdate={handleRangeUpdate} consensusData={[consensusData.all_plus, consensusData.unique_plus]} data={consensusData.fileId} name={consensusData.fileName + "(+ strand)"}
                                      repeat={combination.repeat} yrange={maxValue} selectrange={selectedRange} index={index}+1 />
-                    <PlotlyAreaChart consensusData={[consensusData.all_minus, consensusData.unique_minus]} data={consensusData.fileId} name={consensusData.fileName + "(- strand)"}
+                    <PlotlyAreaChart on:rangeupdate={handleRangeUpdate} consensusData={[consensusData.all_minus, consensusData.unique_minus]} data={consensusData.fileId} name={consensusData.fileName + "(- strand)"}
                                      repeat={combination.repeat} yrange={maxValue} selectrange={selectedRange} index={index}+2 />
                   {:else}
-                    <PlotlyAreaChart consensusData={[consensusData.all, consensusData.unique]} data={consensusData.fileId} name={consensusData.fileName}
+                    <PlotlyAreaChart on:rangeupdate={handleRangeUpdate} consensusData={[consensusData.all, consensusData.unique]} data={consensusData.fileId} name={consensusData.fileName}
                                      repeat={combination.repeat} yrange={maxValue} selectrange={selectedRange} index={index}+1 />
                   {/if}
 <!--                    <PlotlyAreaChart consensusData={[consensusData.all, consensusData.unique]} data={consensusData.fileId} name={consensusData.fileName}-->
