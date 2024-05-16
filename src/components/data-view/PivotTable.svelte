@@ -2,11 +2,11 @@
   import TableRenderer from './TableRenderer.svelte';
   import { getContext } from 'svelte';
   import DataCenter from '../../DataCenter.svelte';
-  export let DATA;
+  let DATA;
   let dataFormatted;
   $: {
     dataFormatted = {
-      data: DATA,
+      // data: DATA,
       rows: ["Assay", "Biosample_type"],
       cols: ["Organism"],
       hiddenFromDragDrop: []

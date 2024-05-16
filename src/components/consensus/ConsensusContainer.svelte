@@ -2,7 +2,7 @@
   import {onMount, onDestroy, getContext, afterUpdate} from "svelte";
   import {fetchConsensusData, fetchConsensusDatabyZarr} from "./utils";
   import PlotlyAreaChart from "../../examples/PlotlyAreaChart.svelte";
-  import ConsensusAddTrackModal from "../../ui/concensusAddTrackModal.svelte";
+  // import ConsensusAddTrackModal from "../../ui/concensusAddTrackModal.svelte";
   import AddTrack from "../../ui/addTrack.svelte";
   import DataCenter from '../../DataCenter.svelte';
   import Modal from '../../ui/Modal_1_3.svelte';
@@ -10,8 +10,8 @@
   import RangeSlider from "../../examples/rangeSlider.svelte";
   import RangeRuler from  "../../examples/rangeRuler.svelte";
   import LinearProgress from "../../ui/LinearProgress.svelte";
-  import hg38GenomeCopydensity from "../../json/hg38GenomeCopyDensity.json"
-  import mm10GenomeCopydensity from "../../json/mm10GenomeCopyDensity.json"
+  // import hg38GenomeCopydensity from "../../json/hg38GenomeCopyDensity.json"
+  // import mm10GenomeCopydensity from "../../json/mm10GenomeCopyDensity.json"
   import debug_data from "../../json/subfam_stat_debug.json";
   import {Cart, consensusModal} from '../../stores/CartStore';
   import PlotlyTrack from "../../examples/PlotlyTrack.svelte";
@@ -41,7 +41,27 @@
     return event.detail.range
   }
 
+  async function fetchJsonData(url) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const jsonData = await response.json();
+      return jsonData;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      return null; // Return null or appropriate error handling
+    }
+  }
+
+  let hg38GenomeCopydensity;
+  let mm10GenomeCopydensity;
+
   onMount(async () => {
+    hg38GenomeCopydensity = await fetchJsonData("https://wangftp.wustl.edu/~jshen/rb_GenomeCopyDense/hg38GenomeCopyDensity.json");
+    mm10GenomeCopydensity = await fetchJsonData("https://wangftp.wustl.edu/~jshen/rb_GenomeCopyDense/mm10GenomeCopyDensity.json");
+
     const {data, repeat} = combination;
     repeatName = repeat;
     const dataFile = $Cart.data.filter(file => file.id === data);
@@ -157,7 +177,7 @@
                 {/key}
               </div>
               <Modal show={$consensusModal}>
-                <AddTrack repeat={combination.repeat}/>
+                <AddTrack repeat={combination.repeat} hg38CopyDense={hg38GenomeCopydensity}/>
               </Modal>
 
             </div>

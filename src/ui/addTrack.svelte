@@ -4,11 +4,13 @@
     import ConsensusAddTrackModal from "./concensusAddTrackModal.svelte";
 
     export let repeat;
+    export let hg38CopyDense;
+    console.log(hg38CopyDense);
 
     const { open } = getContext('simple-modal');
 
     const showPopup = () => {
-        open(ConsensusAddTrackModal, { repeat: repeat });
+        open(ConsensusAddTrackModal, { repeat: repeat, hg38GenomeCopydensity: hg38CopyDense});
     };
 </script>
 

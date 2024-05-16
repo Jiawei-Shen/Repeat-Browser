@@ -2,7 +2,7 @@
   import { beforeUpdate, createEventDispatcher } from "svelte";
   import { PivotData } from "./Utilities";
   // import _data2 from "../../../src/json/rpbr_data/merged_data.json"
-  import _data2 from "../../../src/json/main0216.json";
+  // import _data2 from "../../../src/json/main0216.json";
   import _data2 from "../../../src/json/rpbr_data/all_data_withoutFantom.json"
   import { spanSize } from "./helper";
   import { formatCellInfo, getFiltered } from './data-helper';
@@ -66,28 +66,28 @@
   ]
 
   const dispatch = createEventDispatcher();
-  export let data;
+  // export let data;
 
-  let pivotData = new PivotData(data);
-  let colAttrs = pivotData.props.cols;
-  let rowAttrs = pivotData.props.rows;
-  let rowKeys = pivotData.getRowKeys();
-  let colKeys = pivotData.getColKeys();
+  // let pivotData = new PivotData(data);
+  // let colAttrs = pivotData.props.cols;
+  // let rowAttrs = pivotData.props.rows;
+  // let rowKeys = pivotData.getRowKeys();
+  // let colKeys = pivotData.getColKeys();
+  //
+  // beforeUpdate(() => {
+  //   pivotData = new PivotData(data);
+  //   colAttrs = pivotData.props.cols;
+  //   rowAttrs = pivotData.props.rows;
+  //   rowKeys = pivotData.getRowKeys();
+  //   colKeys = pivotData.getColKeys();
+  //
+  //   console.log(rowKeys)
+  // });
 
-  beforeUpdate(() => {
-    pivotData = new PivotData(data);
-    colAttrs = pivotData.props.cols;
-    rowAttrs = pivotData.props.rows;
-    rowKeys = pivotData.getRowKeys();
-    colKeys = pivotData.getColKeys();
-
-    console.log(rowKeys)
-  });
-
-  function handleCellClick(input) {
-      let filteredResults = getFiltered(data.data, input);
-      dispatch('cell-click', filteredResults);
-  }
+  // function handleCellClick(input) {
+  //     let filteredResults = getFiltered(data.data, input);
+  //     dispatch('cell-click', filteredResults);
+  // }
 
 
   function handleCellClickNew(input) {

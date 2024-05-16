@@ -4,12 +4,14 @@
     import VirtualList from 'svelte-tiny-virtual-list';
     import IconButton from '@smui/icon-button';
     import {fetchConsensusDatabyZarr} from "../components/consensus/utils";
-    import hg38GenomeCopydensity from "../json/hg38GenomeCopyDensity.json"
+    // import hg38GenomeCopydensity from "../json/hg38GenomeCopyDensity.json"
     import Typeahead from "svelte-typeahead";
     import { Jumper } from 'svelte-loading-spinners';
     import Button, { Label, Icon } from '@smui/button';
 
     export let repeat;
+    export let hg38GenomeCopydensity;
+    console.log(hg38GenomeCopydensity);
     let cartData;
     let cartRepeats;
     let maxValue;
@@ -38,10 +40,27 @@
         // Cart.updateConsensusTrack(res);
     }
 
-    onMount(()=>{
-        // console.log(Cart.consensuslist)
-        // Cart.updateConsensusTrack([...new Set([...$Cart.consensuslist, "data"])]);
-    })
+    async function fetchJsonData(url) {
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const jsonData = await response.json();
+            return jsonData;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            return null; // Return null or appropriate error handling
+        }
+    }
+
+    // let hg38GenomeCopydensity;
+    //
+    // onMount(async ()=>{
+    //     hg38GenomeCopydensity = await fetchJsonData("https://wangftp.wustl.edu/~jshen/rb_GenomeCopyDense/hg38GenomeCopyDensity.json");
+    //     console.log("Test if this file is used?");
+    //     // Cart.updateConsensusTrack([...new Set([...$Cart.consensuslist, "data"])]);
+    // })
 </script>
 
 <div>

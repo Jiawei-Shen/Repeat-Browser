@@ -1,15 +1,15 @@
 <script lang="ts">
-    import Modal from '../ui/Modal.svelte';
-    import PivotTable from '../components/data-view/PivotTable.svelte';
-    import _data from "../json/main.json";
-    import defaultData from '../json/zarr_data_1027.json';
-    import CardStats from "../components/CardStats.svelte";
-    import IconButton from '@smui/icon-button';
-    import Button, { Label } from '@smui/button';
-    import Card, {
-        Content,
-        Actions,
-    } from '@smui/card';
+    // import Modal from '../ui/Modal.svelte';
+    // import PivotTable from '../components/data-view/PivotTable.svelte';
+    // import _data from "../json/main.json";
+    // import defaultData from '../json/zarr_data_1027.json';
+    // import CardStats from "../components/CardStats.svelte";
+    // import IconButton from '@smui/icon-button';
+    // import Button, { Label } from '@smui/button';
+    // import Card, {
+    //     Content,
+    //     Actions,
+    // } from '@smui/card';
     // import Button, { Label } from '@smui/button';
     // import Textfield from '@smui/textfield';
     // import Paper, { Title, Content } from '@smui/paper';
