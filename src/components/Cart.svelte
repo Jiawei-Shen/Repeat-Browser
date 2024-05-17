@@ -34,17 +34,8 @@
   }
 
   function handleSessionDownload(){
-    // console.log(sessionFile);
-    // sessionFile = `{"species": ${JSON.stringify(cartSpecies)}, "data": ${JSON.stringify(cartData)}, "repeats": ${JSON.stringify(cartRepeats)}}`;
       sessionFile = `{"species": "${cartBiosample}", "data": ${JSON.stringify(cartData)}, "repeats": ${JSON.stringify(cartRepeats)}}`.replace('"', '\"');;
       fileDownload(sessionFile, `${UUID}_data_repeats.json`);
-      console.log(sessionFile);
-  }
-
-  function creaseSessionJson(data, repeats){
-    // console.log(JSON.stringify(data));
-    // const stringData = data.map(d => JSON.stringify(d));
-    // const stringData = data.map(d => JSON.stringify(d));
   }
 
   function showConfirmationRemoveData() {
@@ -70,13 +61,11 @@
     cartRepeats = repeats;
     cartBiosample = biosample;
     sessionFile = `{"species": ${cartBiosample}, "data": ${JSON.stringify(cartData)}, "repeats": ${JSON.stringify(cartRepeats)}}`;
-    // creaseSessionJson(data, repeats);
-    console.log(`species: ${cartBiosample}, data: ${data}`);
   });
 
   onMount(async () => {
     UUID = uuidv4();
-    console.log(UUID);
+    // console.log(UUID);
   })
 
   onDestroy(() => {
@@ -101,23 +90,6 @@
     font-family: -apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
   }
 </style>
-
-
-<!--<div style="min-width: 100px;">-->
-<!--    <Button on:click={() => menu.setOpen(true)}>-->
-<!--      <Label>Mode Selection (Current: {mode})</Label>-->
-<!--    </Button>-->
-<!--    <Menu bind:this={menu}>-->
-<!--      <List>-->
-<!--        <Item on:click={ModeChangeFiles}>-->
-<!--          <Text>Files</Text>-->
-<!--        </Item>-->
-<!--        <Item on:click={ModeChangeExperiments}>-->
-<!--          <Text>Experiments</Text>-->
-<!--        </Item>-->
-<!--      </List>-->
-<!--    </Menu>-->
-<!--</div>-->
 
 
 <div class="flex flex-wrap">
@@ -146,9 +118,6 @@
                                 {:else }
                                     <p className="font-bold text-xs">{cartData[index].Biosample}({cartData[index].Target})</p>
                                 {/if}
-<!--                                <p class="font-bold">File: {cartData[index].id}</p>-->
-                                <!--                                <span class="text-xs">biosample-target</span>-->
-<!--                                <span class="font-bold">{cartData[index].Assay} in {cartData[index].Biosample}<br/></span>-->
                                 <span class="text-xs">Target: {cartData[index].Target}, ID: {cartData[index].id}</span>
                             </span>
                         </span>
@@ -166,7 +135,6 @@
             <h5 class="text-gray-900 text-xl leading-tight font-medium py-2">Repeats: {cartRepeats.length}</h5>
         </div>
         <div class="block rounded-b shadow-lg bg-white max-w-sm w-full px-4">
-<!--            <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">Repeats: {cartRepeats.length}</h5>-->
             <VirtualList
                     height={200}
                     width=100%
@@ -202,8 +170,5 @@
             <Label>Download Session Json File</Label>
         </Fab>
     </div>
-<!--  <div style="margin-left: 40%">-->
-<!--    <Button on:click={handleSessionDownload} variant="raised"> Download Session Json File </Button>-->
-<!--  </div>-->
 {/if}
 

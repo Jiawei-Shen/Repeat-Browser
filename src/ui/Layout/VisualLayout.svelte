@@ -2,41 +2,25 @@
     import Drawer, {
         AppContent,
         Content,
-        Header,
-        Title,
-        Subtitle,
         Scrim,
     } from '@smui/drawer';
-    import THeader from "../../ui/header.svelte"
-    import Footer from "../../ui/footer.svelte"
-    import Fab from '@smui/fab';
     import Button, { Label, Icon } from '@smui/button';
-    import List, { Item, Text, Graphic, Separator, Subheader } from '@smui/list';
-    import { Router, Route, link, navigate } from "svelte-routing";
-    import LayoutGrid, { Cell } from '@smui/layout-grid';
+    import List, { Item, Text, Graphic, Separator } from '@smui/list';
+    import { Router, Route, navigate } from "svelte-routing";
     import PlotlyHeatmapContainer from "../../examples/PlotlyHeatmapContainer.svelte";
     import ConsensusContainer from "../../components/consensus/ConsensusContainer.svelte";
     import GenomeViewContainer from "../../components/genome-view/GenomeViewContainer.svelte";
     import {Cart} from "../../stores/CartStore";
-    import CartComponent from "../../components/Cart.svelte";
-    import defaultData from '../../json/default_cart_data.json';
-    import Zoom_Sunburst from "../../examples/Zoom_Sunburst.svelte";
-    import DataTab from "../../examples/DataTab.svelte";
-    import Menu, {MenuComponentDev} from '@smui/menu';
+    import {MenuComponentDev} from '@smui/menu';
     import Modal from '../../ui/Modal.svelte';
-    import Tab, { Icon, Label } from '@smui/tab';
-    import TabBar from '@smui/tab-bar';
-    import { H6 } from '@smui/common/elements';
     import {onDestroy, onMount} from "svelte";
 
     let typemenu: MenuComponentDev;
     let heatmapmenu: MenuComponentDev;
     let menu: MenuComponentDev;
     let selected_type = 'Files';
-    let heatmap_type = 'ALL';
 
     let open = true;
-    // let active = 'Inbox';
 
     let combination = undefined;
     let drawernames = ['Files Selection', 'Data View', 'Repeats Selection', 'Heatmap', 'Consensus View', 'Genome View']
@@ -63,7 +47,7 @@
     })
 
     onDestroy(() => {
-        unsubscribe();
+        unsubscribe;
     });
 
     let tabs = [
@@ -77,22 +61,6 @@
         },
     ];
     let tab_active = tabs[1];
-
-    // onMount(() => {
-    //     Cart.addDataItems(defaultData.data);
-    //     Cart.addRepeats(defaultData.repeats);
-    // })
-
-    // function alterHeatmap(event) {
-    //     var result = window.confirm("Please select at least two data and two repeats!");
-    //     if (result) {
-    //         // OK action
-    //         tab_active = tabs[0];
-    //         console.log(event.detail.text);
-    //         navigate(event.detail.text);
-    //     }
-    //     return 0
-    // }
 
     // Function with OK action
     function functionWithOK() {
@@ -195,14 +163,6 @@
 
                 <Separator />
 
-<!--                <Item-->
-<!--                        href="javascript:void(0)"-->
-<!--                        on:click="{() => navigate('/')}"-->
-<!--                        activated={active === 'Homepage'}-->
-<!--                >-->
-<!--                    <Graphic class="material-icons" aria-hidden="true">home</Graphic>-->
-<!--                    <Text>Homepage</Text>-->
-<!--                </Item>-->
                 <Item
                         on:click="{() => functionWithOK()}"
                 >
@@ -274,9 +234,6 @@
 </div>
 
 
-
-
-
 <style>
     /* These classes are only needed because the
       drawer is in a container on the page. */
@@ -285,11 +242,8 @@
         margin-top: 2px;
         display: flex;
         height: 85vh;
-        /*max-width: 600px;*/
         border: 1px solid;
         border-color: rgba(189, 195, 199, 0.8);
-        /*border: 1px solid;*/
-        /*var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.1));*/
         overflow: hidden;
         z-index: 0;
     }
@@ -305,32 +259,6 @@
         overflow: auto;
         padding: 16px;
         height: 100%;
-        /*box-sizing: border-box;*/
     }
 
-
-    /*.drawer-container {*/
-    /*    position: relative;*/
-    /*    display: flex;*/
-    /*    height: 350px;*/
-    /*    max-width: 600px;*/
-    /*    border: 1px solid*/
-    /*    var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.1));*/
-    /*    overflow: hidden;*/
-    /*    z-index: 0;*/
-    /*}*/
-
-    /** :global(.app-content) {*/
-    /*    flex: auto;*/
-    /*    overflow: auto;*/
-    /*    position: relative;*/
-    /*    flex-grow: 1;*/
-    /*}*/
-
-    /*.main-content {*/
-    /*    overflow: auto;*/
-    /*    padding: 16px;*/
-    /*    height: 100%;*/
-    /*    box-sizing: border-box;*/
-    /*}*/
 </style>

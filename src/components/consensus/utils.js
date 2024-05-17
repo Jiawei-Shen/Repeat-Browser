@@ -1,11 +1,8 @@
-// import BigSource from '../../dataSource/BigSource';
+
 import BigWigSource from '../../api/BigWigSource';
-import {getZarrdata} from "../../api/getFileAndUnzipAll";
+
 import {openArray} from "zarr";
-// import CONFIG from '../../config/settings.json'
-// import { max } from 'd3-array'
-// import DATA from '../../json/test.datahubs.json';
-// import { Cart } from '../../stores/CartStore';
+
 const fetch = require('node-fetch')
 const zarrRemote = require('zarr-js')(fetch)
 
@@ -15,13 +12,8 @@ const zarrRemote = require('zarr-js')(fetch)
  */
 export const fetchConsensusData = async function (FILE, subfam) {
     const fileId = FILE[0].id;
-    // const FILE = DATA.files.filter(file => file.File_accession === dataId);
-    // const FILE = $Cart.data.filter(file => file.File_accession === dataId);
-    // console.log(FILE);
     const optionsBigWig = {
         url: {
-            // all: `${CONFIG.WEB_ASSETS_URL_AWS}/${dataId}/data.iteres.bigWig`,
-            // unique: `${CONFIG.WEB_ASSETS_URL_AWS}/${dataId}/data.iteres.unique.bigWig`
             all: FILE[0].subfamAll,
             unique: FILE[0].subfamUniq
         },
@@ -32,12 +24,6 @@ export const fetchConsensusData = async function (FILE, subfam) {
             // No need to specifically pass consensus length
         }
     }
-
-    // const dataSource_all = new BigSource(optionsBigWig.url.all);
-    // const dataSource_unique = new BigSource(optionsBigWig.url.unique);
-
-    // let allPromise = dataSource_all.getBigWigData(optionsBigWig.params)
-    // let uniquePromise = dataSource_unique.getBigWigData(optionsBigWig.params)
 
     const dataSource_all = new BigWigSource(optionsBigWig.url.all);
     const dataSource_unique = new BigWigSource(optionsBigWig.url.unique);
@@ -50,13 +36,6 @@ export const fetchConsensusData = async function (FILE, subfam) {
     const [all, unique] = combined;
 
     return { fileId, all, unique };
-    // let toRespond = consolidate(combined)
-    // let maxValue = calcMaxValue(combined)
-
-    // return { 
-    //     data: toRespond,
-    //     max: maxValue
-    // }
 
 }
 
@@ -159,7 +138,6 @@ export const fetchConsensusDatabyZarr = async function (FILE, subfam, data_lengt
     } else {
         name = `${FILE[0].Biosample}(${FILE[0].Target})`
     }
-    // console.log(name);
 
     let return_value;
 
@@ -181,34 +159,25 @@ export const fetchConsensusDatabyZarr = async function (FILE, subfam, data_lengt
         const [signal_all, signal_unique] = signal_combined;
         const [control_all, control_unique] = control_combined;
         const maxValue = Math.max(...signal_combined.map(s => Math.max(...s.map(x => x.score))));
-        console.log(maxValue);
+
         return_value = [{"fileId": fileId + "_signal", "all": signal_all, "unique": signal_unique,maxValue, "fileName": name},
             {"fileId": fileId + "_control", "all": control_all, "unique": control_unique, maxValue, "fileName": name}];
     } else if(assay.includes('RNA') || assay.includes('Cage')){
-        // let allPromise = getZarrWigNew('all_bigwig', subfam, zarr_url, 'RNA');
-        // let uniquePromise = getZarrWigNew('uni_bigwig', subfam, zarr_url, 'RNA');
-        //
-        // let combined = await Promise.all([allPromise, uniquePromise])
-        // const [all, unique] = combined;
-        // return_value = [{fileId, all, unique, "fileName": name}];
-        console.log('The Cage!');
+
         let all_plus_Promise = getZarrWigNew('all+_bigwig', subfam, zarr_url, 'RNA', data_length);
         let all_minus_Promise = getZarrWigNew('all-_bigwig', subfam, zarr_url, 'RNA', data_length);
         let unique_plus_Promise = getZarrWigNew('uni+_bigwig', subfam, zarr_url, 'RNA', data_length);
         let unique_minus_Promise = getZarrWigNew('uni-_bigwig', subfam, zarr_url, 'RNA', data_length);
 
-        console.log(all_minus_Promise);
 
         let combined = await Promise.all([all_plus_Promise, all_minus_Promise, unique_plus_Promise, unique_minus_Promise]);
         const [all_plus, all_minus, unique_plus, unique_minus] = combined;
 
         const maxValue = Math.max(...combined.map(s => Math.max(...s.map(x => x.score))));
         return_value = [{fileId, all_plus, all_minus, unique_plus, unique_minus, maxValue, "fileName": name}];
-        // const [all, unique] = combined;
-        // return_value = [{fileId, all, unique, "fileName": name}];
+
     } else {
-        // let allPromise = getZarrWig('all_bigwig', subfam, zarr_url);
-        // let uniquePromise = getZarrWig('uni_bigwig', subfam, zarr_url);
+
         let allPromise = getZarrWigNew('all_bigwig', subfam, zarr_url, 'DNA', data_length);
         let uniquePromise = getZarrWigNew('uni_bigwig', subfam, zarr_url, 'DNA', data_length);
 
@@ -273,7 +242,6 @@ async function getZarrWig(wig_type, subfam, zarr_url, assay='DNA'){
     result.forEach((element, i) => {
         the_return_value.push({'score': element, 'start': i, 'end': i+1});
     })
-    console.log(the_return_value, wig_type);
 
     let wig_promise = new Promise((resolve) => {
         zarrRemote.openGroup(zarr_url, (err, group, metadata) => {
@@ -299,15 +267,12 @@ async function getZarrWig(wig_type, subfam, zarr_url, assay='DNA'){
     target_array.forEach((element, i) => {
         return_value.push({'score': element, 'start': i, 'end': i+1});
     })
-    // console.log(return_value);
-
     return return_value
 }
 
 async function getZarrWigNew(wig_type, subfam, zarr_url, assay='DNA', data_length){
     let chunk_id;
     let wig_zatrr;
-    // console.log(data_length, assay);
 
     switch (wig_type){
         case 'all+_bigwig':
@@ -367,14 +332,8 @@ async function getZarrWigNew(wig_type, subfam, zarr_url, assay='DNA', data_lengt
     const data = await response.json();
     const sub_stat_list = data[wig_zatrr];
     const the_index = sub_stat_list.indexOf(subfam);
-    // console.log(sub_stat_list, subfam);
+
     let result = data_test['data'][the_index].slice(0, data_length);
-    // let result;
-    // if (assay === 'RNA'){
-    //     result = data_test['data'][the_index].filter((element, index, array) => {return element > 0})
-    // } else {
-    //     result = data_test['data'][the_index].filter((element, index, array) => {return element >= 0})
-    // }
     let the_return_value = new Array();
     result.forEach((element, i) => {
         the_return_value.push({'score': element, 'start': i, 'end': i+1});

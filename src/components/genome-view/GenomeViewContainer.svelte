@@ -1,30 +1,25 @@
 <script>
-  import {afterUpdate, beforeUpdate, onDestroy, onMount} from "svelte";
-  import Chromosome, {cutoff, data, datarange} from "./Chromosome.svelte";
+  import {afterUpdate, onMount} from "svelte";
+  import Chromosome, {data} from "./Chromosome.svelte";
   import Switch from '@smui/switch';
   import FormField from '@smui/form-field';
-  import { Jumper } from 'svelte-loading-spinners';
-  import Fab from '@smui/fab';
-  import { Svg } from '@smui/common';
   import Modal from '../../ui/Modal_1_3.svelte';
   import AddGenomeCopy from "../../ui/addGenomeCopy.svelte";
   import AddTESubfamily from "../../ui/AddTESubfamily.svelte";
   import Button, { Group, GroupItem, Label, Icon } from '@smui/button';
   import Menu from '@smui/menu';
-  import List, { Item, Separator} from '@smui/list';
+  import List, { Item } from '@smui/list';
   import uuid from "uuid";
   import LinearProgress from "../../ui/LinearProgress.svelte";
   import { Cart, genomeModal, TEModal} from "../../stores/CartStore";
-  import { createSession } from './createSession';
-  import debug_data from "../../json/subfam_stat_debug.json";
+
   import { filterDataAboveCutoff } from "./helper";
-  import { fetchRPKMTabixChrAll, getZarrLoci } from "./helper-flat";
-  import fileDownload from 'js-file-download';
+  import { getZarrLoci } from "./helper-flat";
+
   import { getContext } from 'svelte';
   import DataAxis from "./DataAxis.svelte";
   import multiTEDataAxis from "./multiTEDataAxis.svelte";
   import Chip, { Set as Sets, TrailingAction, Text } from '@smui/chips';
-  import annotations from "../../json/SRR562646.json";
   import chromosomes from "../../json/chromosomes.json";
   import * as d3 from "d3";
   import ElementScreenshot from '../../examples/ElementScreenshot.svelte';
@@ -75,7 +70,6 @@
     const UUID = uuid.v4();
     let selectedData = filterDataAboveCutoff(data, sliderValue);
 
-    //   fileDownload(sessionFile, `${UUID}_region_sets.json`);
   }
 
   function specyToAssembly(inputSpecy) {
@@ -213,7 +207,6 @@
         if (multiTEList.hasOwnProperty(key)) {
           const TEValues = Array(numberOfTEs).fill(0);
           const value = multiTEList[key];
-          // console.log(multiTEList);
           // Each value is a TE chromosome list, containing a list of genome copies in a chromosome.
           const listChrom = value.filter(v => v.key === chr);
           if (listChrom.length > 0){
@@ -229,7 +222,6 @@
           }
         }
         ideoChromValue = {"chr": chr.replace('chr', ''), "annots": ideo_annots_chrom}
-        // console.log(ideoChromValue);
       }
       ideo_annots.push(ideoChromValue);
     })
@@ -242,9 +234,7 @@
       let heatmap_value = {"key": Object.keys(multiTEList)[i]}
       const annot_TE_value = ideo_annots.map(annot => annot['annots'].map(v => v[i+3])).flat()
       const {thresholds, colorThresholds} = generateThresholdsAndReds(annot_TE_value, threshColorNum);
-      // thresholds.push('+');
       heatmap_value["thresholds"] = zipArrays(thresholds, colorThresholds);
-      console.log(colorThresholds);
       ideo_heatmap.push(heatmap_value);
     }
 
@@ -257,7 +247,6 @@
     let ideoLegend = [];
     Object.keys(multiTEList).forEach(k => {
       const ideoThresh = ideo_heatmap.filter(d => d.key === k)[0]['thresholds'];
-      console.log(ideo_heatmap.filter(d => d.key === k));
       ideoLegend.push({
         name: k,
         rows: [
@@ -281,7 +270,6 @@
       if (dataToRender.some(obj => obj.values.length >= 1000)) {
         alert('Data Limit Exceeded! We will only retain the top 1000 genome copies per chromosome.');
       }
-      console.log(dataToRender);
       if(dataToRender == undefined){
         error = "This data is not included by our browser."
         return
@@ -303,7 +291,6 @@
       let testdatarange = findDataRange($Cart.genomelist, data);
 
       $Cart.genomelist.forEach(v => {
-        // console.log(v);
         v.values.forEach(d =>
         {
           let resultData = $Cart.data.filter(x => x.id == d.data)[0]
@@ -321,7 +308,7 @@
       keyedTE = [];
       TEChips.forEach(d => keyedTE=[...keyedTE, {k: keyedTE.length + 1, v: d}]);
       loaded = true;
-      // sessionFile = createSession(result, 10, repeat, UUID);
+
     } catch (error) {
       console.log(error);
       error = error.message;
@@ -344,7 +331,6 @@
     dataChips = new Set()
 
     $Cart.genomelist.forEach(v => {
-      // console.log(v);
       v.values.forEach(d =>
       {
         let resultData = $Cart.data.filter(x => x.id == d.data)[0];
@@ -368,54 +354,6 @@
     dataRange = findRange($Cart.genomelist)
 
     const {ideoAnnotaion, ideo_heatmap, annotationTracks, ideoLegend}  = ideoFormat($Cart.multiTEGenomeList, cutoff_value)
-    console.log(cutoff_value, ideoAnnotaion);
-    // console.log(ideo_format);
-
-    // var annotationTracks = [
-    //   {id: 'expressionLevelTrack', displayName: 'Expression level'},
-    //   {id: 'geneTypeTrack', displayName: 'Gene type'},
-    // ];
-
-    var legend = [
-      // {
-      //     name: 'Expression level',
-      //     rows: [
-      //         {color: '#88F', name: 'Low'},
-      //         {color: '#CCC', name: 'Medium'},
-      //         {color: '#F33', name: 'High'}
-      //     ]
-      // },
-      // {
-      //     name: 'Gene type',
-      //     rows: [
-      //         {color: '#00F', name: 'mRNA'},
-      //         {color: '#0AF', name: 'misc_RNA'},
-      //         {color: '#AAA', name: 'miRNA'},
-      //         {color: '#FA0', name: 'tRNA'},
-      //         {color: '#F00', name: 'lncRNA'}
-      //     ]
-      // }
-    ]
-
-    // var heatmaps = [
-    //   {
-    //     key: 'LTR13',
-    //     thresholds: [
-    //       ['2', '#88F'],
-    //       ['4', '#CCC'],
-    //       ['+', '#F33']]
-    //   },
-    //   {
-    //     key: 'MER11C',
-    //     thresholds: [
-    //       ['0', '#00F'],
-    //       ['1', '#0AF'],
-    //       ['2', '#AAA'],
-    //       ['3', '#FA0'],
-    //       ['4', '#F00']
-    //     ]
-    //   }
-    // ]
 
     var config = {};
     if ((specy === 'hg38') || (specy === 'GRCh38')){
@@ -424,14 +362,11 @@
         organism: 'human',
         assembly: 'GRCh38',
         chrHeight: 600,
-        // annotationsPath: '/SRR562646.json',
-        // annotations: annotations,
         annotations: ideoAnnotaion,
         annotationsLayout: 'heatmap',
         legend: ideoLegend,
         heatmaps: ideo_heatmap,
         annotationTracks: annotationTracks,
-        // onDidRotate: ()=>{alert('hello!')}
         rotatable: false // Support for rotatable heatmaps is planned
       };
 
@@ -441,49 +376,26 @@
         organism: 'human',
         assembly: 'GRCh37',
         chrHeight: 600,
-        // annotationsPath: '/SRR562646.json',
-        // annotations: annotations,
         annotations: ideoAnnotaion,
         annotationsLayout: 'heatmap',
         legend: ideoLegend,
         heatmaps: ideo_heatmap,
         annotationTracks: annotationTracks,
-        // onDidRotate: ()=>{alert('hello!')}
         rotatable: false // Support for rotatable heatmaps is planned
       };
     } else if((specy === 'mm10') || (specy === 'mm9')){
       config = {
         container: '#genometracks',
         organism: 'mouse',
-        // assembly: 'GRCh38',
         chrHeight: 600,
-        // annotationsPath: '/SRR562646.json',
-        // annotations: annotations,
         annotations: ideoAnnotaion,
         annotationsLayout: 'heatmap',
         legend: ideoLegend,
         heatmaps: ideo_heatmap,
         annotationTracks: annotationTracks,
-        // onDidRotate: ()=>{alert('hello!')}
         rotatable: false // Support for rotatable heatmaps is planned
       };
     }
-
-    // var config = {
-    //   container: '#genometracks',
-    //   organism: 'human',
-    //   assembly: 'GRCh38',
-    //   chrHeight: 600,
-    //   // annotationsPath: '/SRR562646.json',
-    //   // annotations: annotations,
-    //   annotations: ideoAnnotaion,
-    //   annotationsLayout: 'heatmap',
-    //   legend: legend,
-    //   heatmaps: ideo_heatmap,
-    //   annotationTracks: annotationTracks,
-    //   // onDidRotate: ()=>{alert('hello!')}
-    //   rotatable: false // Support for rotatable heatmaps is planned
-    // };
 
     var ideogram = new Ideogram(config);
   })
@@ -497,9 +409,7 @@
 
   const showModalMultiTE = (chr) => {
     let multiTEData=[];
-    let mappedmultiTEData = [];
     const assembly = specyToAssembly(specy);
-    console.log(specy);
     for (const key in $Cart.multiTEGenomeList) {
       if ($Cart.multiTEGenomeList.hasOwnProperty(key)) {
         const value = $Cart.multiTEGenomeList[key];
@@ -514,7 +424,6 @@
         }
       }
     }
-    console.log(multiTEData);
     open(multiTEDataAxis, {data: multiTEData, repeat: combination.repeat, specy: assembly, selectedChromosome: chr});
   };
 
@@ -528,9 +437,6 @@
     newGenomeList.forEach(chr => {
       chr.values = chr.values.filter(d => ID != d.data)
     })
-    // newGenomeList.forEach(chr => {
-    //   chr.values = chr.values.filter(d => Assay != d.Assay)
-    // })
     await wait(500);
     Cart.updateGenomeView(newGenomeList);
   }
@@ -539,22 +445,17 @@
     let TEKey =  TEname.split(" >> ")[0];
     let filteredDictionary = {};
     let originalDictionary = $Cart.multiTEGenomeList;
-    // filteredDictionary = originalDictionary.filter(d => d.key != TEKey);
-    // Cart.updateMultiTEGenomeList(filteredDictionary);
 
-    console.log($Cart.multiTEGenomeList);
     Object.keys(originalDictionary).forEach((key) => {
       if (key != TEKey) {
         filteredDictionary[key] = originalDictionary[key];
       }
     });
-    console.log(filteredDictionary);
     await wait(500);
     Cart.updateMultiTEGenomeList(filteredDictionary);
 
   }
 
-  // $: ideo_format = ideoFormat($Cart.multiTEGenomeList)
 
 </script>
 
@@ -576,10 +477,6 @@
         {:else}
           <div class="flex justify-center w-full" id="genomeViewData">
             <div class="block p-6 bg-gray-50 rounded-lg shadow-lg max-w-sm w-full px-4">
-
-              <!--{#each dataToRender as item, i}-->
-              <!--  <Chromosome on:genome-click={showModal} key={item.key} chr={item.key} data={item.values} cutoff={cutoff_value} datarange={dataRange}/>-->
-              <!--{/each}-->
               {#each $Cart.genomelist as item, i}
                 <Chromosome on:genome-click={showModal} key={item.key} chr={item.key} specy={specy}
                             datalist={item.values} cutoff={cutoff_value} datarange={dataRange}
@@ -608,10 +505,6 @@
           <span> Cutoff Threshold: </span>
           <input class="w-16" type=number bind:value={cutoff_value} min=0 max={dataRange[1]}>
           <input class="w-1/3 pl-2" type=range bind:value={cutoff_value} min=0 max={dataRange[1]}>
-          <!--        <a href="#" class="inline-flex items-center px-2 py-1 text-sm font-medium text-center text-white bg-lightBlue-600 rounded-lg hover:bg-lightBlue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">-->
-          <!--          Read more-->
-          <!--          <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>-->
-          <!--        </a>-->
           <hr />
           <span>Simple Version or With Ideogram</span>
           <FormField>

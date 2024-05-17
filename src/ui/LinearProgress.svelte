@@ -2,9 +2,7 @@
 <script>
   import {onMount, onDestroy} from 'svelte';
   import LinearProgress from '@smui/linear-progress';
-  // import Checkbox from '@smui/checkbox';
-  // import FormField from '@smui/form-field';
-  // import Button from '@smui/button';
+
   import './linear-progress.scss';
   let progress = 0;
   let closed = false;

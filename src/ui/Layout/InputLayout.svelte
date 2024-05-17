@@ -210,11 +210,9 @@
         display: flex;
         margin-top: 2px;
         height: 87vh;
-        /*max-width: 30vh;*/
-        /*max-width: 600px;*/
+
         border: 1px solid;
         border-color: rgba(189, 195, 199, 0.8);
-            /*var(--mdc-theme-text-hint-on-background, rgba(239, 239, 240, 0.1));*/
         overflow: hidden;
         z-index: 0;
     }
@@ -230,6 +228,5 @@
         overflow: auto;
         padding: 16px;
         height: 100%;
-        /*box-sizing: border-box;*/
     }
 </style>

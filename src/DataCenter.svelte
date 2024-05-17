@@ -1,11 +1,8 @@
 <script>
-  import SvelteTable from "./SvelteTable.svelte";
-  import { onMount } from 'svelte';
   import { Cart } from './stores/CartStore.js';
   import Table from "./components/data-view/components/Table.svelte";
   import { formatDate } from "./components/data-view/helper.js";
   import Pagination from './components/data-view/components/Pagination.svelte';
-  // import data_test from "./components/data-view/data_test.js";
 
   let search = "";
   let page_index = 0;
@@ -36,8 +33,6 @@
 
   function updateCart(input) {
     let found = $Cart.data.filter(d => d.id === input.detail.row.id);
-    console.log(found, input.detail.row);
-    console.log((input.detail.row.Organism.includes('hg') || input.detail.row.Organism.includes('GRCh')));
     if (($Cart.biosample === "Human" && (input.detail.row.Organism.includes('hg') || input.detail.row.Organism.includes('GRCh'))) ||
             ($Cart.biosample === "Mouse" && (input.detail.row.Organism.includes('mm')))){
       if (found.length > 0) {
@@ -46,7 +41,7 @@
         Cart.addDataItems([...new Set([...$Cart.data, input.detail.row])]);
       }
     } else {
-      alert("Please choose the correct species!")
+      alert("Please choose the correct species!");
     }
 
   }
@@ -65,7 +60,6 @@
       d._id = i + 1;
       return d;
   });
-    console.log(_data);
   }
 
   const cols = [
@@ -90,29 +84,6 @@
       filterValue: v => Math.floor(v._id / ROWS_PER_PAGE),
       headerClass: 'text-left'
     },
-    // {
-    //   key: "Assay",
-    //   title: "Assay",
-    //   value: v => v.Assay,
-    //   sortable: true,
-    //   filterOptions: rows => {
-    //     let letrs = {};
-    //     rows.forEach(row => {
-    //       let letr = row.Assay;
-    //       if (letrs[letr] === undefined)
-    //         letrs[letr] = {
-    //           name: `${letr.toUpperCase()}`,
-    //           value: letr.toLowerCase()
-    //         };
-    //     });
-    //     // fix order
-    //     letrs = Object.entries(letrs)
-    //       .sort()
-    //       .reduce((o, [k, v]) => ((o[k] = v), o), {});
-    //     return Object.values(letrs);
-    //   },
-    //   filterValue: v => v.Assay.toLowerCase()
-    // },
     {
       key: "Tissue",
       title: "Tissue",

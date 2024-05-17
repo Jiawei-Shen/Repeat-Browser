@@ -1,28 +1,22 @@
 <link rel="stylesheet" href="/lib/css/bootstrap.css">
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount } from 'svelte';
   import { Cart } from '../stores/CartStore';
-  import { getDataForHeatmapAll, getZarrForHeatmapAll, getBackendjson} from '../api/heatmap';
+  import { getBackendjson} from '../api/heatmap';
   import LinearProgress from '../ui/LinearProgress.svelte';
-  import PlotlyHeatmap from './PlotlyHeatmap.svelte';
+
   import VirtualList from 'svelte-tiny-virtual-list';
-  import IconButton from '@smui/icon-button';
+
   import { Jumper } from 'svelte-loading-spinners';
-  import debug_data from "../json/subfam_stat_debug.json";
+
   import type { MenuComponentDev } from '@smui/menu';
-  import Menu from '@smui/menu';
-  import List, { Item, Separator, Text } from '@smui/list';
-  import Button, { Label } from '@smui/button';
-  import Switch from '@smui/switch';
-  import FormField from '@smui/form-field';
+
   import { createEventDispatcher } from 'svelte'
   import {heatmapTour} from '../api/toursteps'
   // library for creating dropdown menu appear on click
   import { createPopper } from "@popperjs/core";
-  import {make_clust} from "../api/clusterHeatmap"
   import ClusterHeatmap from "./clusterHeatmap.svelte"
   import {navigate} from "svelte-routing";
-  // import Clustergrammer from "clustergrammer"
 
   // core components
   const dispatch = createEventDispatcher()
@@ -44,16 +38,12 @@
   };
 
   let menu: MenuComponentDev;
-  // let clicked = 'DNA';
   let checked = false;
   let alterNumFlag = false;
-  // let scale_max = 2;
 
-  let dataPromise_dna, dataPromise_rna;
-  let heatmapData_dna, heatmapData_rna;
   let repeatLabels;
   let loaded = [false, false];
-  let heatmap_json;
+
   let heatmap_json_dna;
   let heatmap_json_rna;
 
@@ -140,15 +130,12 @@
 {:then heatmapData}
     <div class="flex justify-center">
       <div class="w-full flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
-<!--        <img class="lg:w-3/12 p-4 h-full md:h-auto object-contain md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg" src="/assets/img/heatmap.png" alt="" />-->
         <div class="w-8/12 flex flex-wrap">
-<!--          <div class="flex flex-col justify-center w-7/12 pr-2">-->
           <div class="flex flex-col justify-center w-full pr-2">
             <div class="bg-gray-200 block px-4 rounded-t shadow-lg bg-white max-w-sm w-full">
               <h5 class="text-gray-900 text-xl leading-tight font-medium py-2">Data: {cartData.length}</h5>
             </div>
             <div class="block rounded-b shadow-lg bg-white max-w-sm w-full px-4">
-              <!--            <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">Repeats: {cartRepeats.length}</h5>-->
               <VirtualList
                       height={200}
                       width=100%
@@ -157,20 +144,13 @@
 
                 <div slot="item" let:index let:style {style} class="row">
                 <span>
-<!--                        <IconButton class="material-icons" style="display: inline-block; margin-left: 15px"-->
-<!--                                    on:click={() => Cart.addDataItems($Cart.data.filter(-->
-<!--                                d => d.id !== cartData[index].id))}>-->
-<!--                        cancel</IconButton>-->
                         <span class="inline-block px-12 py-2">
-<!--                                <p class="font-bold">File: {cartData[index].id}</p>-->
-                            <!--                                <span class="text-xs">biosample-target</span>-->
-                            {#if (cartData[index].Target == 'unknown' || typeof cartData[index].Target === 'undefined')}
+                            {#if (cartData[index].Target === 'unknown' || typeof cartData[index].Target === 'undefined')}
                                 <p class="font-bold text-xs m-0">{cartData[index].Biosample}({cartData[index].Assay})</p>
                             {:else }
                                 <p class="font-bold text-xs m-0">{cartData[index].Biosample}({cartData[index].Target})</p>
                             {/if}
                             <span class="text-xs">Target: {cartData[index].Target}, ID: {cartData[index].id}</span>
-<!--                            <span class="font-bold text-xs">{cartData[index].Assay} in {cartData[index].Biosample}<br/></span>-->
                         </span>
                 </span>
                 </div>
@@ -185,7 +165,6 @@
             <li> Please Click the tile to navigate to the consensus view. </li>
             <li> Please click the switch to determine display DNA type sequencing or CAGE-seq data. </li>
             <li> The column names are TE subfamilies and the line names are data/files. </li>
-            <!-- ... -->
           </ul>
           <br>
           <a on:click={heatmapTour} class="inline-flex items-center cursor-pointer lg:w-6/12 px-2 py-2 text-sm font-medium text-center text-white bg-lightBlue-600 rounded-lg hover:bg-lightBlue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -194,7 +173,6 @@
             <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
           </a>
           <br>
-          <!--            <p class="text-gray-600 text-xs">Sunburst chart guide.</p>-->
         </div>
       </div>
     </div>
@@ -202,7 +180,6 @@
     <hr class="py-2">
 
     {#if loaded[0] && $Cart.assay === 'DNA-seq'}
-        <!--{#if loaded[0] && loaded[1]}-->
         <ClusterHeatmap on:tileClick inputJson={heatmap_json_dna}/>
     {:else if loaded[1] && ($Cart.assay === 'Cage-seq' || $Cart.assay === 'RNA-seq')}
         <ClusterHeatmap on:tileClick inputJson={heatmap_json_rna}/>
@@ -226,7 +203,6 @@
         padding: 0 5px;
         border-bottom: 1px solid #eee;
         box-sizing: border-box;
-        /*line-height: 50px;*/
         font-weight: 500;
         background: #fff;
     }

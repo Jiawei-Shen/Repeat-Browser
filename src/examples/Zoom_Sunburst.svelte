@@ -4,24 +4,19 @@
     import VirtualList from 'svelte-tiny-virtual-list';
     import LayoutGrid, { Cell } from '@smui/layout-grid';
     import IconButton from '@smui/icon-button';
-    import Paper, { Title, Content } from '@smui/paper';
-    import {Text} from "@smui/list";
 
     import { Cart } from '../stores/CartStore';
     import REPEATS from '../json/hg38_subfamily.json';
     import mm10REPEATS from '../json/mm10_repeat.json'
     import {repeatsTour} from "../api/toursteps"
     import Typeahead from "svelte-typeahead";
-    import Select, { Option } from '@smui/select';
-    import Button, { Label, Icon } from '@smui/button';
 
     let bioType = ['Mouse', 'Human'];
 
     let value = 'Human';
 
     let events = [];
-    import _flare from '../json/flare.json';
-    import _flare2 from '../json/flare-2.json';
+
     let tooltipNodeRef;
     let uniqueRepeats;
     let nodeRef;
@@ -57,29 +52,26 @@
         Cart.addRepeats(Array.from(new Set([...$Cart.repeats.filter(r => {
             let repeat_name = r.name;
             let input_names = selected_array.map(e => e.name);
-            // console.log(repeat_name, input_names);
+
             return input_names.indexOf(repeat_name) === -1;
         }), ...filteredInput].map(JSON.stringify))).map(JSON.parse));
-        // Cart.addRepeats([...new Set([...$Cart.repeats, input.data.children])]);
+
     }
 
     function handleChildSelected(input) {
         const cartRepeatsName = $Cart.repeats.map(x => x.name);
         if(!cartRepeatsName.includes(input.data.name)){
             Cart.addRepeats(Array.from(new Set([...$Cart.repeats, input.data].map(JSON.stringify))).map(JSON.parse));
-            // Cart.addRepeats([...new Set([...$Cart.repeats, input.data])]);
+
         }
     }
 
     function recoverSelected(input) {
         const selected_array = [...input.data.children];
-        // selected_array.forEach((element) => {
-        //     Cart.addRepeats($Cart.repeats.filter(d => d.name !== element.name));
-        // })
+
         Cart.addRepeats($Cart.repeats.filter(r => {
             let repeat_name = r.name;
             let input_names = selected_array.map(e => e.name);
-            // console.log(repeat_name, input_names);
             return input_names.indexOf(repeat_name) === -1;
         }));
     }
@@ -90,9 +82,7 @@
 
     function recoverChildSelected(input) {
         const selected_array = [input.data];
-        // selected_array.forEach((element) => {
-        //     Cart.addRepeats($Cart.repeats.filter(d => d.name !== element.name));
-        // })
+
         Cart.addRepeats($Cart.repeats.filter(r => {
             let repeat_name = r.name;
             let input_names = input.data.name;
@@ -498,9 +488,7 @@
                 <div class="pb-2">
                     <svg bind:this="{nodeRef}" width=90% height=90%>    </svg>
                 </div>
-<!--                <div class="py-3 px-6 border-t border-gray-300 text-gray-600">-->
-<!--                    Some tips about the sunburst chart.-->
-<!--                </div>-->
+
             </div>
         </div>
     </Cell>

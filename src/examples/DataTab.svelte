@@ -1,38 +1,20 @@
 <script lang="ts">
     import Modal from '../ui/Modal.svelte';
     import PivotTable from '../components/data-view/PivotTable.svelte';
-    // import DataSelectTable from  '../components/data-view/dataSelectTable.svelte';
-    // import _data from "../json/main0216.json";
-    // import _data from "../json/main.json";
-    // import _data2 from "../json/rpbr_data/merged_data.json"
     import defaultData from '../json/zarr_data_1027.json';
-    // import defaultData from '../json/default_data0214.json';
-    // import defaultData from '../json/test_TF_data0307.json';
-    // import defaultData from '../json/rpbr_data/mm10_atac_data.json';
-    // import defaultData from '../json/default2_mm10_data0221.json';
-    // import defaultData from '../json/zarr_data_0207.json';
-    // import CardStats from "../components/CardStats.svelte";
     import IconButton from '@smui/icon-button';
-    import Button, { Label } from '@smui/button';
-    // import Card, {
-    //     Content,
-    //     Actions,
-    // } from '@smui/card';
-    import Button, { Label } from '@smui/button';
+    import { Label } from '@smui/button';
     import Fab from '@smui/fab';
-    // import Textfield from '@smui/textfield';
-    // import Paper, { Title, Content } from '@smui/paper';
-    // import HelperText from '@smui/textfield/helper-text';
-    import IconButton, { Icon } from '@smui/icon-button';
+    import { Icon } from '@smui/icon-button';
     import VirtualList from 'svelte-tiny-virtual-list';
 
     import {Cart} from "../stores/CartStore";
-    import {onDestroy, onMount} from "svelte";
+    import {onMount} from "svelte";
     import defaultData from "../json/default_cart_data.json";
     import {getZarrParameters} from '../api/inputdata';
     import {dataTour} from "../api/toursteps"
 
-    import type, { MenuComponentDev } from '@smui/menu';
+    import { MenuComponentDev } from '@smui/menu';
 
     let menu: MenuComponentDev;
     let clicked = 'nothing yet';

@@ -1,17 +1,14 @@
 <script>
-    import {onMount} from "svelte";
     import {Cart} from '../stores/CartStore';
     import VirtualList from 'svelte-tiny-virtual-list';
-    import IconButton from '@smui/icon-button';
     import {fetchConsensusDatabyZarr} from "../components/consensus/utils";
-    // import hg38GenomeCopydensity from "../json/hg38GenomeCopyDensity.json"
     import Typeahead from "svelte-typeahead";
     import { Jumper } from 'svelte-loading-spinners';
     import Button, { Label, Icon } from '@smui/button';
 
     export let repeat;
     export let hg38GenomeCopydensity;
-    console.log(hg38GenomeCopydensity);
+
     let cartData;
     let cartRepeats;
     let maxValue;
@@ -29,15 +26,8 @@
         let genomeCopyDense = hg38GenomeCopydensity[repeat];
         let res = await fetchConsensusDatabyZarr(dataFile, repeatName, genomeCopyDense.length);
 
-        // Using maxValue instead of signal_value.
-        // const signal_value = res[0].all.map(x => x.score);
-        // // console.log(signal_value, genomeCopyDense.map(Number))
-        // res.forEach(d =>{
-        //     d["y_range"] = parseInt(1.1 * Math.max(...[].concat(...signal_value)));
-        // })
         Cart.updateConsensusTrack([...new Set([...$Cart.consensuslist, ...res])]);
         status = "hidden";
-        // Cart.updateConsensusTrack(res);
     }
 
     async function fetchJsonData(url) {
@@ -54,13 +44,6 @@
         }
     }
 
-    // let hg38GenomeCopydensity;
-    //
-    // onMount(async ()=>{
-    //     hg38GenomeCopydensity = await fetchJsonData("https://wangftp.wustl.edu/~jshen/rb_GenomeCopyDense/hg38GenomeCopyDensity.json");
-    //     console.log("Test if this file is used?");
-    //     // Cart.updateConsensusTrack([...new Set([...$Cart.consensuslist, "data"])]);
-    // })
 </script>
 
 <div>
@@ -81,7 +64,6 @@
     </div>
     <hr />
     <div class="block rounded-t bg-white max-w-sm w-full px-4">
-        <!--                <h5 class="text-gray-900 text-xl leading-tight font-medium">Selected Files: {cartData.length}</h5>-->
         <VirtualList
                 height={200}
                 width=100%
@@ -90,10 +72,6 @@
 
             <div slot="item" let:index let:style {style} class="row">
                 <span>
-<!--                    <IconButton class="material-icons border"-->
-<!--                                on:click={() => readFileData(cartData[index].id, repeat)}-->
-<!--                    >-->
-<!--                    add</IconButton>-->
                     <div class="py-1 inline-block pr-4">
                         <Button
                                 on:click={() => readFileData(cartData[index].id, repeat)}
@@ -105,8 +83,6 @@
                         </Button>
                     </div>
                     <span class="inline-block">
-<!--                                <p class="font-bold">File: {cartData[index].id}</p>-->
-                        <!--                                <span class="text-xs">biosample-target</span>-->
                             <span class="font-bold">{cartData[index].Assay} in {cartData[index].Biosample}<br/></span>
                             <span class="text-xs">Target: {cartData[index].Target}, ID: {cartData[index].id}</span>
                     </span>
@@ -129,7 +105,6 @@
         padding: 0 20px;
         border-bottom: 1px solid #eee;
         box-sizing: border-box;
-        /*line-height: 50px;*/
         font-weight: 500;
         background: #fff;
     }

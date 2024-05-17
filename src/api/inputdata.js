@@ -7,7 +7,6 @@ export async function getZarrParameters(url) {
         let para_promise = new Promise((resolve) => {
             zarrRemote.openGroup(zarr_url, (err, group, metadata) => {
                 let parameters = metadata['metadata']['.zattrs']['Parameters'];
-                console.log(metadata['metadata']['.zattrs']);
                 resolve(parameters);
             })
         })

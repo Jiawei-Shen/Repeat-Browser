@@ -1,5 +1,4 @@
 <script>
-    import Modal from './Modal.svelte';
     import {getContext} from "svelte";
     import genomeModal from "./genomeModal.svelte";
 

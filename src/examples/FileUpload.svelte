@@ -1,34 +1,13 @@
 <script lang="ts">
-    // import Modal from '../ui/Modal.svelte';
-    // import PivotTable from '../components/data-view/PivotTable.svelte';
-    // import _data from "../json/main.json";
-    // import defaultData from '../json/zarr_data_1027.json';
-    // import CardStats from "../components/CardStats.svelte";
-    // import IconButton from '@smui/icon-button';
-    // import Button, { Label } from '@smui/button';
-    // import Card, {
-    //     Content,
-    //     Actions,
-    // } from '@smui/card';
-    // import Button, { Label } from '@smui/button';
-    // import Textfield from '@smui/textfield';
-    // import Paper, { Title, Content } from '@smui/paper';
-    // import HelperText from '@smui/textfield/helper-text';
-    // import IconButton, { Icon } from '@smui/icon-button';
-    // import LayoutGrid, { Cell } from '@smui/layout-grid';
-    // import VirtualList from 'svelte-tiny-virtual-list';
-    // import { navigate } from "svelte-routing";
     import {Cart} from "../stores/CartStore";
-    import {onDestroy, onMount} from "svelte";
-    import defaultData from "../json/default_cart_data.json";
+    import {onMount} from "svelte";
     import {getZarrParameters} from '../api/inputdata';
     import {uploadTour} from "../api/toursteps"
 
-    import type, { MenuComponentDev } from '@smui/menu';
+    import { MenuComponentDev } from '@smui/menu';
 
     let menu: MenuComponentDev;
     let clicked = 'nothing yet';
-    let upload_active = false;
 
     let cartData;
     let cartRepeats;
@@ -39,10 +18,6 @@
     let files;
 
     let valueA=0;
-
-    // $: if (files) {
-    //     update_data();
-    // }
 
     async function update_data(){
         const file = files[0]
@@ -56,12 +31,11 @@
             }
             alert(`The files and repeats Updated.`);
             files = null;
-            // navigate('/input/display');
         });
     }
 
     const unsubscribe = Cart.subscribe(async store => {
-        const { data, repeats } = store;
+        const {data, repeats} = store;
         cartData = data;
         cartRepeats = repeats;
     });
@@ -80,18 +54,6 @@
             Cart.addDataItems([...new Set([...$Cart.data, data])]);
         });
     }
-
-    // let upload_files;
-    // $: if (upload_files) {
-    //     // Note that `files` is of type `FileList`, not an Array:
-    //     // https://developer.mozilla.org/en-US/docs/Web/API/FileList
-    //     console.log(upload_files);
-    //
-    //     for (const file of upload_files) {
-    //         console.log(`${file.name}: ${file.size} bytes`);
-    //         console.log(`${file}`);
-    //     }
-    // }
 
     onMount(() => {
         unsubscribe();
@@ -136,7 +98,6 @@
         <div class="justify-center max-w-sm p-6 bg-white border border-gray-200 rounded-b shadow-md dark:bg-gray-800 dark:border-gray-700" id="zarr-upload">
                 <div class="px-4">
 
-<!--                <label for="helper-text" class="py-2 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Zarr File URL</label>-->
                 <div class="flex flex-wrap">
                     <input type="url" id="helper-text" aria-describedby="helper-text-explanation" class="w-10/12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                            bind:value={tmp_url} placeholder="http://*.zarr/">
@@ -196,14 +157,6 @@
     IconButton{
         float: right;
     }
-
-
-    /*:global(body), :global(html) {*/
-    /*    height: 100%;*/
-    /*    margin: 0;*/
-    /*    background-color: rgb(249, 249, 249);*/
-    /*}*/
-
 
     .actions label {
         padding: 10px 0;

@@ -1,5 +1,5 @@
 <script>
-    import {afterUpdate, onMount} from "svelte";
+    import {onMount} from "svelte";
     import * as d3 from 'd3';
     import { createEventDispatcher } from 'svelte';
     import Basepairs from "/src/json/rb_basepair.json"
@@ -29,16 +29,6 @@
             range: r
         });
     }
-
-    // function basepairColor(i) {
-    //     switch (i){
-    //         case 0: return "#3899C7"; //G
-    //         case 1: return "#e05144"; //C
-    //         case 2: return "#9239c7"; //T
-    //         case 3: return "#89C738"; //A
-    //         default: return "#858585"; //N
-    //     }
-    // }
 
     function basepairColor(i) {
         switch (i){
@@ -82,12 +72,7 @@
         // console.log(nodeRef);
 
         const el = document.getElementById('nodeRef')
-        // console.log(parseFloat(window.getComputedStyle(el).width.replace("px", '')))
-        // console.log(window.getComputedStyle(el).height)
 
-
-        // set width and height of svg
-        // var w = layout.width
         var w = parseFloat(window.getComputedStyle(el).width.replace("px", ''))
         windowWidth = w;
         var h = layout.height
@@ -111,18 +96,6 @@
         var svg = d3.select(nodeRef)
         const g = svg.append('g').attr('transform', `translate(${margin.left}, ${margin.top})`)
         const dataMax = Math.max(...data)
-        // const g = svg.append('g').attr('transform', `translate(0, 0)`)
-
-        // draw background lines
-        // g.append('g').selectAll('line')
-        //     // .data(d3.range(range[0], range[1]+1))
-        //     .data(data)
-        //     .enter()
-        //     .append('line')
-        //     .attr('x1', (d, i) => x(i)).attr('x2', (d, i) => x(i))
-        //     .attr('y1', d => (1 - d/dataMax) * height).attr('y2', d => height)
-        //     // .style('stroke', '#ccc')
-        //     .style('stroke', 'steelblue')
 
         g.append('g').selectAll('line')
             .data(d3.range(range[0], range[1]+1, 10))
@@ -252,15 +225,8 @@
     let rulerAGCT = function(min, max, selectedRange=[0, inputRange]) {
         d3.select(nodeRef).selectAll(".agctRuler").remove();
         var range = selectedRange;
-        // var range = [min, max + 1];
-        // var starting_range = [starting_min, starting_max + 1];
-
-        // console.log(nodeRef);
 
         const el = document.getElementById('nodeRef')
-        // console.log(parseFloat(window.getComputedStyle(el).width.replace("px", '')))
-        // console.log(window.getComputedStyle(el).height)
-
 
         // set width and height of svg
         if (windowWidth == 0){
@@ -268,8 +234,7 @@
         } else {
             var w = windowWidth;
         }
-        // var w = layout.width
-        // var w = parseFloat(window.getComputedStyle(el).width.replace("px", ''))
+
         var h = layout.height
         var margin = layout.margin
 
@@ -288,10 +253,6 @@
             .domain(range)  // data space
             .range([0, height]);  // display space
 
-        // var colorAGCT = d3.scaleLinear()
-        //     .domain(["A", "G", "C", "T", "N"])
-        //     .range(["#89C738", "#3899C7", "#e05144", "#9239c7", "#858585"])
-
         var basePair = d3.scaleLinear()
             .domain(selectedRange)
             .range([0, width])
@@ -299,10 +260,6 @@
         // create svg and translated g
         var svg = d3.select(nodeRef);
         const g = svg.append('g').attr('transform', `translate(${margin.left}, ${margin.top})`);
-
-        // g
-        //     // .attr("transform", "translate(0,150)")      // This controls the vertical position of the Axis
-        //     .call(d3.line()([[10, 60], [40, 90], [60, 10], [190, 10]]));
 
         var Tooltip = d3.select(tooltip)
             // .append("div")
@@ -389,23 +346,6 @@
             .style("stroke-width", "2px")
             .style('stroke', '#222222')
 
-        // labels
-        // var labelL = g.append('text')
-        //     .attr('id', 'labelleft')
-        //     .attr('x', 0)
-        //     .attr('y', height + 5)
-        //     .style('text-anchor', 'end')
-        //     .style('dominant-baseline', 'hanging')
-        //     .text(range[0])
-        //
-        // var labelR = g.append('text')
-        //     .attr('id', 'labelright')
-        //     .attr('x', width)
-        //     .attr('y', height + 5)
-        //     .style('text-anchor', 'start')
-        //     .style('dominant-baseline', 'hanging')
-        //     .text(range[1])
-
         //Annotation Bar(GCTAN)
         const smallRectLeng = 16;
         g.append('g').selectAll('agctRuler')
@@ -450,15 +390,10 @@
     }
 
     onMount(()=>{
-        // console.log(inputData);
-        // console.log(d3.range(0, 100))
         let rangeSlider = slider_snap(0, inputRange);
         let rangeAGCT = rulerAGCT(0, inputRange, selectedRange=testRange);
     })
 
-    // afterUpdate(()=>{
-    //     let rangeAGCT = rulerAGCT(0, inputRange, selectedRange=testRange, width=windowWidth);
-    // })
 
     $: rulerAGCT(0, inputRange, selectedRange=testRange);
 </script>
@@ -481,11 +416,6 @@
         stroke: none;
         fill: steelblue;
         fill-opacity: 0.6;
-    }
-
-    #labelleft, #labelright {
-        dominant-baseline: hanging;
-        font-size: 12px;
     }
 
 </style>
